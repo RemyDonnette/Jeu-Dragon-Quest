@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(images/background/background_bois.jpg);
+    background-size: cover;
+}
+
+header {
+    position: absolute;
+    width: 60%;
+    z-index: 2;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 10%;
+    z-index: 0;
+    gap: 1rem;
+
+}
+
+#logo {
+    width: 100%;
+}
+
+#cadre {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#ecran {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    height: 75vh;
+    width: 60%;
+    gap: 1rem;
+}
+
+#controles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    border: solid black 6px;
+    border-radius: 10px;
+    height: 75vh;
+    width: 25%;
+}
+
+.ecranCombat {
+    background-image: url('images/background/prairie.jpg');
+    background-size: cover;
+}
+
+.controlesCombat {
+    background-image: url('images/background/fond_parchemin.jpg');
+    background-size: cover;
+}
+
+
+/* Barre de vie  */
+.barreDeVie {
+    width: 200px;
+    height: 20px;
+    border: solid 2px gray;
+    border-radius: 1rem;
+    background-color: #ccc;
+    position: relative;
+}
+
+.valeurBarreDeVie {
+    height: 100%;
+    border-radius: 1rem;
+    background-color: green;
+}
+
+.pointsDeVie {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
