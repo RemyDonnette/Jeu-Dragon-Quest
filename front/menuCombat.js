@@ -3,7 +3,7 @@ import { ajoutBarreDeVie, reduireVie, augmenterVie } from './fonctionsCombat.js'
 
 export function lancerCombat() {
     const main = document.querySelector('main')
-    const combat = document.querySelector('#menuPrincipal')
+    const combat = document.querySelector('#menuCombat')
 
     const combatClone = combat.content.cloneNode(true)
 
@@ -29,11 +29,13 @@ export function menuCombat() {
         const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
     
 
+        const musiqueCombat = document.createElement('audio')
+        musiqueCombat.src = './audio/musiques/combatSimple.mp3'
+        musiqueCombat.play()
+
         // Partie ecran
         const ecran = document.querySelector('#ecran')
         ecran.classList.toggle('ecranCombat')
-        
-        
         
         // Création du monstre
         const imageMonstre = document.createElement('img')
@@ -81,9 +83,17 @@ export function menuCombat() {
         controles.append(boutonAttaque)
 
         boutonAttaque.addEventListener('click', () => { 
+
+            const coupEpee = document.createElement('audio')
+            coupEpee.src = './sons/sons/attaqueHeros.ogg'
+            musiqueCombat.play()
             reduireVie(vieMaxMonstre, attMonstre)
             
         })
+
+        // export function finCombat() {
+
+        // }
         
     })
 }

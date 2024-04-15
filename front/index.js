@@ -1,17 +1,25 @@
-import { menuCombat } from './menuCombat.js'
+import { lancerCombat } from './menuCombat.js'
+
+// const musiqueIntro = document.createElement('audio')
+// musiqueIntro.src = './sons/musiques/intro.mp3'
+// musiqueIntro.play()
+
+function muteAudio() {
+    const audioElements = document.querySelectorAll("audio"); 
+    audioElements.forEach(function(audio) {
+        audio.muted = true; 
+        console.log(audio)
+    });
+}
+document.getElementById("muteButton").addEventListener("click", function() {
+    muteAudio(); 
+});
+
 
 const bouton = document.querySelector('#lancerCombat')
 bouton.addEventListener('click', () => {
+    bouton.style.display = 'none'
     lancerCombat()
 })
 
-export function lancerCombat() {
-    const main = document.querySelector('main')
-    const combat = document.querySelector('#menuCombat')
-
-    const combatClone = combat.content.cloneNode(true)
-    main.append(combatClone)
-
-    menuCombat()
-}
 

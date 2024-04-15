@@ -31,15 +31,19 @@ export function majBarreDeVie(vieMax, vieActuelle) {
 }
 
 export function reduireVie(vieMaxMonstre, attMonstre) {
-
+    
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
-    const vie = tabMonstres[1].vie - attMonstre
+    const vie = tabMonstres[1].vie
 
-    majBarreDeVie(vieMaxMonstre, vie)
-    tabMonstres[1].vie = vie
+    if (vie > 0) {
+        const vieReduite =  vie - attMonstre
+        majBarreDeVie(vieMaxMonstre, vieReduite)
+        tabMonstres[1].vie = vieReduite
+        localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
+    } else {
+        finCombat()
+    }
     console.log(vie)
-
-    localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
 }
 
 export function augmenterVie(vieMaxJoueur, vieJoueur, vieRegen) {
@@ -49,6 +53,4 @@ export function augmenterVie(vieMaxJoueur, vieJoueur, vieRegen) {
     
     majBarreDeVie(vieMaxJoueur, vie)
     tabMonstres[0].vie = vie
-
-
 }
