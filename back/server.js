@@ -12,19 +12,36 @@ app.listen(port, (error) => {
     error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
 })
 
+
+// app.get('/donnees', (request, response) => {
+//     const donnees = [
+//         {
+//             id: 0, 
+//             niveau: 1,
+//             argent: 0,
+//         },
+//     ];
+//     response.send(donnees);
+// })
+
 app.get('/monstres', (request, response) => {
-    const monsters = [
+    const monstres = [
         {
             id: 0, 
             nom: 'Héros',
             image: './images/monstres/heros.png',
+            niveau: 1,
+            argent: 0,
+            inventaire: [],
         },
         {
             id: 1, 
             nom: 'Slime',
             image: './images/monstres/slime.png',
             taille: '20%',
-            decalage: '5rem'
+            decalage: '5rem',
+            vieMax: 60,
+            vie: 60
         },
         {
             id: 2,
@@ -36,10 +53,11 @@ app.get('/monstres', (request, response) => {
         },
 
     ];
-    response.send(monsters);
+    response.send(monstres);
 })
+
 app.get('/armes', (request, response) => {
-    const weapons = [
+    const armes = [
         {
             id: 1, 
             nom: 'Baton de cypres'
@@ -54,5 +72,5 @@ app.get('/armes', (request, response) => {
         },
 
     ];
-    response.send(weapons);
+    response.send(armes);
 })

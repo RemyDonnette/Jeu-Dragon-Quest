@@ -19,23 +19,36 @@ export function ajoutBarreDeVie(emplacement) {
     barreDeVie.append(valeurBarreDeVie, pointsDeVie)
 }
 
-export function majBarreDeVie(vie) {
+export function majBarreDeVie(vieMax, vieActuelle) {
 
     const valeurBarreDeVie = document.getElementById('valeurBarreDeVie')
     const pointsDeVie = document.getElementById('pointsDeVie')
     
-    vie = Math.max(0, Math.min(100, vie))
-    
+    const vie = vieActuelle / vieMax * 100
+
     valeurBarreDeVie.style.width = `${vie}%`
     pointsDeVie.style.innerText = `${vie}%`
 }
 
-export function reduireVie(vie, valeur) {
-    const newVie = vie - valeur
-    majBarreDeVie(newVie)
+export function reduireVie(vieMaxMonstre, attMonstre) {
+
+    const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
+    const vie = tabMonstres[1].vie - attMonstre
+
+    majBarreDeVie(vieMaxMonstre, vie)
+    tabMonstres[1].vie = vie
+    console.log(vie)
+
+    localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
 }
 
-export function augmenterVie(vie, valeur) {
-    vie += valeur*
-    majBarreDeVie(vie)
+export function augmenterVie(vieMaxJoueur, vieJoueur, vieRegen) {
+
+    const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
+    const vie = vieJoueur + vieRegen
+    
+    majBarreDeVie(vieMaxJoueur, vie)
+    tabMonstres[0].vie = vie
+
+
 }
