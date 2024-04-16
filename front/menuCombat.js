@@ -44,6 +44,7 @@ export function menuCombat() {
     imageMonstre.id = "imageMonstre"
     imageMonstre.style.width = tailleImageMonstre
     imageMonstre.style.paddingBottom = decalageImageMonstre
+    imageMonstre.classList.add('fa-bounce')
     
     ajoutBarreDeVie(ecranMonstre)
     ecranMonstre.append(imageMonstre)

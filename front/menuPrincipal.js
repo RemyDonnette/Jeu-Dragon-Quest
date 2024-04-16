@@ -13,9 +13,9 @@ export function lancerMenuPrincipal() {
     menuPrincipal.style.display = 'flex'
 
     // Musique Menu Principal
-    const musiqueIntro = document.querySelector('#musique')
-    musiqueIntro.src = './audio/musiques/intro.mp3'
-    musiqueIntro.play()
+    const musiqueMenuPrincipal = document.querySelector('#musique')
+    musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
+    musiqueMenuPrincipal.play()
 
     // Bouton Lancer Combat
     const boutonLancerCombat = document.querySelector('#lancerCombat')
@@ -26,7 +26,7 @@ export function lancerMenuPrincipal() {
     // Bouton Acces Carte du Monde
     const boutonCarteDuMonde = document.querySelector('#boutonCarteDuMonde')
     boutonCarteDuMonde.addEventListener('click', () => {
-        menuCarteDuMonde()
+        lancerCarteDuMonde()
     })
 }
 
@@ -43,7 +43,7 @@ export function lancerCarteDuMonde() {
     menuPrincipal.style.display = 'none'
     carteDuMonde.style.display = 'flex'
 
-    carteDuMonde()
+    menuCarteDuMonde()
 
 }
 

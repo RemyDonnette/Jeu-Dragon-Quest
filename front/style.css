@@ -1,42 +1,38 @@
+/* Elements Globaux */
 * {
     margin: 0;
     padding: 0;
 }
-
 body {
     background-image: url(images/background/background_bois.jpg);
     background-size: cover;
+    height: 100vh;
 }
-
-header {
-    position: absolute;
-    width: 60%;
-    z-index: 2;
-}
-
-#header {
-    display: flex;
-    justify-content: center;
-}
-
-#logo {
-    width: 100%;
-}
-
-
-
 main {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     position: relative;
-    height: 100vh;
-    /* padding-top: 10%; */
+    height: 90vh;
     z-index: 0;
     gap: 1rem;
-
 }
 
+/* Header*/
+header {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+#logo {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Ecran d'Accueil */
 #ecranAccueil {
     display: flex;
     flex-direction: column;
@@ -44,20 +40,17 @@ main {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/fond_parchemin.jpg');
-    height: 75vh;
+    background-image: url('images/background/fondIntro.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
     width: 90%;
+    max-width: 1500px;
 }
 
-#lancerMenuPrincipal {
-    border: 3px solid black;
-    border-radius: 10px;
-    width: 30rem;
-    font-size: 2rem;
-    color:bisque;
-    background-color: saddlebrown;
-}
 
+
+/* Ecran menu principal */
 #ecranMenuPrincipal {
     display: none;
     flex-direction: column;
@@ -66,7 +59,7 @@ main {
     border: solid black 6px;
     border-radius: 10px;
     background-image: url('images/background/fond_parchemin.jpg');
-    height: 75vh;
+    height: 80vh;
     width: 90%;
     gap: 5em;
 }
@@ -80,26 +73,37 @@ main {
     background-color: saddlebrown;
 }
 
+/* Carte Du Monde */
 #carteDuMonde {
     display: none;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid black 6px;
-    border-radius: 10px;
-    background-image: url('images/background/carte.png');
-    height: 75vh;
-    width: 90%;
-    gap: 5em;
+    width: 60%;
+    height: 85vh;
 }
+#imageCarteDuMonde {
+    max-height: 100%;
+}
+#nomDuLieu {
+    position: absolute;
+    top: 10%;
+} 
+
+.punaise {
+    position: absolute;
+    color: #bd0000;
+    font-size: 2rem;
+}
+
 
 #ecranCombat {
     display: none;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    height: 75vh;
+    height: 80vh;
     width: 95%;
+    max-width: 1400px;
     gap: 1%;
 }
 
@@ -110,7 +114,7 @@ main {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    height: 75vh;
+    height: 80vh;
     width: 70%;
     background-image: url('images/background/prairie.jpg');
     background-size: cover;
@@ -124,7 +128,7 @@ main {
     gap: 3rem;
     border: solid black 6px;
     border-radius: 10px;
-    height: 75vh;
+    height: 80vh;
     width: 30%;
     background-image: url('images/background/fond_parchemin.jpg');
     background-size: cover;
@@ -152,4 +156,19 @@ main {
     /* top: 0;
     left: 50%; */
     /* transform: translateX(-50%); */
+}
+
+
+#boutonsAudio {
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+    gap: 1rem;
+    z-index: 4;
+}
+
+i {
+    font-size: 3rem;
+    color: goldenrod;
 }
