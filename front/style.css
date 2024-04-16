@@ -19,21 +19,91 @@ header {
     justify-content: center;
 }
 
+#logo {
+    width: 100%;
+}
+
+
+
 main {
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
-    padding-top: 10%;
+    height: 100vh;
+    /* padding-top: 10%; */
     z-index: 0;
     gap: 1rem;
 
 }
 
-#logo {
-    width: 100%;
+#ecranAccueil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    background-image: url('images/background/fond_parchemin.jpg');
+    height: 75vh;
+    width: 90%;
 }
 
-#ecran {
+#lancerMenuPrincipal {
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 30rem;
+    font-size: 2rem;
+    color:bisque;
+    background-color: saddlebrown;
+}
+
+#ecranMenuPrincipal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    background-image: url('images/background/fond_parchemin.jpg');
+    height: 75vh;
+    width: 90%;
+    gap: 5em;
+}
+
+.boutonMenuPrincipal {
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 30rem;
+    font-size: 2rem;
+    color:bisque;
+    background-color: saddlebrown;
+}
+
+#carteDuMonde {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    background-image: url('images/background/carte.png');
+    height: 75vh;
+    width: 90%;
+    gap: 5em;
+}
+
+#ecranCombat {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 75vh;
+    width: 95%;
+    gap: 1%;
+}
+
+#ecranMonstre {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -41,18 +111,13 @@ main {
     border: solid black 6px;
     border-radius: 10px;
     height: 75vh;
-    width: 60%;
-    gap: 1rem;
-}
-
-#ecranCombat {
+    width: 70%;
     background-image: url('images/background/prairie.jpg');
     background-size: cover;
 }
 
-
-#controles {
-    display: none;
+#ecranJoueur {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -60,29 +125,10 @@ main {
     border: solid black 6px;
     border-radius: 10px;
     height: 75vh;
-    width: 25%;
-}
-
-.ecranCombat {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    border: solid black 6px;
-    border-radius: 10px;
-    height: 75vh;
-    width: 90%;
-    gap: 1rem;
-    background-image: url('images/background/prairie.jpg');
-    background-size: cover;
-    
-}
-
-.controlesCombat {
+    width: 30%;
     background-image: url('images/background/fond_parchemin.jpg');
     background-size: cover;
 }
-
 
 /* Barre de vie  */
 .barreDeVie {

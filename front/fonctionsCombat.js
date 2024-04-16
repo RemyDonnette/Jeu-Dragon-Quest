@@ -1,3 +1,5 @@
+import { finCombat } from './menuCombat.js'
+
 export function ajoutBarreDeVie(emplacement) {
     const barreDeVie = document.createElement('div')
     const valeurBarreDeVie = document.createElement('div')
@@ -9,10 +11,12 @@ export function ajoutBarreDeVie(emplacement) {
     pointsDeVie.className = 'pointsDeVie'
     pointsDeVie.id = 'pointsDeVie'
 
-    if (emplacement == controles) {
+    if (emplacement == ecranJoueur) {
         valeurBarreDeVie.style.backgroundColor = 'green'
-    } else if (emplacement == ecran) {
+        barreDeVie.id = 'barreDeVieJoueur'
+    } else if (emplacement == ecranMonstre) {
         valeurBarreDeVie.style.backgroundColor = 'red'
+        barreDeVie.id = 'barreDeVieMonstre'
     }
 
     emplacement.append(barreDeVie)
@@ -30,20 +34,19 @@ export function majBarreDeVie(vieMax, vieActuelle) {
     pointsDeVie.style.innerText = `${vie}%`
 }
 
-export function reduireVie(vieMaxMonstre, attMonstre) {
+export function reduireVie(vieMaxMonstre, attJoueur) {
     
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
-    const vie = tabMonstres[1].vie
+    const vieMonstre = tabMonstres[1].vie
+    
+    const vieReduite =  vieMonstre - attJoueur
+    majBarreDeVie(vieMaxMonstre, vieReduite)
+    tabMonstres[1].vie = vieReduite
+    localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
 
-    if (vie > 0) {
-        const vieReduite =  vie - attMonstre
-        majBarreDeVie(vieMaxMonstre, vieReduite)
-        tabMonstres[1].vie = vieReduite
-        localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
-    } else {
+    if (vieMonstre <= 0) {
         finCombat()
     }
-    console.log(vie)
 }
 
 export function augmenterVie(vieMaxJoueur, vieJoueur, vieRegen) {

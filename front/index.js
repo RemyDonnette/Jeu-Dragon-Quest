@@ -1,25 +1,25 @@
-import { lancerCombat } from './menuCombat.js'
+import { lancerMenuPrincipal } from './menuPrincipal.js'
 
-// const musiqueIntro = document.createElement('audio')
-// musiqueIntro.src = './sons/musiques/intro.mp3'
-// musiqueIntro.play()
+// Menu Principal
+const boutonLancerMenuPrincipal = document.querySelector('#lancerMenuPrincipal')
 
+boutonLancerMenuPrincipal.addEventListener('click', () => {
+    
+    lancerMenuPrincipal()
+    
+})
+
+// Bouton mute audio
 function muteAudio() {
     const audioElements = document.querySelectorAll("audio"); 
-    audioElements.forEach(function(audio) {
+    audioElements.forEach((audio) => {
         audio.muted = true; 
         console.log(audio)
-    });
+    })
 }
+
 document.getElementById("muteButton").addEventListener("click", function() {
-    muteAudio(); 
-});
-
-
-const bouton = document.querySelector('#lancerCombat')
-bouton.addEventListener('click', () => {
-    bouton.style.display = 'none'
-    lancerCombat()
+    muteAudio()
 })
 
 

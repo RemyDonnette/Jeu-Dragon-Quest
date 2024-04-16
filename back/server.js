@@ -32,6 +32,8 @@ app.get('/monstres', (request, response) => {
             image: './images/monstres/heros.png',
             niveau: 1,
             argent: 0,
+            vieMax: 100,
+            vie: 100,
             inventaire: [],
         },
         {
