@@ -1,4 +1,57 @@
-import { finCombat } from './menuCombat.js'
+
+// Recuperation du tableau Monstres
+const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
+
+const ecranJoueur = document.querySelector('#ecranJoueur')
+const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
+const ecranMonstre = document.querySelector('#ecranMonstre')
+
+// Création du monstre
+export function appelDuMonstre(i, ecran) {
+        
+    // Images du monstre
+    const imageMonstre = document.createElement('img')
+    const urlImageMonstre = tabMonstres[i].image
+    const tailleImageMonstre = tabMonstres[i].taille
+    const decalageImageMonstre = tabMonstres[i].decalage
+    
+    imageMonstre.src = urlImageMonstre
+    imageMonstre.id = "imageMonstre"
+    imageMonstre.style.width = tailleImageMonstre
+    imageMonstre.style.paddingBottom = decalageImageMonstre
+    imageMonstre.classList.add('fa-bounce')
+    
+    ajoutBarreDeVie(ecranMonstre)
+    ecran.append(imageMonstre)
+
+    // Données du monstres
+    return tabMonstres[i]
+}
+
+// Création du Joueur
+export function appelDuHeros(ecran) {
+
+    // Création du header vie + Nom
+    // const headerEcranJoueur = document.createElement('div')
+    // ecranJoueur.append(headerEcranJoueur)
+    
+    const nomHeros = document.createElement('h2')
+    nomHeros.innerText = tabMonstres[0].nom
+    headerEcranJoueur.append(nomHeros)
+    ajoutBarreDeVie(headerEcranJoueur)
+    
+    // Creation de l'image du héros
+    const imageHeros = document.createElement('img')
+    const urlImageHeros = tabMonstres[0].image
+    
+    imageHeros.src = urlImageHeros
+    imageHeros.style.width = '50%'
+    
+    ecran.append(imageHeros)
+
+    // Données du joueur
+    return tabMonstres[0]
+}
 
 export function ajoutBarreDeVie(emplacement) {
     const barreDeVie = document.createElement('div')
@@ -7,53 +60,31 @@ export function ajoutBarreDeVie(emplacement) {
 
     barreDeVie.className = 'barreDeVie'
     valeurBarreDeVie.className = 'valeurBarreDeVie'
-    valeurBarreDeVie.id = 'valeurBarreDeVie'
     pointsDeVie.className = 'pointsDeVie'
     pointsDeVie.id = 'pointsDeVie'
-
-    if (emplacement == ecranJoueur) {
+    
+    if (emplacement == headerEcranJoueur) {
         valeurBarreDeVie.style.backgroundColor = 'green'
         barreDeVie.id = 'barreDeVieJoueur'
+        valeurBarreDeVie.id = 'valeurBarreDeVieJoueur'
+        
     } else if (emplacement == ecranMonstre) {
         valeurBarreDeVie.style.backgroundColor = 'red'
         barreDeVie.id = 'barreDeVieMonstre'
+        valeurBarreDeVie.id = 'valeurBarreDeVieMonstre'
     }
-
+    
     emplacement.append(barreDeVie)
     barreDeVie.append(valeurBarreDeVie, pointsDeVie)
 }
 
-export function majBarreDeVie(vieMax, vieActuelle) {
+export function majBarreDeVie(vieActuelle, vieMax, perso) {
 
-    const valeurBarreDeVie = document.getElementById('valeurBarreDeVie')
+    const valeurBarreDeVie = document.getElementById(`valeurBarreDeVie${perso}`)
     const pointsDeVie = document.getElementById('pointsDeVie')
     
     const vie = vieActuelle / vieMax * 100
 
     valeurBarreDeVie.style.width = `${vie}%`
     pointsDeVie.style.innerText = `${vie}%`
-}
-
-export function reduireVie(vieMaxMonstre, attJoueur) {
-    
-    const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
-    const vieMonstre = tabMonstres[1].vie
-    
-    const vieReduite =  vieMonstre - attJoueur
-    majBarreDeVie(vieMaxMonstre, vieReduite)
-    tabMonstres[1].vie = vieReduite
-    localStorage.setItem('tabMonstres', JSON.stringify(tabMonstres))
-
-    if (vieMonstre <= 0) {
-        finCombat()
-    }
-}
-
-export function augmenterVie(vieMaxJoueur, vieJoueur, vieRegen) {
-
-    const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
-    const vie = vieJoueur + vieRegen
-    
-    majBarreDeVie(vieMaxJoueur, vie)
-    tabMonstres[0].vie = vie
 }
