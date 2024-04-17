@@ -24,7 +24,7 @@ const iconeMuteSons = document.querySelector('#iconeMuteSons')
 function muteMusique() {
     if (musique.muted) {
         musique.muted = false
-        iconeMuteMusique.style.color = 'green'
+        iconeMuteMusique.style.color = 'goldenrod'
     
     } else {
         musique.muted = true

@@ -22,12 +22,15 @@ export function menuCarteDuMonde() {
 
     const punaise = document.querySelectorAll('.punaise')
     const labelNomDuLieu = document.querySelector('#nomDuLieu')
-
+    // const imageLabel = document.createElement('img')
+    // imageLabel.src = './images/background/banniereLieux.png'
+    // imageLabel.id = 'imageLabel'
     punaise.forEach((punaise) => {
         const nomDuLieu = punaise.getAttribute('id')
         punaise.addEventListener('mouseenter', () => {
             punaise.classList.toggle('fa-beat')
             labelNomDuLieu.innerText = nomDuLieu
+            labelNomDuLieu.append(imageLabel)
         })
         punaise.addEventListener('mouseleave', () => {
             punaise.classList.toggle('fa-beat')
