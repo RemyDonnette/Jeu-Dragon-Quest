@@ -1,4 +1,4 @@
-import { appelDuHeros, appelDuMonstre, majBarreDeVie } from './fonctionsCombat.js'
+import { appelDuHeros, appelDuMonstre, majBarreDeVie, disparitionMonstre } from './fonctionsCombat.js'
 
 export function menuCombat() {
     
@@ -19,11 +19,13 @@ export function menuCombat() {
     // Recuperation du tableau Monstres
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
     
-    // Appel de la musique de combat
+    // Appel de la musique et des sons de combat
     const musiqueCombat = document.querySelector('#musique')
+    const sonsCombat = document.querySelector('#sons')
     musiqueCombat.src = './audio/musiques/combatSimple.mp3'
     musiqueCombat.loop = 'true'
     musiqueCombat.play()
+
     
     const ecranJoueur = document.querySelector('#ecranJoueur')
     const ecranMonstre = document.querySelector('#ecranMonstre')
@@ -36,6 +38,7 @@ export function menuCombat() {
     
     // Création des données de combat du monstre
     let pvMonstre = donneesMonstre.pv
+    const nomMonstre = donneesMonstre.nom
     const pvMaxMonstre = donneesMonstre.pvMax
     const forceMonstre = donneesMonstre.force
     const vitaliteMonstre = donneesMonstre.vitalite
@@ -55,7 +58,7 @@ export function menuCombat() {
     const attMonstre = forceMonstre
     const defMonstre = vitaliteMonstre
     
-    const attJoueur = forceJoueur //+ puissArme
+    const attJoueur = forceJoueur //+ puissArme 
     const defJoueur = vitaliteJoueur //+ resArmure
 
     // Création bouton Attaque
@@ -64,115 +67,154 @@ export function menuCombat() {
     boutonAttaque.id = 'boutonAttaque'
     ecranJoueur.append(boutonAttaque)
 
+    let tourMonstre = 0
+    let tourJoueur = 0
+
     // Démarrer le combat
     initiative();
 
     // Fonction pour déterminer l'ordre d'attaque
     function initiative() {
-        if ((agiliteJoueur * (Math.random() + 0.5)) > (agiliteMonstre * (Math.random() + 0.5))) {
-            setTimeout(tourDuJoueur, 1000);
-        } else if ((agiliteJoueur * (Math.random() + 0.5)) < (agiliteMonstre * (Math.random() + 0.5))) {
-            setTimeout(tourDuMonstre, 1000);
+        let initiativeJoueur = agiliteJoueur * (Math.random() + 0.5)
+        let initiativeMonstre = agiliteMonstre * (Math.random() + 0.5)
+        if (initiativeJoueur > initiativeMonstre) {
+            // console.log('A vous de jouer !')
+            setTimeout(tourDuJoueur, 1000)
+        } else if (initiativeJoueur < initiativeMonstre && tourMonstre === 0) {
+            console.log(`Embuscade ! Un ${nomMonstre} vous attaque par surprise !`)
+            setTimeout(tourDuMonstre, 1000)
+        } else if (initiativeJoueur < initiativeMonstre && tourMonstre !== 0) {
+            console.log(`Le ${nomMonstre} attaque en premier !`)
+            setTimeout(tourDuMonstre, 1000)
         } else {
         // En cas d'égalité d'agilité, le joueur a la priorité
-            setTimeout(tourDuJoueur, 1000);
+            setTimeout(tourDuJoueur, 1000)
         }
     }
 
     // Fonction pour le tour du joueur
     function tourDuJoueur() {
+        tourJoueur++
         boutonAttaque.style.display = 'flex'
-        boutonAttaque.addEventListener('click', () => { 
-            boutonAttaque.style.display = 'none'
-            attaqueJoueur();
-            if (!verifierFin()) {
-                setTimeout(tourDuMonstre, 1000);
-            } 
-        })
+        boutonAttaque.addEventListener('click', clickAttaque)
     }
     
+    
+    function clickAttaque() { 
+        attaqueJoueur()
+        if (!verifierFin() && tourMonstre !== tourJoueur) {
+            setTimeout(tourDuMonstre, 1500)
+        } else if (!verifierFin() && tourMonstre === tourJoueur) {
+            initiative()
+        }
+        boutonAttaque.removeEventListener('click', clickAttaque)
+    }
+
     // Fonction pour le tour du monstre
     function tourDuMonstre() {
-        attaqueMonstre();
-        if (!verifierFin()) {
-            setTimeout(tourDuJoueur, 1000);
+        tourMonstre++
+        attaqueMonstre()
+        if (!verifierFin() && (tourMonstre !== tourJoueur)) {
+            setTimeout(tourDuJoueur, 1500)
+        } else if (!verifierFin() && (tourMonstre === tourJoueur)) {
+            initiative()
         }
     }
 
     function attaqueJoueur() {
         // Vérification de l'esquive
-        if (Math.random() < agiliteMonstre * (Math.random() / 2 + 0.25) / 100) {
-            console.log("Le monstre esquive l'attaque du joueur !");
+        let esquiveMonstre = agiliteMonstre * (Math.random() / 10 + 0.1) / 100
+        if (Math.random() < esquiveMonstre) {
+            console.log(`Le ${nomMonstre} esquive l'attaque du joueur !`)
             return;
         }
 
-        let degats = Math.round((attJoueur - defMonstre) * (Math.random() / 10 + 0.95));
+        let degats = Math.round((attJoueur - defMonstre) * (Math.random() / 5 + 0.90) + Math.round(Math.random()));
         
         // Vérification du coup critique
         if (Math.random() < critiqueJoueur / 100) {
-            degats *= 2; 
+            degats *= 2 
             console.log("Coup critique !")
+        } else {
+            sonsCombat.src = './audio/sons/sword.mp3'
+            sonsCombat.play()
         }
         
-        pvMonstre -= degats;
+        pvMonstre -= degats
+
+        setTimeout(() => {
         majBarreDeVie(pvMonstre, pvMaxMonstre, 'Monstre')
-        console.log(`Le joueur attaque et inflige ${degats} points de dégâts au monstre.`);
+        console.log(`Le joueur attaque et inflige ${degats} points de dégâts au ${nomMonstre}.`)
+        }, 700)
     }
 
 
     function attaqueMonstre() {
     // Vérification de l'esquive
-        if (Math.random() < agiliteJoueur * (Math.random() / 2 + 0.25) / 100) {
-        console.log("Le joueur esquive l'attaque du monstre !");
+        let esquiveJoueur = agiliteJoueur * (Math.random() / 10 + 0.1) / 100
+        if (Math.random() < esquiveJoueur) {
+        console.log(`Le joueur esquive l'attaque du ${nomMonstre} !`)
         return;
         }
     
-        let degats = Math.round((attMonstre - defJoueur) * (Math.random() / 10 + 0.95));
+        let degats = Math.round((attMonstre - defJoueur) * (Math.random() / 5 + 0.90) + Math.round(Math.random()))
 
         if (Math.random() < critiqueMonstre / 100) {
-            degats *= 2; 
+            degats *= 2 
             console.log("Coup critique !")
+        } else {
+            sonsCombat.src = './audio/sons/sword.mp3'
+            sonsCombat.play()
         }
 
-        pvJoueur -= degats;
-        majBarreDeVie(pvJoueur, pvMaxJoueur, 'Joueur')
-        console.log(`Le monstre attaque et inflige ${degats} points de dégâts au joueur.`);
+        pvJoueur -= degats
+
+        setTimeout(() => {
+            majBarreDeVie(pvJoueur, pvMaxJoueur, 'Joueur')
+            console.log(`Le ${nomMonstre} attaque et inflige ${degats} points de dégâts au joueur.`)
+        }, 700)
     }
 
      // Fonction pour vérifier si le combat est terminé
     function verifierFin() {
         if (pvJoueur <= 0) {
-        console.log("Le joueur a été vaincu. Game Over !");
-        return true;
+        console.log("Game Over !")
+        return true
         } else if (pvMonstre <= 0) {
-        console.log("Le monstre a été vaincu. Victoire !");
-        victoireCombat()
-        return true;
+            victoireCombat()
+        return true
         }
-        return false;
+        return false
     }
 
 
     
     function victoireCombat() {
-        
-        // Gestion de la musique et des sons
-        const musiqueCombat = document.querySelector('#musique')
-        musiqueCombat.pause()
-        const jingleVictoire = document.createElement('audio')
-        jingleVictoire.src = './audio/jingles/finCombat.mp3'
-        jingleVictoire.play()
-        
-        //Suppression du monstre et de sa barre de vie
-        const ecranMonstre = document.querySelector('#ecranMonstre')
-        const ecranJoueur = document.querySelector('#ecranJoueur')
-        const imageMonstre = document.querySelector('#imageMonstre')
-        const barreDeVieMonstre = document.querySelector('#barreDeVieMonstre')
-        const boutonAttaque = document.querySelector('#boutonAttaque')
-        
-        ecranMonstre.removeChild(imageMonstre)
-        ecranMonstre.removeChild(barreDeVieMonstre)
-        ecranJoueur.removeChild(boutonAttaque)
+        // Animation de disparition
+        setTimeout(() => {
+            disparitionMonstre()
+        }, 2000)
+
+        setTimeout(() => {
+            console.log('Victoire !')
+            //Suppression du monstre et de sa barre de vie
+            const ecranMonstre = document.querySelector('#ecranMonstre')
+            const ecranJoueur = document.querySelector('#ecranJoueur')
+            const imageMonstre = document.querySelector('#imageMonstre')
+            const barreDeVieMonstre = document.querySelector('#barreDeVieMonstre')
+            const boutonAttaque = document.querySelector('#boutonAttaque')
+            
+            ecranMonstre.removeChild(imageMonstre)
+            ecranMonstre.removeChild(barreDeVieMonstre)
+            ecranJoueur.removeChild(boutonAttaque)
+            
+            // Gestion de la musique et des sons
+            const musiqueCombat = document.querySelector('#musique')
+            musiqueCombat.pause()
+            const jingleVictoire = document.createElement('audio')
+            jingleVictoire.src = './audio/jingles/finCombat.mp3'
+            jingleVictoire.play()
+        }, 3000)
         
     }
     

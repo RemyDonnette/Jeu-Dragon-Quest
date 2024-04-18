@@ -18,6 +18,7 @@ main {
     gap: 1rem;
 }
 
+
 /* Header*/
 header {
     position: absolute;
@@ -29,8 +30,9 @@ header {
 }
 #logo {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
 }
+
 
 /* Ecran d'Accueil */
 #ecranAccueil {
@@ -49,7 +51,6 @@ header {
 }
 
 
-
 /* Ecran menu principal */
 #ecranMenuPrincipal {
     display: none;
@@ -63,15 +64,79 @@ header {
     width: 90%;
     gap: 5em;
 }
-
 .boutonMenuPrincipal {
     border: 3px solid black;
     border-radius: 10px;
-    width: 30rem;
+    min-width: 20rem;
     font-size: 2rem;
     color:bisque;
     background-color: saddlebrown;
 }
+
+
+/* Ecran Inventaire */
+#ecranInventaire {
+    display: none;
+}
+#ecranObjets {
+    display: flex;
+}
+#ecranStats {
+    display: flex;
+}
+
+
+/* Combat */
+#ecranCombat {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 80vh;
+    width: 95%;
+    max-width: 1400px;
+    gap: 1%;
+}
+#ecranMonstre {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    height: 80vh;
+    width: 70%;
+    background-image: url('images/background/prairie.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#ecranJoueur {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border: solid black 6px;
+    border-radius: 10px;
+    height: 80vh;
+    width: 30%;
+    background-image: url('images/background/fond_parchemin.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#imageHeros {
+    max-height: 50%;
+}
+#boutonAttaque {
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    font-size: 2rem;
+    color:bisque;
+    background-color: saddlebrown;
+}
+
 
 /* Carte Du Monde */
 #carteDuMonde {
@@ -107,62 +172,15 @@ header {
     font-size: 2rem;
 }
 
-/* Combat */
-#ecranCombat {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    height: 80vh;
-    width: 95%;
-    max-width: 1400px;
-    gap: 1%;
-}
-#ecranMonstre {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-    border: solid black 6px;
-    border-radius: 10px;
-    height: 80vh;
-    width: 70%;
-    background-image: url('images/background/prairie.jpg');
-    background-size: cover;
-}
-#ecranJoueur {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    border: solid black 6px;
-    border-radius: 10px;
-    height: 80vh;
-    width: 30%;
-    background-image: url('images/background/fond_parchemin.jpg');
-    background-size: cover;
-}
-#boutonAttaque {
-    position: absolute;
-    display: none;
-    bottom : 5%;
-    border: 3px solid black;
-    border-radius: 10px;
-    width: 10%;
-    font-size: 2rem;
-    color:bisque;
-    background-color: saddlebrown;
-}
 
 /* Barre de vie  */
 .barreDeVie {
-    width: 200px;
+    min-width: 200px;
     height: 20px;
     border: solid 2px gray;
     border-radius: 1rem;
     background-color: #ccc;
-    position: relative;
+    /* position: relative; */
 }
 .valeurBarreDeVie {
     height: 100%;
@@ -177,6 +195,7 @@ header {
     /* transform: translateX(-50%); */
 }
 
+
 /* Audio */
 #boutonsAudio {
     position: absolute;
@@ -190,3 +209,74 @@ i {
     font-size: 3rem;
     color: goldenrod;
 }
+
+@media screen and (max-width: 750px){
+    #ecranCombat {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        height: 80vh;
+        width: 95%;
+        max-width: 1400px;
+        gap: 1%;
+    }
+    #ecranMonstre {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        border: solid black 6px;
+        border-radius: 10px;
+        height: 50vh;
+        width: 95%;
+        background-image: url('images/background/prairie.jpg');
+        background-size: cover;
+    }
+    #ecranJoueur {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+        border: solid black 6px;
+        border-radius: 10px;
+        height: 25vh;
+        width: 95%;
+        background-image: url('images/background/fond_parchemin.jpg');
+        background-size: cover;
+    }
+    #headerEcranJoueur {
+    
+    }
+
+    #imageHeros {
+        position: absolute;
+        bottom: -25%;
+        right: 5%;
+    }
+    #boutonAttaque {
+        bottom : 5%;
+        border: 3px solid black;
+        border-radius: 10px;
+        width: 10%;
+        font-size: 2rem;
+        color:bisque;
+        background-color: saddlebrown;
+    }
+
+    #boutonsAudio {
+        position: absolute;
+        display: flex;
+        justify-content: right;
+        padding: 0.5rem;
+        gap: 1rem;
+        bottom: 0.5rem;
+        z-index: 4;
+    }
+    i {
+        font-size: 2.5rem;
+        color: goldenrod;
+    }
+}
+

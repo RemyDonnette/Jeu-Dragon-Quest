@@ -5,12 +5,12 @@ const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 const ecranJoueur = document.querySelector('#ecranJoueur')
 const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
 const ecranMonstre = document.querySelector('#ecranMonstre')
+const imageMonstre = document.createElement('img')
 
 // Création du monstre
 export function appelDuMonstre(i, ecran) {
-        
+    
     // Images du monstre
-    const imageMonstre = document.createElement('img')
     const urlImageMonstre = tabMonstres[i].image
     const tailleImageMonstre = tabMonstres[i].taille
     const decalageImageMonstre = tabMonstres[i].decalage
@@ -45,7 +45,8 @@ export function appelDuHeros(ecran) {
     const urlImageHeros = tabMonstres[0].image
     
     imageHeros.src = urlImageHeros
-    imageHeros.style.width = '50%'
+    imageHeros.id = 'imageHeros'
+    
     
     ecran.append(imageHeros)
 
@@ -87,4 +88,15 @@ export function majBarreDeVie(vieActuelle, vieMax, perso) {
 
     valeurBarreDeVie.style.width = `${vie}%`
     pointsDeVie.style.innerText = `${vie}%`
+}
+
+export function disparitionMonstre() {
+    imageMonstre.animate([
+        {
+            opacity: 1,
+            opacity: 0,
+        }
+        ], {
+            duration: 2000,
+        })
 }

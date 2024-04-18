@@ -12,18 +12,6 @@ app.listen(port, (error) => {
     error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
 })
 
-
-// app.get('/donnees', (request, response) => {
-//     const donnees = [
-//         {
-//             id: 0, 
-//             niveau: 1,
-//             argent: 0,
-//         },
-//     ];
-//     response.send(donnees);
-// })
-
 app.get('/monstres', (request, response) => {
     const monstres = [
         {
@@ -56,18 +44,18 @@ app.get('/monstres', (request, response) => {
             pm: 0,
             force: 12,
             vitalite: 5,
-            agilite: 5,
+            agilite: 8,
             sagesse: 8,
             critique: 3,
             esquive: 3,
         },
         {
             id: 2,
-            nom: 'Smilodon'
+            nom: 'Smilodon',
         },
         {
             id: 3,
-            nom: 'Golem de terre'
+            nom: 'Golem de Briques',
         },
 
     ];
@@ -76,6 +64,50 @@ app.get('/monstres', (request, response) => {
 
 app.get('/armes', (request, response) => {
     const armes = [
+        {
+            id: 1, 
+            nom: 'Baton de cypres',
+            image: '',
+            puissance: '',
+        },
+        {
+            id: 2,
+            nom: 'Epée de cuivre',
+            image: '',
+            puissance: '',
+        },
+        {
+            id: 3,
+            nom: 'Epée large de fer',
+            image: '',
+            puissance: '',
+        },
+
+    ];
+    response.send(armes);
+})
+
+app.get('/armures', (request, response) => {
+    const armures = [
+        {
+            id: 1, 
+            nom: 'tenue de voyageur'
+        },
+        {
+            id: 2,
+            nom: 'Tenue de voyageur'
+        },
+        {
+            id: 3,
+            nom: 'Epée en fer'
+        },
+
+    ];
+    response.send(armures);
+})
+
+app.get('/objets', (request, response) => {
+    const objets = [
         {
             id: 1, 
             nom: 'Baton de cypres'
@@ -90,5 +122,5 @@ app.get('/armes', (request, response) => {
         },
 
     ];
-    response.send(armes);
+    response.send(objets);
 })
