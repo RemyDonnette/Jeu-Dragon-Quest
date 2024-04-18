@@ -6,12 +6,11 @@ boutonLancerMenuPrincipal.addEventListener('click', () => {
     lancerMenuPrincipal()
 })
 
-// // Musique menu principal
-// const musiqueIntro = document.querySelector('#musique')
-// musiqueIntro.src = './audio/musiques/intro.mp3'
-// musiqueIntro.play()
-
-
+// Musique menu principal
+const musiqueIntro = document.querySelector('#musique')
+musiqueIntro.src = './audio/musiques/intro.mp3'
+musiqueIntro.loop = 'true'
+musiqueIntro.play()
 
 // Bouton mute audio
 const musique = document.querySelector('#musique'); 

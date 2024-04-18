@@ -37,7 +37,7 @@ app.get('/monstres', (request, response) => {
             nom: 'Slime',
             image: './images/monstres/slime.png',
             taille: '20%',
-            decalage: '5rem',
+            decalage: '2em',
             pvMax: 35,
             pv: 35,
             pmMax: 0,

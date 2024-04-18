@@ -1,8 +1,6 @@
 import { menuCombat } from "./menuCombat.js"
 import { menuCarteDuMonde } from "./carteDuMonde.js"
 
-const main = document.querySelector('#main')
-const logo = document.querySelector
 const accueil = document.querySelector('#ecranAccueil')
 const menuPrincipal = document.querySelector('#ecranMenuPrincipal')
 const combat = document.querySelector('#ecranCombat')
@@ -17,6 +15,7 @@ export function lancerMenuPrincipal() {
     // Musique Menu Principal
     const musiqueMenuPrincipal = document.querySelector('#musique')
     musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
+    musiqueMenuPrincipal.loop = 'true'
     musiqueMenuPrincipal.play()
 
     // Animation des boutons

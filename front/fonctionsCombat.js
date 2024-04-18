@@ -3,8 +3,9 @@
 const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 
 const ecranJoueur = document.querySelector('#ecranJoueur')
-const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
 const ecranMonstre = document.querySelector('#ecranMonstre')
+const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
+const emplacementBarreDeVie = document.querySelector('#emplacementBarreDeVie')
 const imageMonstre = document.createElement('img')
 
 // Création du monstre
@@ -30,15 +31,13 @@ export function appelDuMonstre(i, ecran) {
 
 // Création du Joueur
 export function appelDuHeros(ecran) {
-
-    // Création du header vie + Nom
-    // const headerEcranJoueur = document.createElement('div')
-    // ecranJoueur.append(headerEcranJoueur)
     
     const nomHeros = document.createElement('h2')
+    const lvlHeros = document.createElement('h2')
     nomHeros.innerText = tabMonstres[0].nom
+    lvlHeros.innerText = `Lvl:${tabMonstres[0].niveau}`
     headerEcranJoueur.append(nomHeros)
-    ajoutBarreDeVie(headerEcranJoueur)
+    headerEcranJoueur.append(lvlHeros)
     
     // Creation de l'image du héros
     const imageHeros = document.createElement('img')
@@ -47,7 +46,7 @@ export function appelDuHeros(ecran) {
     imageHeros.src = urlImageHeros
     imageHeros.id = 'imageHeros'
     
-    
+    ajoutBarreDeVie(emplacementBarreDeVie)
     ecran.append(imageHeros)
 
     // Données du joueur
@@ -64,7 +63,7 @@ export function ajoutBarreDeVie(emplacement) {
     pointsDeVie.className = 'pointsDeVie'
     pointsDeVie.id = 'pointsDeVie'
     
-    if (emplacement == headerEcranJoueur) {
+    if (emplacement == emplacementBarreDeVie) {
         valeurBarreDeVie.style.backgroundColor = 'green'
         barreDeVie.id = 'barreDeVieJoueur'
         valeurBarreDeVie.id = 'valeurBarreDeVieJoueur'

@@ -26,9 +26,10 @@ export function menuCombat() {
     musiqueCombat.loop = 'true'
     musiqueCombat.play()
 
-    
+    // Determination de tout les emplacements de combats
     const ecranJoueur = document.querySelector('#ecranJoueur')
     const ecranMonstre = document.querySelector('#ecranMonstre')
+    const emplacementBoutons = document.querySelector('#emplacementBoutons')
     
     // Appel du monstre + données
     const donneesMonstre = appelDuMonstre(1, ecranMonstre)
@@ -62,11 +63,41 @@ export function menuCombat() {
     const defJoueur = vitaliteJoueur //+ resArmure
 
     // Création bouton Attaque
-    const boutonAttaque = document.createElement('button')
-    boutonAttaque.innerText = 'attaque'
+    const boutonAttaque = document.createElement('img')
+    boutonAttaque.src = './images/icones/boutonAttaque.png'
     boutonAttaque.id = 'boutonAttaque'
-    ecranJoueur.append(boutonAttaque)
+    boutonAttaque.className = 'boutonCombat'
+    emplacementBoutons.append(boutonAttaque)
 
+    // Création bouton Inventaire
+    const boutonInventaire = document.createElement('img')
+    boutonInventaire.src = './images/icones/boutonInventaire.png'
+    boutonInventaire.id = 'boutonInventaire'
+    boutonInventaire.className = 'boutonCombat'
+    emplacementBoutons.append(boutonInventaire)
+
+    // Création bouton fuite
+    const boutonFuite = document.createElement('img')
+    boutonFuite.src = './images/icones/boutonFuite.png'
+    boutonFuite.id = 'boutonFuite'
+    boutonFuite.className = 'boutonCombat'
+    emplacementBoutons.append(boutonFuite)
+
+    // Animation des boutons
+    const boutonsCombat = document.querySelectorAll('.boutonCombat')
+    boutonsCombat.forEach((bouton) => {
+        bouton.addEventListener('mouseenter', () => {
+            bouton.classList.toggle('fa-beat')
+        })
+        bouton.addEventListener('mouseleave', () => {
+            bouton.classList.toggle('fa-beat')
+        })
+    })
+
+
+
+
+    // Ammorce des tours
     let tourMonstre = 0
     let tourJoueur = 0
 
@@ -78,7 +109,6 @@ export function menuCombat() {
         let initiativeJoueur = agiliteJoueur * (Math.random() + 0.5)
         let initiativeMonstre = agiliteMonstre * (Math.random() + 0.5)
         if (initiativeJoueur > initiativeMonstre) {
-            // console.log('A vous de jouer !')
             setTimeout(tourDuJoueur, 1000)
         } else if (initiativeJoueur < initiativeMonstre && tourMonstre === 0) {
             console.log(`Embuscade ! Un ${nomMonstre} vous attaque par surprise !`)
@@ -133,7 +163,7 @@ export function menuCombat() {
         
         // Vérification du coup critique
         if (Math.random() < critiqueJoueur / 100) {
-            degats *= 2 
+            degats = Math.round(attJoueur * (Math.random() / 5 + 0.90) + Math.round(Math.random()))
             console.log("Coup critique !")
         } else {
             sonsCombat.src = './audio/sons/sword.mp3'
@@ -160,7 +190,7 @@ export function menuCombat() {
         let degats = Math.round((attMonstre - defJoueur) * (Math.random() / 5 + 0.90) + Math.round(Math.random()))
 
         if (Math.random() < critiqueMonstre / 100) {
-            degats *= 2 
+            degats = Math.round(attMonstre * (Math.random() / 5 + 0.90) + Math.round(Math.random()))
             console.log("Coup critique !")
         } else {
             sonsCombat.src = './audio/sons/sword.mp3'
@@ -198,15 +228,13 @@ export function menuCombat() {
         setTimeout(() => {
             console.log('Victoire !')
             //Suppression du monstre et de sa barre de vie
-            const ecranMonstre = document.querySelector('#ecranMonstre')
-            const ecranJoueur = document.querySelector('#ecranJoueur')
             const imageMonstre = document.querySelector('#imageMonstre')
             const barreDeVieMonstre = document.querySelector('#barreDeVieMonstre')
-            const boutonAttaque = document.querySelector('#boutonAttaque')
+            const emplacementBoutons = document.querySelector('#emplacementBoutons')
             
-            ecranMonstre.removeChild(imageMonstre)
-            ecranMonstre.removeChild(barreDeVieMonstre)
-            ecranJoueur.removeChild(boutonAttaque)
+            imageMonstre.remove()
+            barreDeVieMonstre.remove()
+            emplacementBoutons.style.display = 'none'
             
             // Gestion de la musique et des sons
             const musiqueCombat = document.querySelector('#musique')
