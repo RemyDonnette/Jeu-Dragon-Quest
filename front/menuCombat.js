@@ -84,15 +84,15 @@ export function menuCombat() {
     emplacementBoutons.append(boutonFuite)
 
     // Animation des boutons
-    const boutonsCombat = document.querySelectorAll('.boutonCombat')
-    boutonsCombat.forEach((bouton) => {
-        bouton.addEventListener('mouseenter', () => {
-            bouton.classList.toggle('fa-beat')
-        })
-        bouton.addEventListener('mouseleave', () => {
-            bouton.classList.toggle('fa-beat')
-        })
-    })
+    // const boutonsCombat = document.querySelectorAll('.boutonCombat')
+    // boutonsCombat.forEach((bouton) => {
+    //     bouton.addEventListener('mouseenter', () => {
+    //         bouton.classList.toggle('fa-beat')
+    //     })
+    //     bouton.addEventListener('mouseleave', () => {
+    //         bouton.classList.toggle('fa-beat')
+    //     })
+    // })
 
 
 

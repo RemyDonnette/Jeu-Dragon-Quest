@@ -117,7 +117,6 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
     border: solid black 6px;
     border-radius: 10px;
     height: 80vh;
@@ -125,6 +124,7 @@ header {
     background-image: url('images/background/fond_parchemin.jpg');
     background-size: cover;
     background-position: center;
+    gap: 1rem;
 }
 #headerEcranJoueur {
     display: flex;
@@ -132,6 +132,8 @@ header {
     width: 200px;
 }
 #emplacementBoutons {
+    position: absolute;
+    bottom: 2%;
     display: flex;
     gap: 1rem;
 }
@@ -141,6 +143,10 @@ header {
 
 .boutonCombat {
     width: 5rem;
+    border-radius: 50%;
+}
+.boutonCombat:hover {
+    filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
 /* Carte Du Monde */
@@ -215,7 +221,7 @@ i {
     color: goldenrod;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 1000px){
     #ecranCombat {
         display: none;
         justify-content: center;
@@ -243,13 +249,12 @@ i {
         
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         gap: 0.5rem;
         border: solid black 6px;
         border-radius: 10px;
         height: 25vh;
         width: 95%;
-        padding-left: 1rem;
         background-image: url('images/background/fond_parchemin.jpg');
         background-size: cover;
         overflow: hidden;
@@ -264,6 +269,9 @@ i {
         bottom: -25%;
         right: 2%;
         clip-path: inset(0 0 52.3% 0);
+    }
+    #emplacementBoutons {
+        position: inherit;
     }
     .boutonCombat {
         width: 3.5rem;
