@@ -1,0 +1,18 @@
+{
+    "id": 0, 
+    "nom": "Nox",
+    "image": "./images/monstres/heros.png",
+    "niveau": 10,
+    "argent": 0,
+    "pvMax": 50,
+    "pv": 50,
+    "pmMax": 15,
+    "pm": 15,
+    "force": 12,
+    "vitalite": 5,
+    "agilite": 8,
+    "sagesse": 10,
+    "critique": 5,
+    "esquive": 5,
+    "inventaire": []
+}

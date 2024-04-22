@@ -1,10 +1,23 @@
 import { menuCombat } from "./menuCombat.js"
 import { menuCarteDuMonde } from "./carteDuMonde.js"
 
+// Appel des écrans
 const accueil = document.querySelector('#ecranAccueil')
 const menuPrincipal = document.querySelector('#ecranMenuPrincipal')
+const menuDev = document.querySelector('#ecranMenuDev')
 const combat = document.querySelector('#ecranCombat')
 const carteDuMonde = document.querySelector('#carteDuMonde')
+
+// Animation des boutons
+const boutonsMenu = document.querySelectorAll('.boutonMenuPrincipal')
+boutonsMenu.forEach((bouton) => {
+    bouton.addEventListener('mouseenter', () => {
+        bouton.classList.toggle('fa-beat')
+    })
+    bouton.addEventListener('mouseleave', () => {
+        bouton.classList.toggle('fa-beat')
+    })
+})
 
 export function lancerMenuPrincipal() {
     
@@ -18,17 +31,19 @@ export function lancerMenuPrincipal() {
     musiqueMenuPrincipal.loop = 'true'
     musiqueMenuPrincipal.play()
 
-    // Animation des boutons
-    const boutonsMenu = document.querySelectorAll('.boutonMenuPrincipal')
-    boutonsMenu.forEach((bouton) => {
-        bouton.addEventListener('mouseenter', () => {
-            bouton.classList.toggle('fa-beat')
-        })
-        bouton.addEventListener('mouseleave', () => {
-            bouton.classList.toggle('fa-beat')
-        })
+    // Bouton Lancer Combat
+    const boutonLancerMenuDev = document.querySelector('#boutonMenuDev')
+    boutonLancerMenuDev.addEventListener('click', () => {
+        lancerMenuDev()
     })
 
+
+    
+}
+
+function lancerMenuDev() {
+    menuPrincipal.style.display = 'none'
+    menuDev.style.display = 'flex'
 
     // Bouton Lancer Combat
     const boutonLancerCombat = document.querySelector('#lancerCombat')
@@ -45,7 +60,7 @@ export function lancerMenuPrincipal() {
 
 export function lancerCombat() {
     
-    menuPrincipal.style.display = 'none'
+    menuDev.style.display = 'none'
     combat.style.display = 'flex'
 
     menuCombat()
@@ -53,7 +68,7 @@ export function lancerCombat() {
 
 export function lancerCarteDuMonde() {
 
-    menuPrincipal.style.display = 'none'
+    menuDev.style.display = 'none'
     carteDuMonde.style.display = 'flex'
 
     menuCarteDuMonde()

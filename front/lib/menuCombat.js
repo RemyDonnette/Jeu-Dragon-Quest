@@ -1,24 +1,16 @@
 import { appelDuHeros, appelDuMonstre, majBarreDeVie, disparitionMonstre } from './fonctionsCombat.js'
+import { fetchData } from './fetch.js';
+
 
 export function menuCombat() {
-    
-    // Fetch Monstres
-    fetch('http://localhost:3000/monstres', {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify()
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
+
+    fetchData('/monstres').then((data) => {
         localStorage.setItem('tabMonstres', JSON.stringify(data))
     })
     
     // Recuperation du tableau Monstres
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
-    
+
     // Appel de la musique et des sons de combat
     const musiqueCombat = document.querySelector('#musique')
     const sonsCombat = document.querySelector('#sons')
@@ -139,18 +131,7 @@ export function menuCombat() {
         }
         boutonAttaque.removeEventListener('click', clickAttaque)
     }
-
-    // Fonction pour le tour du monstre
-    function tourDuMonstre() {
-        tourMonstre++
-        attaqueMonstre()
-        if (!verifierFin() && (tourMonstre !== tourJoueur)) {
-            setTimeout(tourDuJoueur, 1500)
-        } else if (!verifierFin() && (tourMonstre === tourJoueur)) {
-            initiative()
-        }
-    }
-
+    
     function attaqueJoueur() {
         // Vérification de l'esquive
         let esquiveMonstre = agiliteMonstre * (Math.random() / 10 + 0.1) / 100
@@ -158,7 +139,7 @@ export function menuCombat() {
             console.log(`Le ${nomMonstre} esquive l'attaque du joueur !`)
             return;
         }
-
+        
         let degats = Math.round((attJoueur - defMonstre) * (Math.random() / 5 + 0.90) + Math.round(Math.random()));
         
         // Vérification du coup critique
@@ -171,14 +152,24 @@ export function menuCombat() {
         }
         
         pvMonstre -= degats
-
+        
         setTimeout(() => {
-        majBarreDeVie(pvMonstre, pvMaxMonstre, 'Monstre')
-        console.log(`Le joueur attaque et inflige ${degats} points de dégâts au ${nomMonstre}.`)
+            majBarreDeVie(pvMonstre, pvMaxMonstre, 'Monstre')
+            console.log(`Le joueur attaque et inflige ${degats} points de dégâts au ${nomMonstre}.`)
         }, 700)
     }
 
-
+    // Fonction pour le tour du monstre
+    function tourDuMonstre() {
+        tourMonstre++
+        attaqueMonstre()
+        if (!verifierFin() && (tourMonstre !== tourJoueur)) {
+            setTimeout(tourDuJoueur, 1500)
+        } else if (!verifierFin() && (tourMonstre === tourJoueur)) {
+            initiative()
+        }
+    }
+    
     function attaqueMonstre() {
     // Vérification de l'esquive
         let esquiveJoueur = agiliteJoueur * (Math.random() / 10 + 0.1) / 100
@@ -232,14 +223,14 @@ export function menuCombat() {
             const barreDeVieMonstre = document.querySelector('#barreDeVieMonstre')
             const emplacementBoutons = document.querySelector('#emplacementBoutons')
             
-            imageMonstre.remove()
-            barreDeVieMonstre.remove()
+            ecranMonstre.removeChild(imageMonstre)
+            ecranMonstre.removeChild(barreDeVieMonstre)
             emplacementBoutons.style.display = 'none'
             
             // Gestion de la musique et des sons
             const musiqueCombat = document.querySelector('#musique')
             musiqueCombat.pause()
-            const jingleVictoire = document.createElement('audio')
+            const jingleVictoire = document.querySelector('#sons')
             jingleVictoire.src = './audio/jingles/finCombat.mp3'
             jingleVictoire.play()
         }, 3000)
@@ -249,6 +240,10 @@ export function menuCombat() {
     // function gameOver() {
         
         
+    // }
+
+    // async function retourMenuDev() {
+    //     const prerequis = await victoireCombat()
     // }
     
 }

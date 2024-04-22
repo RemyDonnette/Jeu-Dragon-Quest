@@ -1,5 +1,27 @@
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import express from 'express';
 import cors from 'cors';
+import { open, readFile, writeFile } from 'node:fs/promises';
+
+
+// Récuperation de l'url
+const dir = dirname(fileURLToPath(import.meta.url))
+const nomFichier = join(dir, '/sauvegardes/emplacement1.json')
+console.log(nomFichier)
+
+// Fonction de lecture du fichier
+async function lireSauvegarde() {
+    const lireSauvegarde1 = await readFile(nomFichier, { encoding: 'utf8' })
+    return JSON.parse(lireSauvegarde1)
+    }
+
+// Fonction d'écrasement du fichier
+async function ecraserSauvegarde() {
+    const ecraserSauvegarde = await writeFile(nomFichier, ecraserSauvegarde, { encoding: 'utf8' })
+    return JSON.parse(ecraserSauvegarde)
+}
+
 
 const app = express();
 const port = 3000;
@@ -11,6 +33,7 @@ app.use(cors());
 app.listen(port, (error) => {
     error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
 })
+
 
 app.get('/monstres', (request, response) => {
     const monstres = [
@@ -124,3 +147,7 @@ app.get('/objets', (request, response) => {
     ];
     response.send(objets);
 })
+
+app.get('/sauvegarde', (req, res) => {
+    lireSauvegarde().then((r) => res.send(r));
+    });
