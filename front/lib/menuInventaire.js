@@ -1,4 +1,4 @@
-import { superposerEcran } from "./fonctionsEcran";
+import { superposerEcran } from "./fonctionsEcran.js";
 
 
 export function menuInventaire(ecranActuel) {
@@ -16,10 +16,11 @@ export function menuInventaire(ecranActuel) {
         localStorage.setItem('tabObjets', JSON.stringify(data))
     })
 
-    const ecranObjets = document.querySelector('#ecranObjets')
-    const ecranStats = document.querySelector('#ecranStats')
+    const ecranInventaire = document.querySelector('#ecranInventaire')
+    console.log(ecranInventaire)
     
-    superposerEcran(ecranObjets, ecranActuel)
+    superposerEcran(ecranInventaire, ecranActuel)
+    console.log(superposerEcran)
 
 
 

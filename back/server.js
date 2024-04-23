@@ -11,13 +11,13 @@ const nomFichier = join(dir, '/sauvegardes/emplacement1.json')
 console.log(nomFichier)
 
 // Fonction de lecture du fichier
-async function lireSauvegarde() {
+export async function lireSauvegarde() {
     const lireSauvegarde1 = await readFile(nomFichier, { encoding: 'utf8' })
     return JSON.parse(lireSauvegarde1)
     }
 
 // Fonction d'écrasement du fichier
-async function ecraserSauvegarde() {
+export async function ecraserSauvegarde() {
     const ecraserSauvegarde = await writeFile(nomFichier, ecraserSauvegarde, { encoding: 'utf8' })
     return JSON.parse(ecraserSauvegarde)
 }

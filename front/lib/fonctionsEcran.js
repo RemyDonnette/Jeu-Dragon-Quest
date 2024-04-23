@@ -4,6 +4,8 @@ export function switchEcran (ancien, nouveau) {
 }
 
 export function superposerEcran (dessus, dessous) {
+    dessus.style.display = 'flex'
     dessus.style.position = 'absolute'
     dessous.style.position = 'relative'
+    dessous.style.opacity = 0.2
 }

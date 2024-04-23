@@ -1,5 +1,6 @@
 import { appelDuHeros, appelDuMonstre, majBarreDeVie, disparitionMonstre } from './fonctionsCombat.js'
 import { fetchData } from './fetch.js';
+import { menuInventaire } from './menuInventaire.js';
 
 
 export function menuCombat() {
@@ -19,6 +20,7 @@ export function menuCombat() {
     musiqueCombat.play()
 
     // Determination de tout les emplacements de combats
+    const ecranCombat = document.querySelector('#ecranCombat')
     const ecranJoueur = document.querySelector('#ecranJoueur')
     const ecranMonstre = document.querySelector('#ecranMonstre')
     const emplacementBoutons = document.querySelector('#emplacementBoutons')
@@ -119,6 +121,8 @@ export function menuCombat() {
         tourJoueur++
         boutonAttaque.style.display = 'flex'
         boutonAttaque.addEventListener('click', clickAttaque)
+        boutonInventaire.addEventListener('click', clickInventaire)
+
     }
     
     
@@ -132,6 +136,11 @@ export function menuCombat() {
         boutonAttaque.removeEventListener('click', clickAttaque)
     }
     
+    function clickInventaire() {
+        menuInventaire(ecranCombat)
+    }
+
+
     function attaqueJoueur() {
         // Vérification de l'esquive
         let esquiveMonstre = agiliteMonstre * (Math.random() / 10 + 0.1) / 100

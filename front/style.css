@@ -46,7 +46,7 @@ header {
     background-size: cover;
     background-position: center;
     height: 80vh;
-    width: 90%;
+    width: 90vw;
     max-width: 1500px;
 }
 
@@ -61,7 +61,7 @@ header {
     border-radius: 10px;
     background-image: url('images/background/fond_parchemin.jpg');
     height: 80vh;
-    width: 90%;
+    width: 90vw;
     gap: 2em;
 }
 .boutonMenuPrincipal {
@@ -96,12 +96,23 @@ header {
 /* Ecran Inventaire */
 #ecranInventaire {
     display: none;
+    opacity: 0.8;
+    gap: 1vw;
 }
 #ecranObjets {
     display: flex;
+    height: 80vh;
+    width: 60vw;
+    border: solid black 6px;
+    border-radius: 10px;
+    background-color: black;
 }
 #ecranStats {
     display: flex;
+    height: 80vh;
+    width: 30vw;
+    border: solid black 6px;
+    border-radius: 10px;
 }
 
 
@@ -114,7 +125,7 @@ header {
     height: 80vh;
     width: 95%;
     max-width: 1400px;
-    gap: 1%;
+    gap: 1vw;
 }
 #ecranMonstre {
     display: flex;
@@ -124,7 +135,7 @@ header {
     border: solid black 6px;
     border-radius: 10px;
     height: 80vh;
-    width: 70%;
+    width: 60vw;
     gap: 2rem;
     background-image: url('images/background/prairie.jpg');
     background-size: cover;
@@ -138,7 +149,7 @@ header {
     border: solid black 6px;
     border-radius: 10px;
     height: 80vh;
-    width: 30%;
+    width: 30vw;
     background-image: url('images/background/fond_parchemin.jpg');
     background-size: cover;
     background-position: center;
@@ -247,7 +258,8 @@ i {
         flex-wrap: wrap;
         border-radius: 10px;
         height: 80vh;
-        width: 95%;
+        max-width: 450px;
+        /* width: 95%; */
         max-width: 1400px;
         gap: 1%;
     }
@@ -259,7 +271,7 @@ i {
         border: solid black 6px;
         border-radius: 10px;
         height: 50vh;
-        width: 95%;
+        width: 95vh;
         background-image: url('images/background/prairie.jpg');
         background-size: cover;
     }
@@ -267,18 +279,19 @@ i {
         
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        padding-left: 5vw;
         gap: 0.5rem;
         border: solid black 6px;
         border-radius: 10px;
         height: 25vh;
-        width: 95%;
+        width: 95vh;
         background-image: url('images/background/fond_parchemin.jpg');
         background-size: cover;
         overflow: hidden;
     }
     #headerEcranJoueur {
-    
+        width: 175px;
     }
     #imageHeros {
         position: absolute;
@@ -292,10 +305,18 @@ i {
         position: inherit;
     }
     .boutonCombat {
-        width: 3.5rem;
+        width: 3rem;
         justify-content: center;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
+    }
+    .barreDeVie {
+        min-width: 170px;
+        height: 15px;
+        border: solid 2px gray;
+        border-radius: 1rem;
+        background-color: #ccc;
+        /* position: relative; */
     }
     #boutonsAudio {
         position: absolute;
