@@ -1,6 +1,7 @@
+import { superposerEcran } from "./fonctionsEcran";
 
 
-export function menuInventaire() {
+export function menuInventaire(ecranActuel) {
     // Fetch Objets
     fetch('http://localhost:3000/objets', {
         method: 'GET',
@@ -14,4 +15,14 @@ export function menuInventaire() {
     }).then((data) => {
         localStorage.setItem('tabObjets', JSON.stringify(data))
     })
+
+    const ecranObjets = document.querySelector('#ecranObjets')
+    const ecranStats = document.querySelector('#ecranStats')
+    
+    superposerEcran(ecranObjets, ecranActuel)
+
+
+
+
+
 }
