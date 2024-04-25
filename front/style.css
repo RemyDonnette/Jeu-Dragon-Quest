@@ -1,7 +1,12 @@
 /* Elements Globaux */
+@font-face {
+    font-family: Garrick;
+    src: url('fonts/GarrickBold.ttf')  format('truetype');
+}
 * {
     margin: 0;
     padding: 0;
+    font-family: Garrick;
 }
 body {
     background-image: url(images/background/background_bois.jpg);
@@ -97,6 +102,7 @@ header {
 #ecranInventaire {
     display: none;
     opacity: 0.8;
+    max-width: 1400px;
     gap: 1vw;
 }
 #ecranObjets {

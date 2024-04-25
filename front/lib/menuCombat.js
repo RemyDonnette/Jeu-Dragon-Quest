@@ -9,6 +9,10 @@ export function menuCombat() {
         localStorage.setItem('tabMonstres', JSON.stringify(data))
     })
     
+    // Disparition du Logo
+    const header = document.querySelector('header')
+    header.style.display = 'none'
+
     // Recuperation du tableau Monstres
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 

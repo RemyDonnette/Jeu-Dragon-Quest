@@ -133,7 +133,9 @@ app.get('/objets', (request, response) => {
     const objets = [
         {
             id: 1, 
-            nom: 'Baton de cypres'
+            nom: 'Herbe medicinale',
+            image: '',
+            description: 'Une herbe curative qui rend 30PV'
         },
         {
             id: 2,
