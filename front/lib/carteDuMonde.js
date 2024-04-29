@@ -11,15 +11,6 @@ export function menuCarteDuMonde() {
     musiqueCarte.loop = 'true'
     musiqueCarte.play()
 
-    // // Animation des punaises
-    // const punaise = document.querySelector('.punaise')
-    // punaise.addEventListener('mouseenter', () => {
-    //     punaise.classList.toggle('fa-beat')
-    // })
-    // punaise.addEventListener('mouseleave', () => {
-    //     punaise.classList.toggle('fa-beat')
-    // })
-
     const punaise = document.querySelectorAll('.punaise')
     const lieu = document.querySelector('#lieu')
     const nomDuLieu = document.querySelector('#nomDuLieu')

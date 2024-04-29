@@ -14,5 +14,5 @@
     "sagesse": 10,
     "critique": 5,
     "esquive": 5,
-    "inventaire": []
+    "inventaire": [{"id": 0, "nb":2}]
 }

@@ -1,5 +1,6 @@
 import { menuCombat } from "./menuCombat.js"
 import { menuCarteDuMonde } from "./carteDuMonde.js"
+import { menuInventaire } from "./menuInventaire.js"
 
 // Appel des écrans
 const accueil = document.querySelector('#ecranAccueil')
@@ -56,6 +57,11 @@ function lancerMenuDev() {
     boutonCarteDuMonde.addEventListener('click', () => {
         lancerCarteDuMonde()
     })
+
+    const boutonInventaire = document.querySelector('#boutonInventaire')
+    boutonInventaire.addEventListener('click', () => {
+        menuInventaire(menuPrincipal)
+    })
 }
 
 export function lancerCombat() {
@@ -74,96 +80,3 @@ export function lancerCarteDuMonde() {
     menuCarteDuMonde()
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ///CODE CHAT GPT
-
-// import { menuCombat } from "./menuCombat.js"
-
-// let menuPrincipalClone
-// // On s'assure que le DOM est complètement chargé avant d'exécuter le reste du code.
-// document.addEventListener('DOMContentLoaded', function() {
-//     lancerMenuPrincipal();
-// });
-
-// function lancerMenuPrincipal() {
-//     const main = document.querySelector('#main');
-//     const menuPrincipalTemplate = document.querySelector('.menuPrincipal');
-
-//     if (menuPrincipalTemplate) {
-//         menuPrincipalClone = menuPrincipalTemplate.content.cloneNode(true);
-//         menuPrincipalClone.style.display = "block"; // Visible initialement
-//         main.appendChild(menuPrincipalClone);
-//     }
-
-//     const musiqueIntro = document.createElement('audio');
-//     musiqueIntro.src = './audio/musiques/intro.mp3';
-//     musiqueIntro.play();
-
-//     const boutonLancerCombat = document.querySelector('#lancerCombat');
-//     if (boutonLancerCombat) {
-//         boutonLancerCombat.addEventListener('click', () => {
-//             if (menuPrincipalClone) {
-//                 menuPrincipalClone.style.display = "none"; // Cacher au lieu de retirer
-//             }
-
-//             const combatTemplate = document.querySelector('.menuCombat');
-//             if (combatTemplate) {
-//                 const combatClone = combatTemplate.content.cloneNode(true);
-//                 combatClone.style.display = "block";
-//                 main.appendChild(combatClone);
-//             }
-
-//             menuCombat();
-//         });
-//     }
-// }
-
-// function lancerCombat(main) {
-//     // On supprime le menu principal du DOM.
-//     if (menuPrincipalClone && main.contains(menuPrincipalClone)) {
-//         main.removeChild(menuPrincipalClone);
-//     }
-        
-
-//     // Chargement du menu combat.
-//     const combatTemplate = document.querySelector('.menuCombat');
-//     if (combatTemplate) {
-//         const combatClone = combatTemplate.content.cloneNode(true);
-//         main.appendChild(combatClone);
-//     }
-
-//     // Appel de la fonction de menuCombat exportée.
-//     menuCombat();
-// }
-
-// export { lancerMenuPrincipal, lancerCombat };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -92,9 +92,6 @@ export function menuCombat() {
     //     })
     // })
 
-
-
-
     // Ammorce des tours
     let tourMonstre = 0
     let tourJoueur = 0
