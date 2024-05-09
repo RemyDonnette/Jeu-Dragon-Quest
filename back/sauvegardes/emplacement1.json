@@ -14,5 +14,13 @@
     "sagesse": 10,
     "critique": 5,
     "esquive": 5,
-    "inventaire": [{"id": 0, "nb":2}]
+    "inventaire": [
+        {"id": 0, "nb":2}, 
+        {"id": 0, "nb":2},
+        {"id": 0, "nb":2},
+        {"id": 0, "nb":2},
+        {"id": 0, "nb":2},
+        {"id": 0, "nb":2},
+        {"id": 0, "nb":2}
+    ]
 }

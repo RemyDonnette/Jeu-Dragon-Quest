@@ -4,7 +4,10 @@ const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 const ecranJoueur = document.querySelector('#ecranJoueur')
 const ecranMonstre = document.querySelector('#ecranMonstre')
 const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
+const emplacementNomNiveau = document.querySelector('#emplacementNomNiveau')
 const emplacementBarreDeVie = document.querySelector('#emplacementBarreDeVie')
+const emplacementImageHeros = document.querySelector('#emplacementImageHeros')
+const emplacementImageHerosMini = document.querySelector('#emplacementImageHerosMini')
 const imageMonstre = document.createElement('img')
 
 // Création du monstre
@@ -17,9 +20,14 @@ export function appelDuMonstre(i, ecran) {
     
     imageMonstre.src = urlImageMonstre
     imageMonstre.id = "imageMonstre"
-    imageMonstre.style.width = tailleImageMonstre
+    imageMonstre.style.height = tailleImageMonstre
+
+    console.log(imageMonstre.style.width)
+
     imageMonstre.style.paddingBottom = decalageImageMonstre
-    imageMonstre.classList.add('fa-bounce')
+    imageMonstre.classList.add('faa-bounce')
+    imageMonstre.classList.add('animated')
+    
     
     ajoutBarreDeVie(ecranMonstre)
     ecran.append(imageMonstre)
@@ -29,24 +37,29 @@ export function appelDuMonstre(i, ecran) {
 }
 
 // Création du Joueur
-export function appelDuHeros(ecran) {
+export function appelDuHeros() {
     
     const nomHeros = document.createElement('h2')
     const lvlHeros = document.createElement('h2')
     nomHeros.innerText = tabMonstres[0].nom
     lvlHeros.innerText = `Lvl:${tabMonstres[0].niveau}`
-    headerEcranJoueur.append(nomHeros)
-    headerEcranJoueur.append(lvlHeros)
+    emplacementNomNiveau.append(nomHeros)
+    emplacementNomNiveau.append(lvlHeros)
     
     // Creation de l'image du héros
     const imageHeros = document.createElement('img')
+    const imageHerosMini = document.createElement('img')
     const urlImageHeros = tabMonstres[0].image
+    const urlImageHerosMini = tabMonstres[0].mini
     
     imageHeros.src = urlImageHeros
+    imageHerosMini.src = urlImageHerosMini
     imageHeros.id = 'imageHeros'
+    imageHerosMini.id = 'imageHerosMini'
     
     ajoutBarreDeVie(emplacementBarreDeVie)
-    ecran.append(imageHeros)
+    emplacementImageHeros.append(imageHeros)
+    emplacementImageHerosMini.append(imageHerosMini)
 
     // Données du joueur
     return tabMonstres[0]

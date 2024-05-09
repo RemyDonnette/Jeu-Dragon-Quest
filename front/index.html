@@ -7,6 +7,7 @@
     <script type="module" src="./index.js"></script>
     <!-- Lien Font-Awesome -->
     <script src="https://kit.fontawesome.com/9396dc643f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./node_modules/font-awesome-animation/css/font-awesome-animation.min.css">
     <!-- Lien favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -43,16 +44,26 @@
         <div id="ecranCombat">
             <div id="ecranMonstre"></div>
             <div id="ecranJoueur">
-                <div id="headerEcranJoueur"></div>
-                <div id="emplacementBarreDeVie"></div>
-                <div id="emplacementBoutons"></div>
+                <div id="headerPlusBoutons">
+                    <div id="headerEcranJoueur">
+                        <div id="emplacementNomNiveau"></div>
+                        <div id="emplacementBarreDeVie"></div>
+                    </div>
+                    <div id="emplacementImageHeros"></div>
+                    <div id="emplacementBoutons"></div>
+                </div>
+                <div id="emplacementImageHerosMini"></div>
             </div>
         </div>
 
         <div id="ecranInventaire">
             <div id="ecranObjets">
-                <div id="partieEcranObjets"></div>
-                <div id="partieEcranDescription"></div>
+                <div id="partieEcranObjets">
+                    <div id="listeObjets"></div>
+                </div>
+                <div id="partieEcranDescription">
+                    <p id="descriptionObjet"></p>
+                </div>
             </div>
             <div id="ecranStats"></div>
         </div>

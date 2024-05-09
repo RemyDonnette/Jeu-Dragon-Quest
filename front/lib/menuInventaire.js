@@ -18,37 +18,39 @@ export function menuInventaire(ecranActuel) {
 
     // Selection et Superposition des écrans
     const ecranInventaire = document.querySelector('#ecranInventaire')
-    const partieEcranObjets = document.querySelector('#partieEcranObjets')
-    const partieEcranDescription = document.querySelector('#partieEcranDescription') 
+    const listeObjets = document.querySelector('#listeObjets') 
+    const descriptionObjet = document.querySelector('#descriptionObjet')
     superposerEcran(ecranInventaire, ecranActuel)
 
     // Création des objets à partir de la sauvegarde
     objetsInventaire.forEach((objet) => {
-        console.log(objet.id)
-        console.log(objet.nb)
         
         const emplacementObjet = document.createElement('div')
-        const labelObjet = document.createElement('label')
         const imageObjet = document.createElement('img')
         const nombreObjet = document.createElement('p')
-        const descriptionObjet = document.createElement('p')
-
-        console.log(nombreObjet)
         
         emplacementObjet.id = 'emplacementObjet'
         imageObjet.className = 'imageObjet'
         nombreObjet.id = 'nombreObjet'
-        descriptionObjet.id = 'descriptionObjet'
-
 
         imageObjet.src = tabObjets[objet.id].image
         nombreObjet.innerText = objet.nb
-        descriptionObjet.innerText = tabObjets[objet.id].description
 
-        partieEcranObjets.append(emplacementObjet)
-        emplacementObjet.append(labelObjet)
-        labelObjet.append(imageObjet)
-        labelObjet.append(nombreObjet)
-        partieEcranDescription.append(descriptionObjet)
+        listeObjets.append(emplacementObjet)
+        emplacementObjet.append(imageObjet)
+        emplacementObjet.append(nombreObjet)
+
+        emplacementObjet.addEventListener('mouseenter', () => {
+            imageObjet.classList.toggle('fa-fade')
+            descriptionObjet.innerText = tabObjets[objet.id].description
+        })
+        emplacementObjet.addEventListener('mouseleave', () => {
+            imageObjet.classList.toggle('fa-fade')
+            descriptionObjet.innerText = ''
+        })
+        emplacementObjet.addEventListener('click', () => {
+            
+        })
+        
     });
 }
