@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./1_heliodor.js"></script>
+    <!-- Lien Font-Awesome -->
+    <script src="https://kit.fontawesome.com/9396dc643f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./node_modules/font-awesome-animation/css/font-awesome-animation.min.css">
+    <!-- Lien favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>Dragon Quest</title>
+</head>
+<body>
+
+    <main id="main">
+        <div id="heliodor">
+            <label id="lieu"><span id="nomDuLieu"></span></label>
+            <i class="fa fa-right-from-bracket faa-passing faa-fast animated-hover deplacement" style="top: 90%; left: 90%" id="boutonExit"></i>
+            <i class="fa fa-location-pin faa-vertical animated-hover deplacement" style="top: 43%; left: 11.5%" id="Magasin"></i>
+            <i class="fa fa-location-pin faa-vertical animated-hover deplacement" style="top: 37%; left: 85%" id="Eglise"></i>
+            <i class="fa fa-stairs faa-vertical animated-hover deplacement" style="top: 47%; left: 42%" id="Chemin vers le château"></i>
+            
+        </div>
+
+        <div id="ecranCombat">
+            <div id="ecranMonstre"></div>
+            <div id="ecranJoueur">
+                <div id="headerPlusBoutons">
+                    <div id="headerEcranJoueur">
+                        <div id="emplacementNomNiveau"></div>
+                        <div id="emplacementBarreDeVie"></div>
+                    </div>
+                    <div id="emplacementImageHeros"></div>
+                    <div id="emplacementBoutons"></div>
+                </div>
+                <div id="emplacementImageHerosMini"></div>
+            </div>
+        </div>
+
+        <div id="ecranInventaire">
+            <div id="ecranObjets">
+                <div id="partieEcranObjets">
+                    <div id="listeObjets"></div>
+                </div>
+                <div id="partieEcranDescription">
+                    <p id="descriptionObjet"></p>
+                </div>
+            </div>
+            <div id="ecranStats"></div>
+        </div>
+
+        <div id="carteDuMonde">
+            <img src="images/background/carte.png" alt="Carte du Monde" id="imageCarteDuMonde">
+            <label id="lieu"><span id="nomDuLieu"></span></label>
+            <i class="fa-solid fa-map-pin punaise" style="top: 58.5%; left: 48.5%" id="Caubaltin"></i>
+            <a href="1_heliodor.html"><i class="fa-solid fa-map-pin punaise" style="top: 48%; left: 49.2%" id="Heliodor"></i></a>
+        </div>
+        
+    </main>
+    <div id="boutonsAudio">
+        <label id='boutonMuteMusique'><i class="fa-solid fa-music" id="iconeMuteMusique"></i></label>
+        <label id='boutonMuteSons'><i class="fa-solid fa-volume-off" id="iconeMuteSons"></i></label>
+    </div>
+</body>
+<footer>
+    <audio id="musique"></audio>
+    <audio id="sons"></audio>
+</footer>
+</html>

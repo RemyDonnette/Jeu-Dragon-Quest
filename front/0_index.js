@@ -2,7 +2,9 @@ import { lancerMenuPrincipal } from './lib/menuPrincipal.js'
 
 // Menu Principal
 const boutonLancerMenuPrincipal = document.querySelector('#ecranAccueil')
+const logo = document.querySelector('header')
 boutonLancerMenuPrincipal.addEventListener('click', () => {
+    logo.style.display = 'none'
     lancerMenuPrincipal()
 })
 
@@ -14,7 +16,7 @@ boutonLancerMenuPrincipal.addEventListener('click', () => {
 
 // Bouton mute audio
 const audio = document.querySelectorAll('audio')
-const musique = document.querySelector('#musique'); 
+const musique = document.querySelector('#musique') 
 const sons = document.querySelector('#sons')
 const boutonMuteMusique = document.querySelector('#boutonMuteMusique')
 const boutonMuteSons = document.querySelector('#boutonMuteSons')

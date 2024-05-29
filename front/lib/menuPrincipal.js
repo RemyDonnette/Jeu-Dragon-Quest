@@ -55,7 +55,7 @@ function lancerMenuDev() {
     // Bouton Acces Carte du Monde
     const boutonCarteDuMonde = document.querySelector('#boutonCarteDuMonde')
     boutonCarteDuMonde.addEventListener('click', () => {
-        lancerCarteDuMonde()
+        lancerCarteDuMonde(menuDev)
     })
 
     const boutonInventaire = document.querySelector('#boutonInventaire')
@@ -72,10 +72,12 @@ export function lancerCombat() {
     menuCombat()
 }
 
-export function lancerCarteDuMonde() {
+export function lancerCarteDuMonde(lieuActuel) {
 
-    menuDev.style.display = 'none'
+    
+    lieuActuel.style.display = 'none'
     carteDuMonde.style.display = 'flex'
+
 
     menuCarteDuMonde()
 

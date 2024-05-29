@@ -1,5 +1,6 @@
 
 // Recuperation du tableau Monstres
+const donneesSauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
 const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 const ecranJoueur = document.querySelector('#ecranJoueur')
 const ecranMonstre = document.querySelector('#ecranMonstre')

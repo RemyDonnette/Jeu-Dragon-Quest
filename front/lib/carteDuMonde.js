@@ -1,10 +1,6 @@
 
 export function menuCarteDuMonde() {
 
-    // Disparition du Logo
-    const header = document.querySelector('header')
-    header.style.display = 'none'
-
     // Appel de la musique de la carte du Monde
     const musiqueCarte = document.querySelector('#musique')
     musiqueCarte.src = './audio/musiques/carteDuMonde.mp3'
