@@ -1,16 +1,22 @@
 version: '3.8'
 
 services:
-  nginx:
-    image: nginx:alpine
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./front:/usr/share/nginx/html
-  
-  node:
-    image: node:latest
+    container_name: frontend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     ports:
       - "3000:3000"
     volumes:
       - ./back:/usr/src/app
+    container_name: backend

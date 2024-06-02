@@ -101,8 +101,11 @@ header {
 #ecranInventaire {
     display: none;
     opacity: 0.8;
+    border-radius: 10px;
+    height: 80vh;
+    width: 95%;
     max-width: 1200px;
-    gap: 1vw;
+    gap: 10px;
 }
 #ecranObjets {
     display: flex;
@@ -110,6 +113,7 @@ header {
     justify-content: space-between;
     height: 80vh;
     width: 60vw;
+    max-width: 890px;
     border: solid black 6px;
     border-radius: 10px;
     background-color: black;
@@ -121,7 +125,7 @@ header {
 #ecranStats {
     display: flex;
     height: 80vh;
-    width: 300px;
+    min-width: 300px;
     border: solid black 6px;
     border-radius: 10px;
 }
@@ -175,7 +179,7 @@ header {
     height: 80vh;
     width: 95%;
     max-width: 1200px;
-    gap: 1vw;
+    gap: 10px;
 }
 #ecranMonstre {
     display: flex;
@@ -186,6 +190,7 @@ header {
     border-radius: 10px;
     height: 80vh;
     width: 60vw;
+    max-width: 890px;
     gap: 2rem;
     background-image: url('images/background/prairie.jpg');
     background-size: cover;
@@ -199,7 +204,7 @@ header {
     border: solid black 6px;
     border-radius: 10px;
     height: 80vh;
-    width: 300px;
+    min-width: 300px;
     background-image: url('images/background/fond_parchemin.jpg');
     background-size: cover;
     background-position: center;

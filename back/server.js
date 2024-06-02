@@ -148,7 +148,7 @@ app.get('/objets', (request, response) => {
         {
             id: 1, 
             nom: 'Herbe medicinale',
-            image: '../front/images/icones/objets/herbeMedicinale.webp',
+            image: '../front/images/icones/objets/herbeMedicinale.png',
             description: 'Une herbe curative qui rend 30PV',
             effet: 30
         },

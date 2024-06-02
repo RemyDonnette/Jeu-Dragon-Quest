@@ -9,6 +9,7 @@ export async function fetchData(route, method = 'GET', body = JSON.stringify()) 
         },
         body: body, 
     }
+    // Changer apiUrl par apiUrlD si utilisation de Docker
     const result = await fetch(`${apiUrl}${route}`, options);
     if (result.ok) {
         return result.json();
