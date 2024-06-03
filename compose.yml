@@ -20,3 +20,5 @@ services:
     volumes:
       - ./back:/usr/src/app
     container_name: backend
+
+    

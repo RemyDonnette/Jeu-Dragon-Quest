@@ -30,7 +30,7 @@ export function menuCombat() {
     const emplacementBoutons = document.querySelector('#emplacementBoutons')
     
     // Appel du monstre + données
-    const donneesMonstre = appelDuMonstre(2, ecranMonstre)
+    const donneesMonstre = appelDuMonstre(1, ecranMonstre)
     
     // Appel du Héros + données
     const donneesJoueur = appelDuHeros(ecranJoueur)
