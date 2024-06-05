@@ -16,7 +16,8 @@
     <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    
+    <!-- Méta description -->
+    <meta name="description" content="Un FanGame sur l'univers de Dragon Quest XI en point and click.">
     <title>Dragon Quest</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
     </header>
     <main id="main">
         <div id="ecranAccueil">
-            <span class="fa-solid fa-beat" style="margin-top: 300px; letter-spacing: 1px;">Cliquez  pour  commencer</span>
+            <span class="fa-solid fa-beat" id="commencer">CLIQUEZ POUR COMMENCER</span>
         </div>
         
         <div id="ecranMenuPrincipal">
@@ -65,14 +66,25 @@
                     <p id="descriptionObjet"></p>
                 </div>
             </div>
-            <div id="ecranStats"></div>
+            <div id="ecranStats">
+                <div id="headerPlusBoutonsS">
+                    <div id="headerEcranJoueurS">
+                        <div id="emplacementNomNiveauS"></div>
+                        <div id="emplacementBarreDeVieS"></div>
+                    </div>
+                    <div id="emplacementStatsHeros"></div>
+                    <div id="emplacementBoutonsS"></div>
+                </div>
+                <div id="emplacementStatsHerosMini"></div>
+            </div>
         </div>
 
         <div id="carteDuMonde">
             <img src="images/background/carte.png" alt="Carte du Monde" id="imageCarteDuMonde">
-            <label id="lieu"><span id="nomDuLieu"></span></label>
-            <i class="fa-solid fa-map-pin punaise" style="top: 58.5%; left: 48.5%" id="Caubaltin"></i>
-            <a href="1_heliodor.html"><i class="fa-solid fa-map-pin punaise" style="top: 48%; left: 49.2%" id="Heliodor"></i></a>
+            <label class="lieu"><span class="nomDuLieu"></span></label>
+            <img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 55%; left: 48%" id="Caubaltin"></i>
+            <a href="1_heliodor.html"><img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 45%; left: 48.6%" id="Heliodor"></i></a>
+            <img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 55%; left: 48%" id="Caubaltin"></i>
         </div>
         
     </main>

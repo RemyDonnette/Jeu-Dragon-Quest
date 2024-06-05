@@ -1,13 +1,21 @@
 import { appelDuHeros, appelDuMonstre, majBarreDeVie, disparitionMonstre } from './fonctionsCombat.js'
 import { fetchData } from './fetch.js';
 import { menuInventaire } from './menuInventaire.js';
+import { switchEcran } from './fonctionsEcran.js';
+import { lancerCarteDuMonde } from './menuPrincipal.js';
 
+fetchData('/monstres').then((data) => {
+    localStorage.setItem('tabMonstres', JSON.stringify(data))
+})
+fetchData('/sauvegarde').then((data) => {
+    localStorage.setItem('sauvegarde', JSON.stringify(data))
+})
+
+const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde')) 
+
+export let pvJoueur = sauvegarde.pv
 
 export function menuCombat() {
-
-    fetchData('/monstres').then((data) => {
-        localStorage.setItem('tabMonstres', JSON.stringify(data))
-    })
     
     // Disparition du Logo
     const header = document.querySelector('header')
@@ -46,7 +54,6 @@ export function menuCombat() {
     const critiqueMonstre = donneesMonstre.critique
     
     // Création des données de combat du joueur
-    let pvJoueur = donneesJoueur.pv
     const pvMaxJoueur = donneesJoueur.pvMax
     const forceJoueur = donneesJoueur.force
     const vitaliteJoueur = donneesJoueur.vitalite
@@ -81,17 +88,6 @@ export function menuCombat() {
     boutonFuite.className = 'boutonCombat'
     emplacementBoutons.append(boutonFuite)
 
-    // Animation des boutons
-    // const boutonsCombat = document.querySelectorAll('.boutonCombat')
-    // boutonsCombat.forEach((bouton) => {
-    //     bouton.addEventListener('mouseenter', () => {
-    //         bouton.classList.toggle('fa-beat')
-    //     })
-    //     bouton.addEventListener('mouseleave', () => {
-    //         bouton.classList.toggle('fa-beat')
-    //     })
-    // })
-
     // Ammorce des tours
     let tourMonstre = 0
     let tourJoueur = 0
@@ -123,6 +119,7 @@ export function menuCombat() {
         boutonAttaque.style.display = 'flex'
         boutonAttaque.addEventListener('click', clickAttaque)
         boutonInventaire.addEventListener('click', clickInventaire)
+        boutonFuite.addEventListener('click', clickFuite)
 
     }
     
@@ -141,6 +138,17 @@ export function menuCombat() {
         menuInventaire(ecranCombat)
     }
 
+    function clickFuite() {
+        let initiativeJoueur = agiliteJoueur * (Math.random() + 0.5)
+        let initiativeMonstre = agiliteMonstre * (Math.random() + 0.5)
+        if (initiativeJoueur >= initiativeMonstre) {
+            console.log('Vous avez réussi à fuir !')
+            setTimeout(lancerCarteDuMonde(ecranCombat), 3000)
+        } else if (initiativeJoueur < initiativeMonstre) {
+            console.log(`Le ${nomMonstre} vous empêche de fuir !`)
+            setTimeout(tourDuMonstre, 1000)
+        }
+    }
 
     function attaqueJoueur() {
         // Vérification de l'esquive
@@ -244,6 +252,7 @@ export function menuCombat() {
             jingleVictoire.src = './audio/jingles/finCombat.mp3'
             jingleVictoire.play()
         }, 3000)
+        setTimeout(lancerCarteDuMonde(ecranCombat), 1000)
         
     }
     

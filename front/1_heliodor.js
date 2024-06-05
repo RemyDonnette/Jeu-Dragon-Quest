@@ -14,8 +14,8 @@ const musiqueHeliodor = document.querySelector('#musique')
 
 // Création du hover des lieux
 const deplacement = document.querySelectorAll('.deplacement')
-const lieu = document.querySelector('#lieu')
-const nomDuLieu = document.querySelector('#nomDuLieu')
+const lieu = document.querySelector('#labelLieu')
+const nomDuLieu = document.querySelector('#labelNomDuLieu')
 const imageLabel = document.createElement('img')
 imageLabel.src = './images/background/banniereLieux.png'
 imageLabel.id = 'imageLabelInterieur'
@@ -33,7 +33,7 @@ deplacement.forEach((punaise) => {
 
 // Liens vers les differents lieux
 const heliodor = document.querySelector('#heliodor')
-const boutonExit = document.querySelector('#boutonExit')
+const boutonExit = document.querySelector('.retourVersLaCarte')
 boutonExit.addEventListener('click', () => {
     lancerCarteDuMonde(heliodor)
 })

@@ -23,11 +23,11 @@
 
     <main id="main">
         <div id="heliodor">
-            <label id="lieu"><span id="nomDuLieu"></span></label>
-            <i class="fa fa-right-from-bracket faa-passing faa-fast animated-hover deplacement" style="top: 90%; left: 90%" id="boutonExit"></i>
-            <i class="fa fa-location-pin faa-vertical animated-hover deplacement" style="top: 43%; left: 11.5%" id="Magasin"></i>
-            <i class="fa fa-location-pin faa-vertical animated-hover deplacement" style="top: 37%; left: 85%" id="Eglise"></i>
-            <i class="fa fa-stairs faa-vertical animated-hover deplacement" style="top: 47%; left: 42%" id="Chemin vers le château"></i>
+            <label id="labelLieu"><span id="labelNomDuLieu"></span></label>
+            <i class="fa fa-right-from-bracket faa-passing faa-fast animated-hover deplacement retourVersLaCarte" style="top: 90%; left: 90%" id="Retour vers la carte"></i>
+            <i class="fa fa-location-pin faa-vertical animated-hover deplacement magasinHeliodor" style="top: 43%; left: 11.5%" id="Magasin"></i>
+            <i class="fa fa-location-pin faa-vertical animated-hover deplacement egliseEliodor" style="top: 37%; left: 85%" id="Eglise"></i>
+            <i class="fa fa-stairs faa-vertical animated-hover deplacement cheminVersLeChateau" style="top: 47%; left: 42%" id="Chemin vers le château"></i>
         </div>
 
         <div id="ecranCombat">
@@ -59,9 +59,9 @@
 
         <div id="carteDuMonde">
             <img src="images/background/carte.png" alt="Carte du Monde" id="imageCarteDuMonde">
-            <label id="lieu"><span id="nomDuLieu"></span></label>
-            <i class="fa-solid fa-map-pin punaise" style="top: 58.5%; left: 48.5%" id="Caubaltin"></i>
-            <a href="1_heliodor.html"><i class="fa-solid fa-map-pin punaise" style="top: 48%; left: 49.2%" id="Heliodor"></i></a>
+            <label class="lieu"><span class="nomDuLieu"></span></label>
+            <img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 55%; left: 48%" id="Caubaltin"></i>
+            <a href="1_heliodor.html"><img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 45%; left: 48.6%" id="Heliodor"></i></a>
         </div>
         
     </main>

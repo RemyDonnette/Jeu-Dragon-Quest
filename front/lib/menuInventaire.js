@@ -1,6 +1,6 @@
 import { superposerEcran } from "./fonctionsEcran.js";
 import { fetchData } from "./fetch.js";
-import { majBarreDeVie } from "./fonctionsCombat.js"
+import { appelDesStats, majBarreDeVie } from "./fonctionsCombat.js";
 
 
 export function menuInventaire(ecranActuel) {
@@ -14,11 +14,16 @@ export function menuInventaire(ecranActuel) {
     fetchData('/objets').then((data) => {
         localStorage.setItem('tabObjets', JSON.stringify(data))
     })
+    fetchData('/monstres').then((data) => {
+        localStorage.setItem('tabMonstres', JSON.stringify(data))
+    })
+
 
     // les objets stockés dans le tableau doivent être les ids
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
     const objetsInventaire = JSON.parse(localStorage.getItem('inventaire'))
     const tabObjets = JSON.parse(localStorage.getItem('tabObjets'))
+    const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 
     // Selection et Superposition des écrans
     const ecranInventaire = document.querySelector('#ecranInventaire')
@@ -66,7 +71,9 @@ export function menuInventaire(ecranActuel) {
                 descriptionObjet.innerText = ''
             }
         })
-        
-        
-    });
+    })
+
+    // Construction de l'écran Stats en fonction de la sauvegarde
+    appelDesStats()
+
 }

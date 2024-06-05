@@ -1,14 +1,22 @@
+import { fetchData } from "./fetch.js"
+
+fetchData('/sauvegarde').then((data) => {
+    localStorage.setItem('sauvegarde', JSON.stringify(data))
+})
 
 // Recuperation du tableau Monstres
 const donneesSauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
 const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 const ecranJoueur = document.querySelector('#ecranJoueur')
 const ecranMonstre = document.querySelector('#ecranMonstre')
-const headerEcranJoueur = document.querySelector('#headerEcranJoueur')
 const emplacementNomNiveau = document.querySelector('#emplacementNomNiveau')
+const emplacementNomNiveauS = document.querySelector('#emplacementNomNiveauS')
 const emplacementBarreDeVie = document.querySelector('#emplacementBarreDeVie')
+const emplacementBarreDeVieS = document.querySelector('#emplacementBarreDeVieS')
 const emplacementImageHeros = document.querySelector('#emplacementImageHeros')
 const emplacementImageHerosMini = document.querySelector('#emplacementImageHerosMini')
+const emplacementStatsHeros = document.querySelector('#emplacementStatsHeros')
+const emplacementStatsHerosMini = document.querySelector('#emplacementStatsHerosMini')
 const imageMonstre = document.createElement('img')
 
 // Création du monstre
@@ -26,10 +34,9 @@ export function appelDuMonstre(i, ecran) {
     console.log(imageMonstre.style.width)
 
     imageMonstre.style.paddingBottom = decalageImageMonstre
-    imageMonstre.classList.add('faa-bounce')
+    imageMonstre.classList.add(tabMonstres[i].animation)
     imageMonstre.classList.add('animated')
-    
-    
+
     ajoutBarreDeVie(ecranMonstre)
     ecran.append(imageMonstre)
 
@@ -42,8 +49,8 @@ export function appelDuHeros() {
     
     const nomHeros = document.createElement('h2')
     const lvlHeros = document.createElement('h2')
-    nomHeros.innerText = tabMonstres[0].nom
-    lvlHeros.innerText = `Lvl:${tabMonstres[0].niveau}`
+    nomHeros.innerText = donneesSauvegarde.nom
+    lvlHeros.innerText = `Lvl:${donneesSauvegarde.niveau}`
     emplacementNomNiveau.append(nomHeros)
     emplacementNomNiveau.append(lvlHeros)
     
@@ -64,6 +71,19 @@ export function appelDuHeros() {
 
     // Données du joueur
     return tabMonstres[0]
+}
+
+export function appelDesStats() {
+
+    const nomHeros = document.createElement('h2')
+    const lvlHeros = document.createElement('h2')
+    nomHeros.innerText = tabMonstres[0].nom
+    lvlHeros.innerText = `Lvl:${tabMonstres[0].niveau}`
+    emplacementNomNiveauS.append(nomHeros)
+    emplacementNomNiveauS.append(lvlHeros)
+
+    ajoutBarreDeVie(emplacementBarreDeVie)
+
 }
 
 export function ajoutBarreDeVie(emplacement) {

@@ -37,7 +37,13 @@ header {
     width: 100%;
     max-width: 700px;
 }
-
+#commencer {
+    margin-top: 350px;
+    font-size: 1.5rem;
+    color: black;
+    filter: drop-shadow(0 0 5em black);
+    
+}
 
 /* Ecran d'Accueil */
 #ecranAccueil {
@@ -100,7 +106,8 @@ header {
 /* Ecran Inventaire */
 #ecranInventaire {
     display: none;
-    opacity: 0.8;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     height: 80vh;
     width: 95%;
@@ -111,6 +118,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    opacity: 0.8;
     height: 80vh;
     width: 60vw;
     max-width: 890px;
@@ -122,13 +130,7 @@ header {
     display: flex;
     flex-wrap: wrap;
 }
-#ecranStats {
-    display: flex;
-    height: 80vh;
-    min-width: 300px;
-    border: solid black 6px;
-    border-radius: 10px;
-}
+
 .imageObjet {
     height: 80%;
 }
@@ -200,7 +202,7 @@ header {
     position: relative;
     overflow: hidden;
 }
-#ecranJoueur {
+#ecranJoueur, #ecranStats {
     border: solid black 6px;
     border-radius: 10px;
     height: 80vh;
@@ -210,7 +212,7 @@ header {
     background-position: center;
     gap: 1rem;
 }
-#headerPlusBoutons {
+#headerPlusBoutons, #headerPlusBoutonsS {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,15 +220,15 @@ header {
     height: 80vh;
     gap: 1rem;
 }
-#headerEcranJoueur {
+#headerEcranJoueur, #headerEcranJoueurS {
     width: 200px;
 }
-#emplacementNomNiveau {
+#emplacementNomNiveau, #emplacementNomNiveauS {
     display: flex;
     justify-content: space-between;
     width: 200px;
 }
-#emplacementBoutons {
+#emplacementBoutons, #emplacementBoutonsS {
     display: flex;
     gap: 1rem;
 }
@@ -263,7 +265,7 @@ header {
     max-height: 100%;
     z-index: 0;
 }
-#lieu {
+.lieu {
     position: absolute;
     display: flex;
     align-items: center;
@@ -274,7 +276,7 @@ header {
 #imageLabel {
     width: 70%;
 }
-#nomDuLieu {
+.nomDuLieu {
     position: absolute;
     color: saddlebrown;
 }
@@ -282,9 +284,9 @@ header {
 .punaise {
     position: absolute;
     color: #bd0000;
-    font-size: 2rem;
+    width: 3rem;
     z-index: 1;
-    
+    transform-origin: bottom right !important;
 }
 
 /* Ecrans lieux*/
@@ -299,17 +301,28 @@ header {
     width: 90vw;
     gap: 2em;
 }
-
 .deplacement {
     position: absolute;
     color: #bd0000;
     font-size: 4rem;
     z-index: 1;
 }
-
 #imageLabelInterieur {
     width: 100%;
 }
+#labelLieu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0%;
+    font-size: 2rem;
+}
+#labelNomDuLieu {
+    position: absolute;
+    color: saddlebrown;
+}
+
 
 /* Barre de vie  */
 .barreDeVie {
