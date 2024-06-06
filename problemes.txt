@@ -1,2 +1,1 @@
 - barre de vie qui ne se trigger pas au dernier coup : victoire se trigger avant (essayer fonctions async et await)
-- pins qui se decalent sur la carte du monde

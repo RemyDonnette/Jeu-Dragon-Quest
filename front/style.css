@@ -39,7 +39,9 @@ header {
 }
 #commencer {
     margin-top: 350px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    word-spacing: 10px;
     color: black;
     filter: drop-shadow(0 0 5em black);
     
@@ -58,7 +60,7 @@ header {
     background-position: center;
     gap: 30vh;
     height: 80vh;
-    width: 90vw;
+    width: 80vw;
     max-width: 1500px;
 }
 
@@ -73,7 +75,7 @@ header {
     border-radius: 10px;
     background-image: url('images/background/fond_parchemin.jpg');
     height: 80vh;
-    width: 90vw;
+    width: 80vw;
     gap: 2em;
 }
 .boutonMenuPrincipal {
@@ -96,7 +98,7 @@ header {
     border-radius: 10px;
     background-image: url('images/background/fond_parchemin.jpg');
     height: 80vh;
-    width: 90%;
+    width: 80vw;
     gap: 2em;
 }
 #boutonMenuDev {
@@ -256,12 +258,12 @@ header {
 /* Carte Du Monde */
 #carteDuMonde {
     display: none;
+    position: relative;
     justify-content: center;
     align-items: center;
     height: 85vh;
 }
 #imageCarteDuMonde {
-    position: relative;
     max-height: 100%;
     z-index: 0;
 }
@@ -270,15 +272,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 0%;
+    top: -10%;
     font-size: 2rem;
 } 
-#imageLabel {
-    width: 70%;
-}
 .nomDuLieu {
     position: absolute;
     color: saddlebrown;
+}
+#imageLabel {
+    width: 70%;
 }
 
 .punaise {
@@ -290,16 +292,29 @@ header {
 }
 
 /* Ecrans lieux*/
-#heliodor {
-    display: flex;
+.imageFond {
+    overflow: hidden;
+}
+
+#heliodor, #magasinHeliodor, #egliseHeliodor {
+    position: relative;
     justify-content: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/heliodor.png');
     background-size: cover;
-    height: 80vh;
-    width: 90vw;
+    height: 720px;
+    width: 1280px;
     gap: 2em;
+}
+#heliodor {
+    display: flex;
+}
+#magasinHeliodor {
+    display: none;
+}
+#egliseHeliodor {
+    display: none;
+    background-image: url('images/background/egliseHeliodor.png');
 }
 .deplacement {
     position: absolute;
@@ -315,7 +330,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 0%;
+    top: -15%;
     font-size: 2rem;
 }
 #labelNomDuLieu {

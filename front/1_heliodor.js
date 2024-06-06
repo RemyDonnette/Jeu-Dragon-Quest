@@ -1,3 +1,4 @@
+import { switchEcran } from "./lib/fonctionsEcran.js"
 import { lancerCarteDuMonde } from "./lib/menuPrincipal.js"
 
 // Reglage initial du volume
@@ -33,7 +34,34 @@ deplacement.forEach((punaise) => {
 
 // Liens vers les differents lieux
 const heliodor = document.querySelector('#heliodor')
-const boutonExit = document.querySelector('.retourVersLaCarte')
-boutonExit.addEventListener('click', () => {
+const magasinHeliodor = document.querySelector('#magasinHeliodor')
+const egliseHeliodor = document.querySelector('#egliseHeliodor')
+const boutonMagasin = document.querySelector('.boutonMagasinHeliodor')
+const boutonEglise = document.querySelector('.boutonEgliseHeliodor')
+const boutonRetourVersLaCarte = document.querySelector('.boutonRetourVersLaCarte')
+const boutonRetourHeliodorMagasin = document.querySelector('.boutonRetourHeliodorMagasin')
+const boutonRetourHeliodorEglise = document.querySelector('.boutonRetourHeliodorEglise')
+
+boutonRetourVersLaCarte.addEventListener('click', () => {
     lancerCarteDuMonde(heliodor)
+})
+boutonMagasin.addEventListener('click', () => {
+    switchEcran(heliodor, magasinHeliodor)
+    const musiqueHeliodor = document.querySelector('#musique')
+    musiqueHeliodor.src = './audio/musiques/boutique.mp3'
+    musiqueHeliodor.loop = 'true'
+    musiqueHeliodor.play()
+})
+boutonEglise.addEventListener('click', () => {
+    switchEcran(heliodor, egliseHeliodor)
+    const musiqueHeliodor = document.querySelector('#musique')
+    musiqueHeliodor.src = './audio/musiques/eglise.mp3'
+    musiqueHeliodor.loop = 'true'
+    musiqueHeliodor.play()
+})
+boutonRetourHeliodorMagasin.addEventListener('click', () => {
+    switchEcran(magasinHeliodor, heliodor)
+})
+boutonRetourHeliodorEglise.addEventListener('click', () => {
+    switchEcran(egliseHeliodor, heliodor)
 })
