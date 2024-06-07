@@ -20,7 +20,6 @@ export function menuCarteDuMonde() {
             lieu.append(imageLabel)
         })
         punaise.addEventListener('mouseleave', () => {
-            nomDuLieu.innerText = ''
             lieu.removeChild(imageLabel)
         })
     })

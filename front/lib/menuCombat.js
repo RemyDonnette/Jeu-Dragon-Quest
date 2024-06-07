@@ -252,8 +252,6 @@ export function menuCombat() {
             jingleVictoire.src = './audio/jingles/finCombat.mp3'
             jingleVictoire.play()
         }, 3000)
-        setTimeout(lancerCarteDuMonde(ecranCombat), 1000)
-        
     }
     
     // function gameOver() {

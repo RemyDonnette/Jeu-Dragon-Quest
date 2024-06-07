@@ -9,7 +9,7 @@
     font-family: Garrick;
 }
 body {
-    background-image: url(images/background/background_bois.jpg);
+    background-image: url(images/background/background_bois.png);
     background-size: cover;
     height: 100vh;
 }
@@ -55,7 +55,7 @@ header {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/fondIntro.jpg');
+    background-image: url('images/background/fondIntro.png');
     background-size: cover;
     background-position: center;
     gap: 30vh;
@@ -73,7 +73,7 @@ header {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/fond_parchemin.jpg');
+    background-image: url('images/background/fond_parchemin.png');
     height: 80vh;
     width: 80vw;
     gap: 2em;
@@ -96,7 +96,7 @@ header {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/fond_parchemin.jpg');
+    background-image: url('images/background/fond_parchemin.png');
     height: 80vh;
     width: 80vw;
     gap: 2em;
@@ -196,7 +196,7 @@ header {
     width: 60vw;
     max-width: 890px;
     gap: 2rem;
-    background-image: url('images/background/prairie.jpg');
+    background-image: url('images/background/prairie.png');
     background-size: cover;
     background-position: center;
 }
@@ -209,7 +209,7 @@ header {
     border-radius: 10px;
     height: 80vh;
     min-width: 300px;
-    background-image: url('images/background/fond_parchemin.jpg');
+    background-image: url('images/background/fond_parchemin.png');
     background-size: cover;
     background-position: center;
     gap: 1rem;
@@ -280,13 +280,13 @@ header {
     color: saddlebrown;
 }
 #imageLabel {
-    width: 70%;
+    width: 80%;
 }
 
 .punaise {
     position: absolute;
     color: #bd0000;
-    width: 3rem;
+    width: 2.5rem;
     z-index: 1;
     transform-origin: bottom right !important;
 }

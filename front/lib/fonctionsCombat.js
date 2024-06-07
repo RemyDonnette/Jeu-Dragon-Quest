@@ -83,7 +83,6 @@ export function appelDesStats() {
     emplacementNomNiveauS.append(lvlHeros)
 
     ajoutBarreDeVie(emplacementBarreDeVie)
-
 }
 
 export function ajoutBarreDeVie(emplacement) {
