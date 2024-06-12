@@ -291,7 +291,7 @@ header {
 }
 
 /* Menu Magasin */
-#ecranMagasin {
+#ecranMagasin, #ecranMagasinD {
     display: none;
     position: absolute;
     opacity: 0.7;
@@ -299,11 +299,25 @@ header {
     height: 100%;
     grid-template-columns: repeat(16, 80px);
     grid-template-rows: repeat(9, 80px);
+}
+#ecranMagasin {
+    grid-template-areas: 
+        "a a a c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "b b b c d d d d d d d d d d e e"
+        "h h i i i i i i i i i i j j j j"
+        "h h i i i i i i i i i i j j j j";
+}
+#ecranMagasinD {
     grid-template-areas: 
         "a a a c d d d d d d e e f f f f"
         "b b b c d d d d d d e e f f f f"
         "b b b c d d d d d d e e f f f f"
-        "b b b c d d d d d d e e g g g g"
+        "b b b c d d d d d d e e f f f f"
         "b b b c d d d d d d e e g g g g"
         "b b b c d d d d d d e e g g g g"
         "b b b c d d d d d d e e g g g g"
@@ -317,6 +331,17 @@ header {
     max-height: 100%;
     font-size: 2rem;
 } 
+#magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix {
+    background-color: #8ca0ff;
+    flex-direction: column;
+}
+#objetIcone, #objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir {
+    height: 80px;
+    align-items: center;
+}
+#optionAcheter:hover, #optionVendre:hover, #optionSortir:hover {
+    background-color: aliceblue;
+}
 #magasinArgentJoueur {
     grid-area: a;
     background-color: #8ca0ff;
@@ -331,21 +356,25 @@ header {
 }
 #magasinObjetIcone {
     grid-area: c;
-    background-color: #8ca0ff;
 }
 #magasinObjetNom {
     grid-area: d;
-    background-color: #8ca0ff;
 } 
 #magasinObjetPrix {
     grid-area: e;
-    background-color: #8ca0ff;
 }
 #magasinObjetImage {
+    display: none;
     grid-area: f;
     background-color: #8ca0ff;
+    align-items: center;
+    justify-content: center;
 } 
+#objetImage {
+    width: 80%;
+}
 #magasinObjetDescription {
+    display: none;
     grid-area: g;
     background-color: #8ca0ff;
 } 
