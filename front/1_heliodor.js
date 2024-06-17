@@ -36,7 +36,6 @@ deplacement.forEach((punaise) => {
 // Liens vers les differents lieux
 const heliodor = document.querySelector('#heliodor')
 const magasinHeliodor = document.querySelector('#magasinHeliodor')
-const ecranMagasin = document.querySelector('#ecranMagasin')
 const egliseHeliodor = document.querySelector('#egliseHeliodor')
 const boutonMagasin = document.querySelector('.boutonMagasinHeliodor')
 const boutonEglise = document.querySelector('.boutonEgliseHeliodor')
@@ -53,8 +52,7 @@ boutonMagasin.addEventListener('click', () => {
     musiqueHeliodor.src = './audio/musiques/boutique.mp3'
     musiqueHeliodor.loop = 'true'
     musiqueHeliodor.play()
-    menuMagasin(magasinHeliodor)
-    ecranMagasin.style.display = 'grid'
+    menuMagasin(magasinHeliodor, heliodor, 0)
 })
 boutonEglise.addEventListener('click', () => {
     switchEcran(heliodor, egliseHeliodor)
@@ -62,11 +60,6 @@ boutonEglise.addEventListener('click', () => {
     musiqueHeliodor.src = './audio/musiques/eglise.mp3'
     musiqueHeliodor.loop = 'true'
     musiqueHeliodor.play()
-})
-boutonRetourHeliodorMagasin.addEventListener('click', () => {
-    ecranMagasin.style.display = 'none'
-    switchEcran(magasinHeliodor, heliodor)
-
 })
 boutonRetourHeliodorEglise.addEventListener('click', () => {
     switchEcran(egliseHeliodor, heliodor)

@@ -152,7 +152,9 @@ app.get('/objets', (request, response) => {
             nom: 'Herbe medicinale',
             image: '../front/images/icones/objets/herbeMedicinale.png',
             description: 'Une herbe curative qui rend 30PV',
-            effet: 30
+            effet: 30,
+            prixAchat: 100,
+            prixVente: 50,
         },
         {
             id: 2,
@@ -165,6 +167,27 @@ app.get('/objets', (request, response) => {
 
     ];
     response.send(objets);
+})
+
+app.get('/magasins', (request, response) => {
+    const magasins = [
+        {
+            id: 1, 
+            nom: 'magasinHeliodor',
+            image: '../front/images/background/magasinHeliodor.png',
+            inventaire: [
+                {type: 'armes', id: 1},
+                {type: 'armes', id: 2},
+                {type: 'armures',id: 1},
+                {type: 'objet', id: 1},
+            ],
+        },
+        {
+            id: 2,
+            nom: 'magasinYotto',
+        },
+    ];
+    response.send(magasins);
 })
 
 app.get('/sauvegarde', (req, res) => {

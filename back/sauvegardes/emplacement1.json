@@ -4,7 +4,7 @@
     "image": "./images/monstres/heros.png",
     "mini": "./images/monstres/herosMini.png",
     "niveau": 5,
-    "argent": 0,
+    "argent": 2540,
     "pvMax": 50,
     "pv": 50,
     "pmMax": 15,
