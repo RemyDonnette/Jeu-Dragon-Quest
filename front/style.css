@@ -348,11 +348,11 @@ header {
     height: 72px;
 }
 .selectionActive {
-    background-color: aliceblue;
+    background-color: rgba(120, 220, 255, 0.5);
     color: black;
 }
 #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover {
-    background-color: aliceblue;
+    background-color: rgba(120, 220, 255, 0.5);;
     color: black;
 }
 #magasinArgentJoueur {
@@ -394,6 +394,8 @@ header {
 #magasinObjetDescription {
     grid-area: g;
     display: none;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 1.5rem;
     padding: 0.5rem;
     border-right: solid white 5px;
@@ -401,7 +403,10 @@ header {
 #magasinObjetEffet {
     grid-area: k;
     display: none;
-    border: solid white 5px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid white 5px;
+    border-right: solid white 5px;
 }
 #magasinVendeurCharset {
     grid-area: h;
@@ -414,6 +419,7 @@ header {
     padding: 0.5rem;
     border-top: solid white 5px;
     border-bottom: solid white 5px;
+    border-right: white 5px;
 } 
 #magasinBoxValidation {
     grid-area: j;

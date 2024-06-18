@@ -120,10 +120,12 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
         const objetImage = document.createElement('img')
         const objetDescription = document.createElement('p')
         const objetEffet = document.createElement('p')
+        const motEffet = document.createElement('p')
 
         objetImage.id = 'objetImage'
         objetDescription.id = 'objetDescription'
         objetEffet.id = 'objetEffet'
+        motEffet.innerText = 'Effet :'
         
         function commerce(inventaire) {
 
@@ -166,17 +168,17 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                     case objets[0]:
                         objetIcone.src = objets[objet.id].image
                         objetNom.innerText = objets[objet.id].nom
-                        objetPrix.innerText = `${objets[objet.id].prixVente} G`
+                        objetPrix.innerText = (inventaire === articles) ? `${objets[objet.id].prixAchat} G` : `${objets[objet.id].prixVente} G`
                         break;
                     case armes[0]:
                         objetIcone.src = armes[objet.id].image
                         objetNom.innerText = armes[objet.id].nom
-                        objetPrix.innerText = `${armes[objet.id].prixVente} G`
+                        objetPrix.innerText = (inventaire === articles) ? `${armes[objet.id].prixAchat} G` : `${armes[objet.id].prixVente} G`
                         break;
                     case armures[0]:
                         objetIcone.src = armures[objet.id].image
                         objetNom.innerText = armures[objet.id].nom
-                        objetPrix.innerText = `${armures[objet.id].prixVente} G`
+                        objetPrix.innerText = (inventaire === articles) ? `${armures[objet.id].prixAchat} G` : `${armures[objet.id].prixVente} G`
                         break;
                     default:
                         break;
@@ -195,6 +197,8 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                         magasinObjetImage.style.display = 'flex'
                         magasinObjetDescription.style.display = 'flex'
                         magasinObjetEffet.style.display = 'flex'
+                        magasinBoxValidation.style.display = 'none'
+                        magasinVendeurDialogue.style.borderRight = 'solid 5px white'
     
                         objetIcone.classList.add('selectionActive')
                         objetNom.classList.add('selectionActive')
@@ -204,23 +208,23 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                             case objets[0]:
                                 objetImage.src = objets[objet.id].image
                                 objetDescription.innerText = objets[objet.id].description
-                                objetEffet.innerText = objets[objet.id].effet
+                                objetEffet.innerText = objets[objet.id].effetDescription
                                 break;
                             case armes[0]:
                                 objetImage.src = armes[objet.id].image
                                 objetDescription.innerText = armes[objet.id].description
-                                objetEffet.innerText = armes[objet.id].effet
+                                objetEffet.innerText = armes[objet.id].effetDescription
                                 break;
                             case armures[0]:
                                 objetImage.src = armures[objet.id].image
                                 objetDescription.innerText = armures[objet.id].description
-                                objetEffet.innerText = armures[objet.id].effet
+                                objetEffet.innerText = armures[objet.id].effetDescription
                                 break;
                             default:
                                 break;
                         }
                         magasinObjetImage.append(objetImage)
-                        magasinObjetDescription.append(objetDescription)
+                        magasinObjetDescription.append(objetDescription, motEffet)
                         magasinObjetEffet.append(objetEffet)
                     })
     
@@ -229,6 +233,8 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                         magasinObjetImage.style.display = 'none'
                         magasinObjetDescription.style.display = 'none'
                         magasinObjetEffet.style.display = 'none'
+                        magasinBoxValidation.style.display = 'flex'
+                        magasinVendeurDialogue.style.borderRight = ''
     
                         objetIcone.classList.remove('selectionActive')
                         objetNom.classList.remove('selectionActive')
@@ -240,10 +246,14 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
 
         optionAcheter.addEventListener('click', () => {
             commerce(articles)
+            optionAcheter.classList.add('selectionActive')
+            optionVendre.classList.remove('selectionActive')
         })
 
         optionVendre.addEventListener('click', () => {       
             commerce(objetsInventaire)
+            optionVendre.classList.add('selectionActive')
+            optionAcheter.classList.remove('selectionActive')
         })
 
         optionSortir.addEventListener('click', () => {
