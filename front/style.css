@@ -296,8 +296,6 @@ header {
 #ecranMagasin, #ecranMagasinD {
     display: grid;
     position: absolute;
-    opacity: 0.5;
-    border: solid white 3px;
     width: 90%;
     height: 90%;
     grid-template-columns: repeat(16, 1fr);
@@ -328,8 +326,7 @@ header {
         "h h i i i i i i i i i i j j j j";
 }
 #magasinArgentJoueur, #magasinSelectionAction, #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #magasinObjetImage, #magasinObjetDescription, #magasinVendeurCharset, #magasinVendeurDialogue, #magasinBoxValidation {
-    border: solid white 3px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .5);
     color: white;
     display: flex;
     max-width: 100%;
@@ -338,23 +335,39 @@ header {
 } 
 #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix {
     flex-direction: column;
+    border-top: solid white 5px;
 }
-#objetIcone, #objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir {
-    height: 72px;
+#objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir {
+    display: flex;
     align-items: center;
+    padding-left: 1rem;
+    height: 72px;
+}
+#objetIcone {
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+.selectionActive {
+    background-color: aliceblue;
+    color: black;
 }
 #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover {
     background-color: aliceblue;
+    color: black;
 }
 #magasinArgentJoueur {
     grid-area: a;
     align-items: center;
     justify-content: center;
+    border: solid white 5px;
 }
 #magasinSelectionAction {
     grid-area: b;
     flex-direction: column;
     font-size: 2rem;
+    border-right: solid white 5px;
+    border-left: solid white 5px;
 }
 #magasinObjetIcone {
     grid-area: c;
@@ -364,30 +377,45 @@ header {
 } 
 #magasinObjetPrix {
     grid-area: e;
+    border-right: solid white 5px;
 }
 #magasinObjetImage {
-    display: none;
     grid-area: f;
+    display: none;
     align-items: center;
     justify-content: center;
+    border-right: solid white 5px;
+    border-top: solid white 5px;
+    border-bottom: solid white 5px;
 } 
 #objetImage {
     width: 80%;
+    height: 80%;
 }
 #magasinObjetDescription {
-    display: none;
     grid-area: g;
+    display: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-right: solid white 5px;
 } 
 #magasinVendeurCharset {
     grid-area: h;
     align-items: center;
     justify-content: center;
+    border: solid white 5px;
 } 
 #magasinVendeurDialogue {
     grid-area: i;
+    padding: 0.5rem;
+    border-top: solid white 5px;
+    border-bottom: solid white 5px;
 } 
 #magasinBoxValidation {
     grid-area: j;
+    border-right: solid white 5px;
+    border-top: solid white 5px;
+    border-bottom: solid white 5px;
 }
 
 

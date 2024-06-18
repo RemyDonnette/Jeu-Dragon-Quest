@@ -103,23 +103,33 @@ app.get('/monstres', (request, response) => {
 
 app.get('/armes', (request, response) => {
     const armes = [
+        'armes',
         {
             id: 1, 
             nom: 'Baton de cypres',
-            image: '',
-            puissance: '',
+            image: '../front/images/icones/armes/batonDeCypres.webp',
+            description: '',
+            puissance: 7,
+            prixAchat: 10,
+            prixVente: 5,
         },
         {
             id: 2,
             nom: 'Epée de cuivre',
-            image: '',
-            puissance: '',
+            image: '../front/images/icones/armes/epeeDeCuivre.png',
+            description: 'Tout voyageur qui se respecte sait ce que c\'est. C\'est une épée de cuivre. Comme son nom l\'indique, elle n\'est faite que de cuivre. Faut pas s\'attendre à faire des miracles avec...',
+            puissance: 13,
+            prixAchat: 270,
+            prixVente: 135,
         },
         {
             id: 3,
             nom: 'Epée large de fer',
             image: '',
-            puissance: '',
+            description: '',
+            puissance: 20,
+            prixAchat: 500,
+            prixVente: 250,
         },
 
     ];
@@ -128,17 +138,33 @@ app.get('/armes', (request, response) => {
 
 app.get('/armures', (request, response) => {
     const armures = [
+        'armures',
         {
             id: 1, 
-            nom: 'tenue de voyageur'
+            nom: 'Tenue de voyageur',
+            image: '../front/images/icones/armures/tenueDeVoyageur.png',
+            description: 'Ce sont de bons vêtements solides. Ils ne céderont pas facilement, mais ce n\'est pas non plus une tenue de combat.',
+            puissance: '',
+            prixAchat: 70,
+            prixVente: 35,
         },
         {
             id: 2,
-            nom: 'Tenue de voyageur'
+            nom: 'Armure de cuir',
+            image: '../front/images/icones/armures/armureDeCuir.png',
+            description: 'Oui, cette armure est en peau. Qu\'est-ce que je peux vous dire C\'est une armure qui améliorera votre défense. Voilà, c\'est tout.',
+            puissance: '',
+            prixAchat: 180,
+            prixVente: 90,
         },
         {
             id: 3,
-            nom: 'Epée en fer'
+            nom: 'Epée en fer',
+            image: '',
+            description: '',
+            puissance: '',
+            prixAchat: 0,
+            prixVente: 0,
         },
 
     ];
@@ -147,6 +173,7 @@ app.get('/armures', (request, response) => {
 
 app.get('/objets', (request, response) => {
     const objets = [
+        'objets',
         {
             id: 1, 
             nom: 'Herbe medicinale',
@@ -158,11 +185,11 @@ app.get('/objets', (request, response) => {
         },
         {
             id: 2,
-            nom: 'Epée en cuivre'
+            nom: ''
         },
         {
             id: 3,
-            nom: 'Epée en fer'
+            nom: ''
         },
 
     ];
@@ -175,11 +202,17 @@ app.get('/magasins', (request, response) => {
             id: 1, 
             nom: 'magasinHeliodor',
             image: '../front/images/background/magasinHeliodor.png',
+            charset: '../front/images/personages/npc1.png',
+            phraseEntree:
+            phraseAchat:
+            phraseVente:
+            phraseSortie: 
             inventaire: [
                 {type: 'armes', id: 1},
                 {type: 'armes', id: 2},
                 {type: 'armures',id: 1},
-                {type: 'objet', id: 1},
+                {type: 'armures',id: 2},
+                {type: 'objets', id: 1},
             ],
         },
         {

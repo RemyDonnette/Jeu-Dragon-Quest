@@ -16,9 +16,7 @@
     "critique": 5,
     "esquive": 5,
     "inventaire": [
-        {"id": 0, "nb":2}, 
-        {"id": 0, "nb":2},
-        {"id": 0, "nb":2},
-        {"id": 0, "nb":2}
+        {"type": "objets", "id": 1, "nb":2},
+        {"type": "armes", "id": 1, "nb":1}
     ]
 }
