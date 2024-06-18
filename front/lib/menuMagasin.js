@@ -47,6 +47,7 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
     const magasinObjetPrix = document.createElement('div')
     const magasinObjetImage = document.createElement('div')
     const magasinObjetDescription = document.createElement('div')
+    const magasinObjetEffet = document.createElement('div')
     const magasinVendeurCharset = document.createElement('div')
     const magasinVendeurDialogue = document.createElement('div')
     const magasinBoxValidation = document.createElement('div')
@@ -63,12 +64,13 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
     magasinObjetPrix.id = 'magasinObjetPrix'
     magasinObjetImage.id = 'magasinObjetImage'
     magasinObjetDescription.id = 'magasinObjetDescription'
+    magasinObjetEffet.id = 'magasinObjetEffet'
     magasinVendeurCharset.id = 'magasinVendeurCharset'
     magasinVendeurDialogue.id = 'magasinVendeurDialogue'
     magasinBoxValidation.id = 'magasinBoxValidation'
     
     magasin.append(ecranMagasin, imageMagasin)
-    ecranMagasin.append(magasinArgentJoueur, magasinSelectionAction, magasinObjetIcone, magasinObjetNom, magasinObjetPrix, magasinObjetImage, magasinObjetDescription, magasinVendeurCharset, magasinVendeurDialogue, magasinBoxValidation)
+    ecranMagasin.append(magasinArgentJoueur, magasinSelectionAction, magasinObjetIcone, magasinObjetNom, magasinObjetPrix, magasinObjetImage, magasinObjetDescription, magasinObjetEffet, magasinVendeurCharset, magasinVendeurDialogue, magasinBoxValidation)
     
     // remplissage de la colonne de selection
     const argentJoueur = document.createElement('span')
@@ -103,7 +105,7 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
     magasinObjetIcone.style.display = 'none'
     magasinObjetNom.style.display = 'none'
     magasinObjetPrix.style.display = 'none'
-    magasinVendeurDialogue.innerText = 'Bien le Bonjour !'
+    magasinVendeurDialogue.innerText = infosMagasinActuel.phraseEntree
     
     
     setTimeout(() => {
@@ -113,128 +115,26 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
         magasinObjetIcone.style.display = 'flex'
         magasinObjetNom.style.display = 'flex'
         magasinObjetPrix.style.display = 'flex'
-        magasinVendeurDialogue.innerText = 'J\'ai plein d\'armes et d\'objets en reserve.\n Qu\'est ce qu\'il te faut ?'
+        magasinVendeurDialogue.innerText = infosMagasinActuel.phraseAttente
         
         const objetImage = document.createElement('img')
         const objetDescription = document.createElement('p')
+        const objetEffet = document.createElement('p')
 
         objetImage.id = 'objetImage'
         objetDescription.id = 'objetDescription'
+        objetEffet.id = 'objetEffet'
         
-        // remplissage des objets
-        optionAcheter.addEventListener('click', () => {
-            
-            const testObjet = document.querySelector('#objetIcone') 
-
-            if (testObjet  !== null) {
-                
-                const objetIcone = document.querySelectorAll('#objetIcone')
-                const objetNom = document.querySelectorAll('#objetNom')
-                const objetPrix = document.querySelectorAll('#objetPrix')
-
-                objetIcone.forEach((objet) => {
-                    magasinObjetIcone.removeChild(objet)
-                })
-                objetNom.forEach((objet) => {
-                    magasinObjetNom.removeChild(objet)
-                })
-                objetPrix.forEach((objet) => {
-                    magasinObjetPrix.removeChild(objet)
-                })
-            }
-
-            magasinVendeurDialogue.innerText = 'J\'ai plein de merveilles à vendre !'
-        
-            articles.forEach((objet) => {
-                
-                const objetIcone = document.createElement('img')
-                const objetNom = document.createElement('div')
-                const objetPrix = document.createElement('div')
-                
-                objetIcone.id = 'objetIcone'
-                objetNom.id = 'objetNom'
-                objetPrix.id = 'objetPrix'
-
-                switch (objet.type) {
-                    case objets[0]:
-                        objetIcone.src = objets[objet.id].image
-                        objetNom.innerText = objets[objet.id].nom
-                        objetPrix.innerText = `${objets[objet.id].prixAchat} G`
-                        break;
-                    case armes[0]:
-                        objetIcone.src = armes[objet.id].image
-                        objetNom.innerText = armes[objet.id].nom
-                        objetPrix.innerText = `${armes[objet.id].prixAchat} G`
-                        break;
-                    case armures[0]:
-                        objetIcone.src = armures[objet.id].image
-                        objetNom.innerText = armures[objet.id].nom
-                        objetPrix.innerText = `${armures[objet.id].prixAchat} G`
-                        break;
-                    default:
-                        break;
-                }
-                
-                magasinObjetIcone.append(objetIcone)
-                magasinObjetNom.append(objetNom)
-                magasinObjetPrix.append(objetPrix)
-
-                const ligne = [objetIcone, objetNom, objetPrix]
-
-                ligne.forEach((element) => {
-        
-                    element.addEventListener('mouseenter', () => {
-                        ecranMagasin.id = 'ecranMagasinD'
-                        magasinObjetImage.style.display = 'flex'
-                        magasinObjetDescription.style.display = 'flex'
-
-                        objetIcone.classList.add('selectionActive')
-                        objetNom.classList.add('selectionActive')
-                        objetPrix.classList.add('selectionActive')
-                        
-                        switch (objet.type) {
-                            case objets[0]:
-                                objetImage.src = objets[objet.id].image
-                                objetDescription.innerText = objets[objet.id].description
-                                break;
-                            case armes[0]:
-                                objetImage.src = armes[objet.id].image
-                                objetDescription.innerText = armes[objet.id].description
-                                break;
-                            case armures[0]:
-                                objetImage.src = armures[objet.id].image
-                                objetDescription.innerText = armures[objet.id].description
-                                break;
-                            default:
-                                break;
-                        }
-                        magasinObjetImage.append(objetImage)
-                        magasinObjetDescription.append(objetDescription)
-                    })
-    
-                    element.addEventListener('mouseleave', () => {
-                        ecranMagasin.id = 'ecranMagasin'
-                        magasinObjetImage.style.display = 'none'
-                        magasinObjetDescription.style.display = 'none'
-                        
-                        objetIcone.classList.remove('selectionActive')
-                        objetNom.classList.remove('selectionActive')
-                        objetPrix.classList.remove('selectionActive')
-                    })
-                })
-            });
-        })
-        
-        optionVendre.addEventListener('click', () => {       
+        function commerce(inventaire) {
 
             const testObjet = document.querySelector('#objetIcone')
-
+    
             if (testObjet  !== null) {
-
+    
                 const objetIcone = document.querySelectorAll('#objetIcone')
                 const objetNom = document.querySelectorAll('#objetNom')
                 const objetPrix = document.querySelectorAll('#objetPrix')
-
+    
                 objetIcone.forEach((objet) => {
                     magasinObjetIcone.removeChild(objet)
                 })
@@ -245,10 +145,14 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                     magasinObjetPrix.removeChild(objet)
                 })
             }
-
-            magasinVendeurDialogue.innerText = 'Que veux tu vendre ?'
             
-            objetsInventaire.forEach((objet) => {
+            if (inventaire === articles) {
+                magasinVendeurDialogue.innerText = infosMagasinActuel.phraseAchat
+            } else if (inventaire === objetsInventaire) {
+                magasinVendeurDialogue.innerText = infosMagasinActuel.phraseVente
+            }
+            
+            inventaire.forEach((objet) => {
                 
                 const objetIcone = document.createElement('img')
                 const objetNom = document.createElement('span')
@@ -257,7 +161,7 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                 objetIcone.id = 'objetIcone'
                 objetNom.id = 'objetNom'
                 objetPrix.id = 'objetPrix'
-
+    
                 switch (objet.type) {
                     case objets[0]:
                         objetIcone.src = objets[objet.id].image
@@ -281,7 +185,7 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                 magasinObjetIcone.append(objetIcone)
                 magasinObjetNom.append(objetNom)
                 magasinObjetPrix.append(objetPrix)
-
+    
                 const ligne = [objetIcone, objetNom, objetPrix]
                 
                 ligne.forEach((element) => {
@@ -290,7 +194,8 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                         ecranMagasin.id = 'ecranMagasinD'
                         magasinObjetImage.style.display = 'flex'
                         magasinObjetDescription.style.display = 'flex'
-
+                        magasinObjetEffet.style.display = 'flex'
+    
                         objetIcone.classList.add('selectionActive')
                         objetNom.classList.add('selectionActive')
                         objetPrix.classList.add('selectionActive')
@@ -299,151 +204,63 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                             case objets[0]:
                                 objetImage.src = objets[objet.id].image
                                 objetDescription.innerText = objets[objet.id].description
+                                objetEffet.innerText = objets[objet.id].effet
                                 break;
                             case armes[0]:
                                 objetImage.src = armes[objet.id].image
                                 objetDescription.innerText = armes[objet.id].description
+                                objetEffet.innerText = armes[objet.id].effet
                                 break;
                             case armures[0]:
                                 objetImage.src = armures[objet.id].image
                                 objetDescription.innerText = armures[objet.id].description
+                                objetEffet.innerText = armures[objet.id].effet
                                 break;
                             default:
                                 break;
                         }
                         magasinObjetImage.append(objetImage)
                         magasinObjetDescription.append(objetDescription)
+                        magasinObjetEffet.append(objetEffet)
                     })
     
                     element.addEventListener('mouseleave', () => {
                         ecranMagasin.id = 'ecranMagasin'
                         magasinObjetImage.style.display = 'none'
                         magasinObjetDescription.style.display = 'none'
-
+                        magasinObjetEffet.style.display = 'none'
+    
                         objetIcone.classList.remove('selectionActive')
                         objetNom.classList.remove('selectionActive')
                         objetPrix.classList.remove('selectionActive')
                     })
                 })
-            });
+            })
+        }
+
+        optionAcheter.addEventListener('click', () => {
+            commerce(articles)
+        })
+
+        optionVendre.addEventListener('click', () => {       
+            commerce(objetsInventaire)
         })
 
         optionSortir.addEventListener('click', () => {
+
             magasinArgentJoueur.style.display = 'none'
             magasinSelectionAction.style.display = 'none'
             magasinObjetIcone.style.display = 'none'
             magasinObjetNom.style.display = 'none'
             magasinObjetPrix.style.display = 'none'
-            magasinVendeurDialogue.innerText = 'A la prochaine !'
+            magasinVendeurDialogue.innerText = infosMagasinActuel.phraseSortie
+
             setTimeout( () => {
-            ecranMagasin.style.display = 'none'
-            ecranMagasin.remove()
-            imageMagasin.remove()
-            switchEcran(magasinVille, ville)
+                ecranMagasin.style.display = 'none'
+                ecranMagasin.remove()
+                imageMagasin.remove()
+                switchEcran(magasinVille, ville)
             }, 1000)
         })
     }, 1000)
-
-
-    // function commerce() {
-        
-    //     const testObjet = document.querySelector('#objetIcone') 
-    
-    //     if (testObjet  !== null) {
-            
-    //         const objetIcone = document.querySelectorAll('#objetIcone')
-    //         const objetNom = document.querySelectorAll('#objetNom')
-    //         const objetPrix = document.querySelectorAll('#objetPrix')
-    
-    //         objetIcone.forEach((objet) => {
-    //             magasinObjetIcone.removeChild(objet)
-    //         })
-    //         objetNom.forEach((objet) => {
-    //             magasinObjetNom.removeChild(objet)
-    //         })
-    //         objetPrix.forEach((objet) => {
-    //             magasinObjetPrix.removeChild(objet)
-    //         })
-    //     }
-    
-    //     magasinVendeurDialogue.innerText = 'J\'ai plein de merveilles à vendre !'
-    
-    //     articles.forEach((objet) => {
-            
-    //         const objetIcone = document.createElement('img')
-    //         const objetNom = document.createElement('div')
-    //         const objetPrix = document.createElement('div')
-            
-    //         objetIcone.id = 'objetIcone'
-    //         objetNom.id = 'objetNom'
-    //         objetPrix.id = 'objetPrix'
-    
-    //         switch (objet.type) {
-    //             case objets[0]:
-    //                 objetIcone.src = objets[objet.id].image
-    //                 objetNom.innerText = objets[objet.id].nom
-    //                 objetPrix.innerText = `${objets[objet.id].prixAchat} G`
-    //                 break;
-    //             case armes[0]:
-    //                 objetIcone.src = armes[objet.id].image
-    //                 objetNom.innerText = armes[objet.id].nom
-    //                 objetPrix.innerText = `${armes[objet.id].prixAchat} G`
-    //                 break;
-    //             case armures[0]:
-    //                 objetIcone.src = armures[objet.id].image
-    //                 objetNom.innerText = armures[objet.id].nom
-    //                 objetPrix.innerText = `${armures[objet.id].prixAchat} G`
-    //                 break;
-    //             default:
-    //                 break;
-    //         }
-            
-    //         magasinObjetIcone.append(objetIcone)
-    //         magasinObjetNom.append(objetNom)
-    //         magasinObjetPrix.append(objetPrix)
-    
-    //         const ligne = [objetIcone, objetNom, objetPrix]
-    
-    //         ligne.forEach((element) => {
-    
-    //             element.addEventListener('mouseenter', () => {
-    //                 ecranMagasin.id = 'ecranMagasinD'
-    //                 magasinObjetImage.style.display = 'flex'
-    //                 magasinObjetDescription.style.display = 'flex'
-    
-    //                 objetIcone.classList.add('selectionActive')
-    //                 objetNom.classList.add('selectionActive')
-    //                 objetPrix.classList.add('selectionActive')
-                    
-    //                 switch (objet.type) {
-    //                     case objets[0]:
-    //                         objetImage.src = objets[objet.id].image
-    //                         objetDescription.innerText = objets[objet.id].description
-    //                         break;
-    //                     case armes[0]:
-    //                         objetImage.src = armes[objet.id].image
-    //                         objetDescription.innerText = armes[objet.id].description
-    //                         break;
-    //                     case armures[0]:
-    //                         objetImage.src = armures[objet.id].image
-    //                         objetDescription.innerText = armures[objet.id].description
-    //                         break;
-    //                     default:
-    //                         break;
-    //                 }
-    //                 magasinObjetImage.append(objetImage)
-    //                 magasinObjetDescription.append(objetDescription)
-    //             })
-    
-    //             element.addEventListener('mouseleave', () => {
-    //                 ecranMagasin.id = 'ecranMagasin'
-    //                 magasinObjetImage.style.display = 'none'
-    //                 magasinObjetDescription.style.display = 'none'
-                    
-    //                 objetIcone.classList.remove('selectionActive')
-    //                 objetNom.classList.remove('selectionActive')
-    //                 objetPrix.classList.remove('selectionActive')
-    //             })
-    // }
-
 }

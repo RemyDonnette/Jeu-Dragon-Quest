@@ -203,10 +203,11 @@ app.get('/magasins', (request, response) => {
             nom: 'magasinHeliodor',
             image: '../front/images/background/magasinHeliodor.png',
             charset: '../front/images/personages/npc1.png',
-            phraseEntree:
-            phraseAchat:
-            phraseVente:
-            phraseSortie: 
+            phraseEntree: 'Bien le Bonjour !',
+            phraseAttente: 'J\'ai plein d\'armes et d\'objets en reserve.\n Qu\'est ce qu\'il te faut ?',
+            phraseAchat: 'J\'ai plein de merveilles à vendre !',
+            phraseVente: 'Que veux tu vendre ?',
+            phraseSortie: 'A la prochaine !',
             inventaire: [
                 {type: 'armes', id: 1},
                 {type: 'armes', id: 2},
