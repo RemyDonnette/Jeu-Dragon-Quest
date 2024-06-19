@@ -77,3 +77,27 @@ export function menuInventaire(ecranActuel) {
     appelDesStats()
 
 }
+
+/* 
+<div id="ecranInventaire">
+    <div id="ecranObjets">
+        <div id="partieEcranObjets">
+            <div id="listeObjets"></div>
+        </div>
+        <div id="partieEcranDescription">
+            <p id="descriptionObjet"></p>
+        </div>
+    </div>
+    <div id="ecranStats">
+        <div id="headerPlusBoutonsS">
+            <div id="headerEcranJoueurS">
+                <div id="emplacementNomNiveauS"></div>
+                <div id="emplacementBarreDeVieS"></div>
+            </div>
+            <div id="emplacementStatsHeros"></div>
+            <div id="emplacementBoutonsS"></div>
+        </div>
+        <div id="emplacementStatsHerosMini"></div>
+    </div>
+</div>
+*/

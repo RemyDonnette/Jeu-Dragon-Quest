@@ -1,18 +1,38 @@
 import { switchEcran } from "./lib/fonctionsEcran.js"
 import { lancerCarteDuMonde } from "./lib/menuPrincipal.js"
-import { menuMagasin } from "./lib/menumagasin.js"
+import { menuMagasin } from "./lib/menuMagasin.js"
 
-// Reglage initial du volume
-const audio = document.querySelectorAll('audio')
-audio.forEach((piste) => {
-    piste.volume = 0.05
-})
+
 
 // Appel de la musique de fond
-const musiqueHeliodor = document.querySelector('#musique')
-    musiqueHeliodor.src = './audio/musiques/villeDQ11.mp3'
-    musiqueHeliodor.loop = 'true'
-    musiqueHeliodor.play()
+// const musiqueHeliodor = document.querySelector('#musique')
+//     musiqueHeliodor.src = './audio/musiques/villeDQ11.mp3'
+//     musiqueHeliodor.loop = 'true'
+//     musiqueHeliodor.play()
+
+// Creation du Main
+const body = document.querySelector('#body')
+const main = document.createElement('main')
+main.id = 'main'
+body.append(main)
+
+// Création de la ville
+const heliodor = document.createElement('div')
+const imageFond = document.createElement('img')
+const labelLieu = document.createElement('label')
+const labelNomDuLieu = document.createElement('span')
+
+heliodor.id = 'heliodor'
+imageFond.id = 'imageFond'
+imageFond.alt = 'Fond Heliodor'
+imageFond.src = '../images/background/heliodor.png'
+labelLieu.id = 'labelLieu'
+labelNomDuLieu.id = 'labelNomDuLieu'
+
+main.append(heliodor)
+heliodor.append(imageFond, labelLieu)
+labelLieu.append(nomDuLieu)
+
 
 // Création du hover des lieux
 const deplacement = document.querySelectorAll('.deplacement')
@@ -34,7 +54,6 @@ deplacement.forEach((punaise) => {
 })
 
 // Liens vers les differents lieux
-const heliodor = document.querySelector('#heliodor')
 const magasinHeliodor = document.querySelector('#magasinHeliodor')
 const egliseHeliodor = document.querySelector('#egliseHeliodor')
 const boutonMagasin = document.querySelector('.boutonMagasinHeliodor')

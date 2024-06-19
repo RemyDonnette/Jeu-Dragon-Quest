@@ -8,12 +8,12 @@
     padding: 0;
     font-family: Garrick;
 }
-body {
+#body {
     background-image: url(images/background/background_bois.png);
     background-size: cover;
     height: 100vh;
 }
-main {
+#main {
     display: flex;
     justify-content: center;
     align-items: end;
@@ -25,7 +25,7 @@ main {
 
 
 /* Header*/
-header {
+#header {
     position: absolute;
     width: 100%;
     z-index: 2;
@@ -55,7 +55,7 @@ header {
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('images/background/fondIntro.png');
+    background-image: url('./images/background/fondIntro.png');
     background-size: cover;
     background-position: center;
     gap: 30vh;
@@ -67,7 +67,7 @@ header {
 
 /* Ecran menu principal */
 #ecranMenuPrincipal {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -257,7 +257,7 @@ header {
 
 /* Carte Du Monde */
 #carteDuMonde {
-    display: none;
+    display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -313,7 +313,7 @@ header {
         "h h i i i i i i i i i i i i j j"
         "h h i i i i i i i i i i i i j j";
 }
-#ecranMagasinD, #ecranMagasinA {
+#ecranMagasinD {
     grid-template-areas: 
         "a a a c d d d d d d e e f f f f"
         "b b b c d d d d d d e e f f f f"

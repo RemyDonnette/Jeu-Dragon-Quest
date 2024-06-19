@@ -2,7 +2,7 @@ import { appelDuHeros, appelDuMonstre, majBarreDeVie, disparitionMonstre } from 
 import { fetchData } from './fetch.js';
 import { menuInventaire } from './menuInventaire.js';
 import { switchEcran } from './fonctionsEcran.js';
-import { lancerCarteDuMonde } from './menuPrincipal.js';
+
 
 fetchData('/monstres').then((data) => {
     localStorage.setItem('tabMonstres', JSON.stringify(data))
@@ -253,14 +253,21 @@ export function menuCombat() {
             jingleVictoire.play()
         }, 3000)
     }
-    
-    // function gameOver() {
-        
-        
-    // }
-
-    // async function retourMenuDev() {
-    //     const prerequis = await victoireCombat()
-    // }
-    
 }
+
+/* 
+<div id="ecranCombat">
+    <div id="ecranMonstre"></div>
+    <div id="ecranJoueur">
+        <div id="headerPlusBoutons">
+            <div id="headerEcranJoueur">
+                <div id="emplacementNomNiveau"></div>
+                <div id="emplacementBarreDeVie"></div>
+            </div>
+            <div id="emplacementImageHeros"></div>
+            <div id="emplacementBoutons"></div>
+        </div>
+        <div id="emplacementImageHerosMini"></div>
+    </div>
+</div> 
+*/

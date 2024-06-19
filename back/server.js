@@ -231,6 +231,28 @@ app.get('/magasins', (request, response) => {
     response.send(magasins);
 })
 
+app.get('/lieux', (request, response) => {
+    const lieux = [
+        {
+            id: 1, 
+            nom: 'Caubaltin',
+            image: '',
+            lien: '1_caubaltin.js',
+            top: 58,
+            left: 48,
+        },
+        {
+            id: 2,
+            nom: 'Heliodor',
+            image: '',
+            lien: '2_heliodor.js',
+            top: 42,
+            left: 48,
+        },
+    ];
+    response.send(lieux);
+})
+
 app.get('/sauvegarde', (req, res) => {
     lireSauvegarde().then((r) => res.send(r));
     });

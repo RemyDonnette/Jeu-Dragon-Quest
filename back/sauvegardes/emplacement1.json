@@ -18,5 +18,6 @@
     "inventaire": [
         {"type": "objets", "id": 1, "nb":2},
         {"type": "armes", "id": 1, "nb":1}
-    ]
+    ],
+    "lieux": [0, 1]
 }
