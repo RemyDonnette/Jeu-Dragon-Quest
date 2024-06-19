@@ -93,12 +93,19 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
     // remplissage la ligne du vendeur
     const vendeurCharset = document.createElement('img')
     const vendeurDialogue = document.createElement('p')
+    const boxOui = document.createElement('p')
+    const boxNon = document.createElement('p')
     
     vendeurCharset.src = './images/personnages/npc1.png'
     vendeurCharset.style.width = '100%'
+    boxOui.id = 'boxOui'
+    boxNon.id = 'boxNon'
+    boxOui.innerText = 'Oui'
+    boxNon.innerText = 'Non'
     
     magasinVendeurCharset.append(vendeurCharset)
     magasinVendeurDialogue.append(vendeurDialogue)
+    magasinBoxValidation.append(boxOui, boxNon)
     
     magasinArgentJoueur.style.display = 'none'
     magasinSelectionAction.style.display = 'none'
@@ -112,9 +119,6 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
         
         magasinArgentJoueur.style.display = 'flex'
         magasinSelectionAction.style.display = 'flex'
-        magasinObjetIcone.style.display = 'flex'
-        magasinObjetNom.style.display = 'flex'
-        magasinObjetPrix.style.display = 'flex'
         magasinVendeurDialogue.innerText = infosMagasinActuel.phraseAttente
         
         const objetImage = document.createElement('img')
@@ -193,32 +197,53 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                 ligne.forEach((element) => {
                     
                     element.addEventListener('mouseenter', () => {
+
                         ecranMagasin.id = 'ecranMagasinD'
                         magasinObjetImage.style.display = 'flex'
                         magasinObjetDescription.style.display = 'flex'
                         magasinObjetEffet.style.display = 'flex'
-                        magasinBoxValidation.style.display = 'none'
-                        magasinVendeurDialogue.style.borderRight = 'solid 5px white'
-    
                         objetIcone.classList.add('selectionActive')
                         objetNom.classList.add('selectionActive')
                         objetPrix.classList.add('selectionActive')
                         
+                        function interactionClick(typeObjet) {
+                            objetImage.src = typeObjet[objet.id].image
+                            objetDescription.innerText = typeObjet[objet.id].description
+                            objetEffet.innerText = typeObjet[objet.id].effetDescription
+
+                            element.addEventListener('click', () => {
+
+                                boxOui.style.display = 'flex'
+                                boxNon.style.display = 'flex'
+                                objetIcone.classList.add('clickActive')
+                                objetNom.classList.add('clickActive')
+                                objetPrix.classList.add('clickActive')
+                                
+                                if (inventaire === articles) {
+                                    magasinVendeurDialogue.innerText = `1 ${typeObjet[objet.id].nom}\n Ca te fera ${typeObjet[objet.id].prixAchat} pièces d'or. Marché conclu ?`
+                                } else if (inventaire === objetsInventaire){
+                                    magasinVendeurDialogue.innerText = `1 ${typeObjet[objet.id].nom}\n Je peux t'en donner ${typeObjet[objet.id].prixVente} pièces d'or. Ca te va ?`
+                                }
+                                boxOui.addEventListener('click', () => {
+                                    boxOui.style.display = 'none'
+                                    boxNon.style.display = 'none'
+                                })
+                                boxNon.addEventListener('click', () => {
+                                    boxOui.style.display = 'none'
+                                    boxNon.style.display = 'none'
+                                })
+                            })
+                        }
+
                         switch (objet.type) {
                             case objets[0]:
-                                objetImage.src = objets[objet.id].image
-                                objetDescription.innerText = objets[objet.id].description
-                                objetEffet.innerText = objets[objet.id].effetDescription
+                                interactionClick(objets)
                                 break;
                             case armes[0]:
-                                objetImage.src = armes[objet.id].image
-                                objetDescription.innerText = armes[objet.id].description
-                                objetEffet.innerText = armes[objet.id].effetDescription
+                                interactionClick(armes)
                                 break;
                             case armures[0]:
-                                objetImage.src = armures[objet.id].image
-                                objetDescription.innerText = armures[objet.id].description
-                                objetEffet.innerText = armures[objet.id].effetDescription
+                                interactionClick(armures)
                                 break;
                             default:
                                 break;
@@ -229,28 +254,46 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
                     })
     
                     element.addEventListener('mouseleave', () => {
-                        ecranMagasin.id = 'ecranMagasin'
-                        magasinObjetImage.style.display = 'none'
-                        magasinObjetDescription.style.display = 'none'
-                        magasinObjetEffet.style.display = 'none'
-                        magasinBoxValidation.style.display = 'flex'
-                        magasinVendeurDialogue.style.borderRight = ''
-    
+                        
                         objetIcone.classList.remove('selectionActive')
                         objetNom.classList.remove('selectionActive')
                         objetPrix.classList.remove('selectionActive')
+
+                        if (objetIcone.className !== 'clickActive') {
+                            
+                            ecranMagasin.id = 'ecranMagasin'
+                            magasinObjetImage.style.display = 'none'
+                            magasinObjetDescription.style.display = 'none'
+                            magasinObjetEffet.style.display = 'none'
+                            magasinVendeurDialogue.style.borderRight = ''
+                        }
+    
                     })
                 })
             })
         }
 
         optionAcheter.addEventListener('click', () => {
+
+            magasinObjetIcone.style.display = 'flex'
+            magasinObjetNom.style.display = 'flex'
+            magasinObjetPrix.style.display = 'flex'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+
             commerce(articles)
             optionAcheter.classList.add('selectionActive')
             optionVendre.classList.remove('selectionActive')
         })
 
-        optionVendre.addEventListener('click', () => {       
+        optionVendre.addEventListener('click', () => {  
+            
+            magasinObjetIcone.style.display = 'flex'
+            magasinObjetNom.style.display = 'flex'
+            magasinObjetPrix.style.display = 'flex'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+            
             commerce(objetsInventaire)
             optionVendre.classList.add('selectionActive')
             optionAcheter.classList.remove('selectionActive')
@@ -263,6 +306,13 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
             magasinObjetIcone.style.display = 'none'
             magasinObjetNom.style.display = 'none'
             magasinObjetPrix.style.display = 'none'
+            magasinObjetImage.style.display = 'none'
+            magasinObjetDescription.style.display = 'none'
+            magasinObjetEffet.style.display = 'none'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+            magasinVendeurDialogue.style.borderRight = ''
+            ecranMagasin.id = 'ecranMagasin'
             magasinVendeurDialogue.innerText = infosMagasinActuel.phraseSortie
 
             setTimeout( () => {

@@ -310,10 +310,10 @@ header {
         "b b b c d d d d d d d d d d e e"
         "b b b c d d d d d d d d d d e e"
         "b b b c d d d d d d d d d d e e"
-        "h h i i i i i i i i i i j j j j"
-        "h h i i i i i i i i i i j j j j";
+        "h h i i i i i i i i i i i i j j"
+        "h h i i i i i i i i i i i i j j";
 }
-#ecranMagasinD {
+#ecranMagasinD, #ecranMagasinA {
     grid-template-areas: 
         "a a a c d d d d d d e e f f f f"
         "b b b c d d d d d d e e f f f f"
@@ -322,8 +322,8 @@ header {
         "b b b c d d d d d d e e g g g g"
         "b b b c d d d d d d e e g g g g"
         "b b b c d d d d d d e e g g g g"
-        "h h i i i i i i i i i i g g g g"
-        "h h i i i i i i i i i i k k k k";
+        "h h i i i i i i i i j j g g g g"
+        "h h i i i i i i i i j j k k k k";
 }
 #magasinArgentJoueur, #magasinSelectionAction, #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #magasinObjetImage, #magasinObjetDescription, #magasinObjetEffet, #magasinVendeurCharset, #magasinVendeurDialogue, #magasinBoxValidation {
     background-color: rgba(0, 0, 0, .5);
@@ -347,12 +347,8 @@ header {
     align-items: center;
     height: 72px;
 }
-.selectionActive {
+.selectionActive, .clickActive, #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover, #boxOui:hover, #boxNon:hover  {
     background-color: rgba(120, 220, 255, 0.5);
-    color: black;
-}
-#optionAcheter:hover, #optionVendre:hover, #optionSortir:hover {
-    background-color: rgba(120, 220, 255, 0.5);;
     color: black;
 }
 #magasinArgentJoueur {
@@ -423,11 +419,22 @@ header {
 } 
 #magasinBoxValidation {
     grid-area: j;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     border-right: solid white 5px;
     border-top: solid white 5px;
     border-bottom: solid white 5px;
 }
-
+#boxOui, #boxNon {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 120px;
+    border: solid white 2px;
+}
 
 
 
