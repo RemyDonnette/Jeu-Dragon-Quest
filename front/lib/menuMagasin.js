@@ -1,6 +1,5 @@
 import { fetchData } from "./fetch.js"
 import { creerMain } from "./creerMain.js"
-import { switchEcran } from "./fonctionsEcran.js"
 import { changerScript } from "./changerScript.js"
 
 export function menuMagasin(nbRefVille) {

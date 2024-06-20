@@ -1,6 +1,5 @@
 import { fetchData } from "./fetch.js"
 import { menuMagasin } from "./menumagasin.js"
-import { menuEglise } from "./menuEglise.js"
 import { menuCarteDuMonde } from "./menuCarte.js"
 
 export function creerVille (nbRefVille) {
@@ -33,7 +32,7 @@ export function creerVille (nbRefVille) {
     const batiments = donneesLieux[nbRefVille].batiments
     
     batiments.forEach((batiment) => {
-        console.log(batiment.nom)
+
         const bouton = document.createElement('i')
         bouton.classList.add('fa', 'fa-location-pin', 'faa-vertical', 'animated-hover', 'deplacement')
         bouton.id = batiment.nom
@@ -59,7 +58,6 @@ export function creerVille (nbRefVille) {
                     break;
                 case 'Eglise':
                     main.remove()
-                    menuEglise()
                     break;
                 case 'Retour vers la carte':
                     main.remove()

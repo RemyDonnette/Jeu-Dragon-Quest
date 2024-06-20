@@ -269,4 +269,4 @@ app.get('/lieux', (request, response) => {
 
 app.get('/sauvegarde', (req, res) => {
     lireSauvegarde().then((r) => res.send(r));
-    });
+});

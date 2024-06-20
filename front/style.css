@@ -16,7 +16,7 @@
 #main {
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     position: relative;
     height: 90vh;
     z-index: 0;

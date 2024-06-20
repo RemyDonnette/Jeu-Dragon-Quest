@@ -4,6 +4,7 @@ import { menuMagasin } from "./menumagasin.js"
 import { menuCarteDuMonde } from "./menuCarte.js"
 import { creerMain } from "./creerMain.js"
 import { changerScript } from "./changerScript.js"
+import { nouvellePartie } from "./nouvellePartie.js"
 
 
 export function lancerMenuPrincipal() {
@@ -33,7 +34,7 @@ export function lancerMenuPrincipal() {
     // Listener boutons
     boutonNouvellePartie.addEventListener('click', () => {
         main.remove()
-        menuCarteDuMonde()
+        nouvellePartie()
     })
 
     boutonMenuDev.addEventListener('click', () => {
