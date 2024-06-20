@@ -17,10 +17,6 @@ export let pvJoueur = sauvegarde.pv
 
 export function menuCombat() {
     
-    // Disparition du Logo
-    const header = document.querySelector('header')
-    header.style.display = 'none'
-
     // Recuperation du tableau Monstres
     const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
 

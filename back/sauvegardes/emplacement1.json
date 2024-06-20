@@ -15,9 +15,9 @@
     "sagesse": 10,
     "critique": 5,
     "esquive": 5,
+    "lieux": [1, 2],
     "inventaire": [
         {"type": "objets", "id": 1, "nb":2},
         {"type": "armes", "id": 1, "nb":1}
-    ],
-    "lieux": [0, 1]
+    ]
 }

@@ -1,4 +1,5 @@
-import { head } from './lib/head.js'
+import { head } from './lib/creerHead.js'
+import { creerMain } from './lib/creerMain.js'
 import { lancerMenuPrincipal } from './lib/menuPrincipal.js'
 
 
@@ -20,9 +21,7 @@ header.append(h1)
 h1.append(logo)
 
 // Creation du Main
-const main = document.createElement('main')
-main.id = 'main'
-body.append(main)
+creerMain()
 
 // Création de l'écran d'accueil
 const ecranAccueil = document.createElement('div')

@@ -1,7 +1,9 @@
 import { fetchData } from "./fetch.js"
+import { creerMain } from "./creerMain.js"
 import { switchEcran } from "./fonctionsEcran.js"
+import { changerScript } from "./changerScript.js"
 
-export function menuMagasin(magasinVille, ville, nbRefMag) {
+export function menuMagasin(nbRefVille) {
     // Fetch Sauvegarde et Objets
     fetchData('/sauvegarde').then((data) => {
         localStorage.setItem('sauvegarde', JSON.stringify(data))
@@ -24,18 +26,32 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
     fetchData('/armures').then((data) => {
         localStorage.setItem('armures', JSON.stringify(data))
     })
+    fetchData('/lieux').then((data) => {
+        localStorage.setItem('lieux', JSON.stringify(data))
+    })
 
     // Fetch des éléments nécéssaires
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
     const objetsInventaire = JSON.parse(localStorage.getItem('inventaire'))
     const infosMagasins = JSON.parse(localStorage.getItem('magasins'))
-    const infosMagasinActuel = infosMagasins[nbRefMag]
-    const articles = infosMagasins[nbRefMag].inventaire
+    const infosMagasinActuel = infosMagasins[nbRefVille]
+    const articles = infosMagasins[nbRefVille].inventaire
     const objets = JSON.parse(localStorage.getItem('objets'))
     const armes = JSON.parse(localStorage.getItem('armes'))
     const armures = JSON.parse(localStorage.getItem('armures'))
+    const lieux = JSON.parse(localStorage.getItem('lieux'))
 
-    const magasin = document.querySelector(`#${magasinVille.id}`)
+    // creation du main et du magasin
+    creerMain()
+    const magasin = document.createElement('div')
+    magasin.id = 'magasin'
+    main.append(magasin)
+
+    // Gestion de l'audio
+    // const musiqueHeliodor = document.querySelector('#musique')
+    // musiqueHeliodor.src = './audio/musiques/boutique.mp3'
+    // musiqueHeliodor.loop = 'true'
+    // musiqueHeliodor.play()
 
     // Création des zones de grid et leurs ids
     const ecranMagasin = document.createElement('div')
@@ -316,10 +332,8 @@ export function menuMagasin(magasinVille, ville, nbRefMag) {
             magasinVendeurDialogue.innerText = infosMagasinActuel.phraseSortie
 
             setTimeout( () => {
-                ecranMagasin.style.display = 'none'
-                ecranMagasin.remove()
-                imageMagasin.remove()
-                switchEcran(magasinVille, ville)
+                main.remove()
+                changerScript(`./${lieux[nbRefVille].id}_${lieux[nbRefVille].divId}.js`)
             }, 1000)
         })
     }, 1000)

@@ -2,19 +2,14 @@ export function head() {
 
     //Création du head
     const head = document.querySelector('head')
-
     const titre = document.createElement('title')
-
     const metaDesc = document.createElement('meta')
     const meta1 = document.createElement('meta')
     const meta2 = document.createElement('meta')
     const meta3 = document.createElement('meta')
-
     const style = document.createElement('link')
-
     const font1 = document.createElement('script')
     const font2 = document.createElement('link')
-
     const fav1 = document.createElement('link')
     const fav2 = document.createElement('link')
     const fav3 = document.createElement('link')
@@ -22,7 +17,6 @@ export function head() {
     const fav5 = document.createElement('link')
 
     titre.innerText = 'Dragon Quest'
-
     metaDesc.name = 'description'
     metaDesc.content = 'Un FanGame sur l\'univers de Dragon Quest XI en point and click.'
     meta1.name = 'viewport'
@@ -31,15 +25,12 @@ export function head() {
     meta2.content = '#da532c'
     meta3.name = 'theme-color'
     meta3.content = '#ffffff'
-
     style.rel = 'stylesheet'
     style.href = './style.css'
-
     font1.src = 'https://kit.fontawesome.com/9396dc643f.js'
     font1.crossOrigin = 'anonymous'
     font2.rel = 'stylesheet' 
     font2.href = './node_modules/font-awesome-animation/css/font-awesome-animation.min.css'
-
     fav1.rel = 'apple-touch-icon'
     fav1.sizes = '180x180'
     fav1.href = './images/favicon/apple-touch-icon.png'

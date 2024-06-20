@@ -205,8 +205,10 @@ app.get('/objets', (request, response) => {
 
 app.get('/magasins', (request, response) => {
     const magasins = [
+        {id: 0},
+        {id: 1},
         {
-            id: 1, 
+            id: 2, 
             nom: 'magasinHeliodor',
             image: '../front/images/background/magasinHeliodor.png',
             charset: '../front/images/personages/npc1.png',
@@ -233,21 +235,33 @@ app.get('/magasins', (request, response) => {
 
 app.get('/lieux', (request, response) => {
     const lieux = [
+        {id: 0},
         {
             id: 1, 
             nom: 'Caubaltin',
+            divId: 'caubaltin',
             image: '',
             lien: '1_caubaltin.js',
-            top: 58,
-            left: 48,
+            punaise: {top: 58, left: 48},
+            batiments: [
+                {},
+                {},
+                {},
+            ]
         },
         {
             id: 2,
             nom: 'Heliodor',
+            divId: 'heliodor',
             image: '',
             lien: '2_heliodor.js',
-            top: 42,
-            left: 48,
+            punaise: {top: 42, left: 48},
+            batiments: [
+                {nom: 'Magasin', top: 28, left: 7},
+                {nom: 'Eglise', top: 23, left: 89},
+                {nom: 'Chemin vers le chateau', top: 33, left: 40},
+                {nom: 'Retour vers la carte', top: 90, left: 94},  
+            ]
         },
     ];
     response.send(lieux);

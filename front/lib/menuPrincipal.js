@@ -1,16 +1,16 @@
 import { menuCombat } from "./menuCombat.js"
-import { menuCarteDuMonde } from "./carteDuMonde.js"
 import { menuInventaire } from "./menuInventaire.js"
+import { menuMagasin } from "./menumagasin.js"
+import { menuCarteDuMonde } from "./menuCarte.js"
+import { creerMain } from "./creerMain.js"
+import { changerScript } from "./changerScript.js"
 
 
 export function lancerMenuPrincipal() {
     // Création du Main
-    const body = document.querySelector('#body')
-    const main = document.createElement('main')
-    main.id = 'main'
-    body.append(main)
+    creerMain()
     
-    // Appel des écrans
+    // Création du menu
     const menuPrincipal = document.createElement('div')
     const boutonNouvellePartie = document.createElement('button')
     const boutonChargerPartie = document.createElement('button')
@@ -30,9 +30,18 @@ export function lancerMenuPrincipal() {
     main.append(menuPrincipal)
     menuPrincipal.append(boutonNouvellePartie, boutonChargerPartie, boutonMenuDev)
     
+    // Listener boutons
     boutonNouvellePartie.addEventListener('click', () => {
         main.remove()
         menuCarteDuMonde()
+    })
+
+    boutonMenuDev.addEventListener('click', () => {
+        main.remove()
+        changerScript('2_heliodor.js')
+        // menuCombat()
+        // menuMagasin(2)
+        // menuEglise(1)
     })
 
     // Animation des boutons
@@ -47,40 +56,9 @@ export function lancerMenuPrincipal() {
     })
 
     // Musique Menu Principal
-    const musiqueMenuPrincipal = document.querySelector('#musique')
-    musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
-    musiqueMenuPrincipal.loop = 'true'
-    musiqueMenuPrincipal.play()
+    // const musiqueMenuPrincipal = document.querySelector('#musique')
+    // musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
+    // musiqueMenuPrincipal.loop = 'true'
+    // musiqueMenuPrincipal.play()
 
 }
-
-
-// function lancerMenuDev() {
-//     menuPrincipal.style.display = 'none'
-//     menuDev.style.display = 'flex'
-
-//     // Bouton Lancer Combat
-//     const boutonLancerCombat = document.querySelector('#lancerCombat')
-//     boutonLancerCombat.addEventListener('click', () => {
-//         lancerCombat()
-//     })
-
-//     // Bouton Acces Carte du Monde
-//     const boutonCarteDuMonde = document.querySelector('#boutonCarteDuMonde')
-//     boutonCarteDuMonde.addEventListener('click', () => {
-//         lancerCarteDuMonde(menuDev)
-//     })
-
-//     const boutonInventaire = document.querySelector('#boutonInventaire')
-//     boutonInventaire.addEventListener('click', () => {
-//         menuInventaire(menuPrincipal)
-//     })
-// }
-
-// export function lancerCombat() {
-    
-//     menuDev.style.display = 'none'
-//     combat.style.display = 'flex'
-
-//     menuCombat()
-// }

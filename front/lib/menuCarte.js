@@ -1,9 +1,11 @@
 import { fetchData } from "./fetch.js"
+import { creerMain } from "./creerMain.js"
+import { changerScript } from "./changerScript.js"
 
 export function menuCarteDuMonde() {
 
     fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('sauvegarde', JSON.stringify(data.lieux))
+        localStorage.setItem('sauvegarde', JSON.stringify(data))
     })
     fetchData('/lieux').then((data) => {
         localStorage.setItem('lieux', JSON.stringify(data))
@@ -11,14 +13,8 @@ export function menuCarteDuMonde() {
     const lieuxDebloques = JSON.parse(localStorage.getItem('sauvegarde'))
     const donneesLieux = JSON.parse(localStorage.getItem('lieux'))
 
-    console.log(lieuxDebloques)
-    console.log(donneesLieux)
-
     // Creation du Main
-    const body = document.querySelector('#body')
-    const main = document.createElement('main')
-    main.id = 'main'
-    body.append(main)
+    creerMain()
 
     // Appel de la musique de la carte du Monde
     // const musiqueCarte = document.querySelector('#musique')
@@ -27,8 +23,6 @@ export function menuCarteDuMonde() {
     // musiqueCarte.play()
 
     //Création du template
-    const scriptJS = document.querySelector('#scriptJS')
-    
     const carteDuMonde = document.createElement('div')
     const imageCarteDuMonde = document.createElement('img')
     const lieu = document.createElement('label')
@@ -45,7 +39,7 @@ export function menuCarteDuMonde() {
     carteDuMonde.append(imageCarteDuMonde, lieu)
     lieu.append(nomDuLieu)
     
-    lieuxDebloques.lieux.forEach((punaise) => {
+    lieuxDebloques.lieux.forEach((idLieux) => {
         
         const imageLabel = document.createElement('img')
         imageLabel.src = './images/background/banniereLieux.png'
@@ -54,24 +48,21 @@ export function menuCarteDuMonde() {
         const icone = document.createElement('img')
         icone.src = './images/icones/iconeSelection.png'
         icone.classList.add('faa-float', 'animated-hover', 'faa-fast', 'punaise')
-        icone.style.top = `${donneesLieux[punaise].top}%`
-        icone.style.left = `${donneesLieux[punaise].left}%`
+        icone.style.top = `${donneesLieux[idLieux].punaise.top}%`
+        icone.style.left = `${donneesLieux[idLieux].punaise.left}%`
 
         carteDuMonde.append(icone)
         
         icone.addEventListener('mouseenter', () => {
-            nomDuLieu.innerText = donneesLieux[punaise].nom
+            nomDuLieu.innerText = donneesLieux[idLieux].nom
             lieu.append(imageLabel)
         })
         icone.addEventListener('mouseleave', () => {
             lieu.removeChild(imageLabel)
         })
         icone.addEventListener('click', () => {
-            const head = document.querySelector('head')
-            const nouveauScriptJS = document.createElement('script')
-            nouveauScriptJS.src = donneesLieux[punaise].lien
-            scriptJS.remove()
-            head.append(nouveauScriptJS)
+            main.remove()
+            changerScript(donneesLieux[idLieux].lien)
         })
     })
 }
