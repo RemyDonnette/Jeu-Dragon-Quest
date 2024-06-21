@@ -1,6 +1,7 @@
 import { fetchData, fetchAllData } from "./fetch.js";
 import { creerMain } from "./creerMain.js";
 import { menuMagasin } from "./menumagasin.js";
+import { menuCarteDuMonde } from "./menuCarte.js";
 
 export function chargerPartie() {
 
@@ -46,7 +47,7 @@ export function chargerPartie() {
             await verification()
             setTimeout(() => {
                 main.remove()
-                menuMagasin(2)
+                menuCarteDuMonde()
             }, 1000)
         })
     })

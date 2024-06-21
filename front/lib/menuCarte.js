@@ -4,12 +4,6 @@ import { changerScript } from "./changerScript.js"
 
 export function menuCarteDuMonde() {
 
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('sauvegarde', JSON.stringify(data))
-    })
-    fetchData('/lieux').then((data) => {
-        localStorage.setItem('lieux', JSON.stringify(data))
-    })
     const lieuxDebloques = JSON.parse(localStorage.getItem('sauvegarde'))
     const donneesLieux = JSON.parse(localStorage.getItem('lieux'))
 
@@ -47,9 +41,13 @@ export function menuCarteDuMonde() {
         
         const icone = document.createElement('img')
         icone.src = './images/icones/iconeSelection.png'
+        icone.id = donneesLieux[idLieux].divId
         icone.classList.add('faa-float', 'animated-hover', 'faa-fast', 'punaise')
-        icone.style.top = `${donneesLieux[idLieux].punaise.top}%`
-        icone.style.left = `${donneesLieux[idLieux].punaise.left}%`
+
+        if (icone.id !== 'testLocalisation') {
+            icone.style.top = `${donneesLieux[idLieux].punaise.top}%`
+            icone.style.left = `${donneesLieux[idLieux].punaise.left}%`
+        }
 
         carteDuMonde.append(icone)
         

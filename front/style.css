@@ -3,6 +3,13 @@
     font-family: Garrick;
     src: url('fonts/GarrickBold.woff')  format('woff');
 } */
+
+#testLocalisation {
+    top: 57%;
+    left: 47%;
+}
+
+
 * {
     margin: 0;
     padding: 0;

@@ -20,7 +20,7 @@ export function creerVille (nbRefVille) {
     ville.id = 'ville'
     imageFond.className = 'imageFond'
     imageFond.alt = `Fond ${donneesLieux[nbRefVille].nom}`
-    imageFond.src = `./images/background/${donneesLieux[nbRefVille].divId}.png`
+    imageFond.src = `./images/background/villes/${donneesLieux[nbRefVille].divId}.png`
     labelLieu.id = 'labelLieu'
     labelNomDuLieu.id = 'labelNomDuLieu'
     imageLabel.src = './images/background/banniereLieux.png'
@@ -55,11 +55,11 @@ export function creerVille (nbRefVille) {
             switch (batiment.nom) {
                 case 'Magasin':
                     main.remove()
-                    menuMagasin(2)
+                    menuMagasin(nbRefVille)
                     break;
                 case 'Eglise':
                     main.remove()
-                    menuEglise(2)
+                    menuEglise(nbRefVille)
                     break;
                 case 'Retour vers la carte':
                     main.remove()

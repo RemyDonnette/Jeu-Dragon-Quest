@@ -87,8 +87,8 @@ export function menuMagasin(nbRefVille) {
     const vendeurDialogue = document.createElement('p')
     const boxOui = document.createElement('p')
     const boxNon = document.createElement('p')
-    
-    vendeurCharset.src = './images/personnages/npc1.png'
+
+    vendeurCharset.src = infosMagasinActuel.charset
     vendeurCharset.style.width = '100%'
     boxOui.id = 'boxOui'
     boxNon.id = 'boxNon'
