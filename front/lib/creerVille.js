@@ -1,6 +1,7 @@
 import { fetchData } from "./fetch.js"
 import { menuMagasin } from "./menumagasin.js"
 import { menuCarteDuMonde } from "./menuCarte.js"
+import { menuEglise } from "./menuEglise.js"
 
 export function creerVille (nbRefVille) {
 
@@ -58,6 +59,7 @@ export function creerVille (nbRefVille) {
                     break;
                 case 'Eglise':
                     main.remove()
+                    menuEglise(2)
                     break;
                 case 'Retour vers la carte':
                     main.remove()

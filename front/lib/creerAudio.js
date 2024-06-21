@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Bouton mute audio
+// Boutons mute audio
 function muteMusique() {
     if (musique.muted) {
         musique.muted = false
@@ -44,7 +44,6 @@ function muteMusique() {
         iconeMuteMusique.style.color = 'red'
     }
 }
-
 function muteSons() {
     if (sons.muted) {
         sons.muted = false
@@ -55,23 +54,14 @@ function muteSons() {
         iconeMuteSons.style.color = 'red'
     }
 }
-
 boutonMuteMusique.addEventListener("click", function() {
     muteMusique()
 })
-
 boutonMuteSons.addEventListener("click", function() {
     muteSons()
 })
 
 
 /* 
-<div id="boutonsAudio">
-<label id='boutonMuteMusique'><i class="fa-solid fa-music" id="iconeMuteMusique"></i></label>
-<label id='boutonMuteSons'><i class="fa-solid fa-volume-off" id="iconeMuteSons"></i></label>
-<input type="range" id="curseurVolume" min="0" max="100" value="100">
-<p>Volume: <span id="niveauVolume">100</span>%</p>
-</div>
-<audio id="musique"></audio>
-<audio id="sons"></audio> 
+
 */

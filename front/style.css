@@ -9,8 +9,12 @@
     font-family: Garrick;
 }
 #body {
+    display: flex;
+    flex-direction: column;
     background-image: url(images/background/background_bois.png);
     background-size: cover;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 #main {
@@ -18,20 +22,28 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 90vh;
+    max-width: 1280px;
+    max-height: 720px;
     z-index: 0;
     gap: 1rem;
 }
 
-
 /* Header*/
 #header {
     position: absolute;
+    top: 0%;
     width: 100%;
     z-index: 2;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
-    text-align: center;
+}
+#footer {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    
+    height: fit-content;
 }
 #logo {
     width: 100%;
@@ -290,10 +302,10 @@
     z-index: 1;
 }
 
-/* Menu Magasin */
+/* Menu Magasin et Menu Eglise */
 
 
-#ecranMagasin, #ecranMagasinD {
+#ecranMagasin, #ecranMagasinD, #ecranEglise {
     display: grid;
     position: absolute;
     width: 90%;
@@ -325,18 +337,30 @@
         "h h i i i i i i i i j j g g g g"
         "h h i i i i i i i i j j k k k k";
 }
-#magasinArgentJoueur, #magasinSelectionAction, #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #magasinObjetImage, #magasinObjetDescription, #magasinObjetEffet, #magasinVendeurCharset, #magasinVendeurDialogue, #magasinBoxValidation {
+#ecranEglise {
+    grid-template-areas: 
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "b b b e e e e e e e e e e e e e"
+        "h h i i i i i i i i i i i i j j"
+        "h h i i i i i i i i i i i i j j";
+}
+#magasinArgentJoueur, #magasinSelectionAction, #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #magasinObjetImage, #magasinObjetDescription, #magasinObjetEffet, #magasinVendeurCharset, #magasinVendeurDialogue, #magasinBoxValidation, #egliseSelectionAction, #egliseEmplacementSauvegardes, #eglisePretreCharset, #eglisePretreDialogue, #egliseBoxValidation {
     background-color: rgba(0, 0, 0, .5);
     color: white;
     max-width: 100%;
     max-height: 100%;
     font-size: 2rem;
 } 
-#magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix {
+#magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #egliseEmplacementSauvegardes {
     flex-direction: column;
     border-top: solid white 5px;
 }
-#objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir {
+#objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir, #optionSauvegarder, #optionCharger {
     display: flex;
     align-items: center;
     padding-left: 1rem;
@@ -355,12 +379,15 @@
     grid-area: a;
     align-items: center;
     justify-content: center;
-    border: solid white 5px;
+    border-top: solid white 5px;
+    border-left: solid white 5px;
+    border-right: solid white 5px;
 }
-#magasinSelectionAction {
+#magasinSelectionAction, #egliseSelectionAction {
     grid-area: b;
     flex-direction: column;
     font-size: 2rem;
+    border-top: solid white 5px;
     border-right: solid white 5px;
     border-left: solid white 5px;
 }
@@ -370,7 +397,7 @@
 #magasinObjetNom {
     grid-area: d;
 } 
-#magasinObjetPrix {
+#magasinObjetPrix, #egliseEmplacementSauvegardes {
     grid-area: e;
     border-right: solid white 5px;
 }
@@ -404,20 +431,20 @@
     border-bottom: solid white 5px;
     border-right: solid white 5px;
 }
-#magasinVendeurCharset {
+#magasinVendeurCharset, #eglisePretreCharset {
     grid-area: h;
     align-items: center;
     justify-content: center;
     border: solid white 5px;
 } 
-#magasinVendeurDialogue {
+#magasinVendeurDialogue, #eglisePretreDialogue {
     grid-area: i;
     padding: 0.5rem;
     border-top: solid white 5px;
     border-bottom: solid white 5px;
     border-right: white 5px;
 } 
-#magasinBoxValidation {
+#magasinBoxValidation, #egliseBoxValidation {
     grid-area: j;
     display: flex;
     flex-direction: column;
@@ -506,13 +533,26 @@
     position: absolute;
     display: flex;
     justify-content: right;
-    padding: 1rem;
+    bottom: -60px;
+    left: 5%;
     gap: 1rem;
     z-index: 4;
 }
 i {
     font-size: 3rem;
     color: goldenrod;
+}
+
+/* Save */
+#save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 75px;
+    border: solid 5px black;
+    background-color: white;
+    font-size: large;
 }
 
 @media screen and (max-width: 1000px){
@@ -617,8 +657,8 @@ i {
         position: absolute;
         display: flex;
         justify-content: right;
-        padding: 0.5rem;
         gap: 1rem;
+        padding: 0.5rem;
         bottom: 0.5rem;
         z-index: 4;
     }

@@ -1,9 +1,3 @@
-import { fetchData } from "./fetch.js"
-
-fetchData('/sauvegarde').then((data) => {
-    localStorage.setItem('sauvegarde', JSON.stringify(data))
-})
-
 // Recuperation du tableau Monstres
 const donneesSauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
 const tabMonstres = JSON.parse(localStorage.getItem('tabMonstres'))
@@ -77,8 +71,10 @@ export function appelDesStats() {
 
     const nomHeros = document.createElement('h2')
     const lvlHeros = document.createElement('h2')
+
     nomHeros.innerText = tabMonstres[0].nom
     lvlHeros.innerText = `Lvl:${tabMonstres[0].niveau}`
+
     emplacementNomNiveauS.append(nomHeros)
     emplacementNomNiveauS.append(lvlHeros)
 
@@ -86,6 +82,7 @@ export function appelDesStats() {
 }
 
 export function ajoutBarreDeVie(emplacement) {
+    
     const barreDeVie = document.createElement('div')
     const valeurBarreDeVie = document.createElement('div')
     const pointsDeVie = document.createElement('div')

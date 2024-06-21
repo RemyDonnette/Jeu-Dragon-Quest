@@ -1,10 +1,10 @@
-import { menuCombat } from "./menuCombat.js"
-import { menuInventaire } from "./menuInventaire.js"
+// import { menuCombat } from "./menuCombat.js"
+// import { menuInventaire } from "./menuInventaire.js"
 import { menuMagasin } from "./menumagasin.js"
 import { menuCarteDuMonde } from "./menuCarte.js"
 import { creerMain } from "./creerMain.js"
 import { changerScript } from "./changerScript.js"
-import { nouvellePartie } from "./nouvellePartie.js"
+import { chargerPartie } from "./menuChargement.js"
 
 
 export function lancerMenuPrincipal() {
@@ -33,8 +33,12 @@ export function lancerMenuPrincipal() {
     
     // Listener boutons
     boutonNouvellePartie.addEventListener('click', () => {
+        
+    })
+
+    boutonChargerPartie.addEventListener('click', () => {
         main.remove()
-        nouvellePartie()
+        chargerPartie()
     })
 
     boutonMenuDev.addEventListener('click', () => {

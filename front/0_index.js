@@ -1,9 +1,5 @@
-import { head } from './lib/creerHead.js'
 import { creerMain } from './lib/creerMain.js'
 import { lancerMenuPrincipal } from './lib/menuPrincipal.js'
-
-
-head()
 
 // Création du header
 const body = document.querySelector('#body')
@@ -16,12 +12,10 @@ logo.src = './images/icones/dragonQuestLogo.png'
 logo.alt = 'Logo Dragon Quest'
 logo.id = 'logo'
 
-body.append(header)
+creerMain()
+// body.insertBefore(header, main);
 header.append(h1)
 h1.append(logo)
-
-// Creation du Main
-creerMain()
 
 // Création de l'écran d'accueil
 const ecranAccueil = document.createElement('div')

@@ -7,18 +7,20 @@ import { open, readFile, writeFile } from 'node:fs/promises';
 
 // Récuperation de l'url
 const dir = dirname(fileURLToPath(import.meta.url))
-const nomFichier = join(dir, '/sauvegardes/emplacement1.json')
-console.log(nomFichier)
+const emplacement1 = join(dir, '/sauvegardes/emplacement1.json')
+const emplacement2 = join(dir, '/sauvegardes/emplacement2.json')
+const emplacement3 = join(dir, '/sauvegardes/emplacement3.json')
+
 
 // Fonction de lecture du fichier
-export async function lireSauvegarde() {
-    const lireSauvegarde1 = await readFile(nomFichier, { encoding: 'utf8' })
+export async function lireSauvegarde(emplacement) {
+    const lireSauvegarde1 = await readFile(emplacement, { encoding: 'utf8' })
     return JSON.parse(lireSauvegarde1)
     }
 
 // Fonction d'écrasement du fichier
-export async function ecraserSauvegarde() {
-    const ecraserSauvegarde = await writeFile(nomFichier, ecraserSauvegarde, { encoding: 'utf8' })
+export async function ecraserSauvegarde(emplacement) {
+    const ecraserSauvegarde = await writeFile(emplacement, ecraserSauvegarde, { encoding: 'utf8' })
     return JSON.parse(ecraserSauvegarde)
 }
 
@@ -205,8 +207,8 @@ app.get('/objets', (request, response) => {
 
 app.get('/magasins', (request, response) => {
     const magasins = [
-        {id: 0},
-        {id: 1},
+        {   id: 0   },
+        {   id: 1   },
         {
             id: 2, 
             nom: 'magasinHeliodor',
@@ -233,9 +235,32 @@ app.get('/magasins', (request, response) => {
     response.send(magasins);
 })
 
+app.get('/eglises', (request, response) => {
+    const eglises = [
+        {   id: 0   },
+        {   id: 1   },
+        {
+            id: 2, 
+            nom: 'egliseHeliodor',
+            image: '../front/images/background/egliseHeliodor.png',
+            charset: '../front/images/personages/npc1.png',
+            phraseEntree: 'Bien le Bonjour !',
+            phraseAttente: 'J\'ai plein d\'armes et d\'objets en reserve.\n Qu\'est ce qu\'il te faut ?',
+            phraseAchat: 'J\'ai plein de merveilles à vendre !',
+            phraseVente: 'Que veux tu vendre ?',
+            phraseSortie: 'A la prochaine !'
+        },
+        {
+            id: 2,
+            nom: 'magasinYotto',
+        },
+    ];
+    response.send(eglises);
+})
+
 app.get('/lieux', (request, response) => {
     const lieux = [
-        {id: 0},
+        {   id: 0   },
         {
             id: 1, 
             nom: 'Caubaltin',
@@ -267,6 +292,14 @@ app.get('/lieux', (request, response) => {
     response.send(lieux);
 })
 
-app.get('/sauvegarde', (req, res) => {
-    lireSauvegarde().then((r) => res.send(r));
+app.get('/sauvegarde1', (req, res) => {
+    lireSauvegarde(emplacement1).then((r) => res.send(r));
+});
+
+app.get('/sauvegarde2', (req, res) => {
+    lireSauvegarde(emplacement2).then((r) => res.send(r));
+});
+
+app.get('/sauvegarde3', (req, res) => {
+    lireSauvegarde(emplacement3).then((r) => res.send(r));
 });

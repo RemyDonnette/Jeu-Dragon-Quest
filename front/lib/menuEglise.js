@@ -1,109 +1,110 @@
-import { fetchData } from "./fetch.js"
 import { creerMain } from "./creerMain.js"
 import { changerScript } from "./changerScript.js"
 
-export function menuMagasin(nbRefVille) {
-    // Fetch Sauvegarde et Objets
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('sauvegarde', JSON.stringify(data))
-    })
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('inventaire', JSON.stringify(data.inventaire))
-    })
-    fetchData('/magasins').then((data) => {
-        localStorage.setItem('magasins', JSON.stringify(data))
-    })
-    fetchData('/magasins').then((data) => {
-        localStorage.setItem('articles', JSON.stringify(data.inventaire))
-    })
-    fetchData('/objets').then((data) => {
-        localStorage.setItem('objets', JSON.stringify(data))
-    })
-    fetchData('/armes').then((data) => {
-        localStorage.setItem('armes', JSON.stringify(data))
-    })
-    fetchData('/armures').then((data) => {
-        localStorage.setItem('armures', JSON.stringify(data))
-    })
-    fetchData('/lieux').then((data) => {
-        localStorage.setItem('lieux', JSON.stringify(data))
-    })
+export function menuEglise(nbRefVille) {
 
-    // Fetch des éléments nécéssaires
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
-    const objetsInventaire = JSON.parse(localStorage.getItem('inventaire'))
-    const infosMagasins = JSON.parse(localStorage.getItem('magasins'))
-    const infosMagasinActuel = infosMagasins[nbRefVille]
-    const articles = infosMagasins[nbRefVille].inventaire
-    const objets = JSON.parse(localStorage.getItem('objets'))
-    const armes = JSON.parse(localStorage.getItem('armes'))
-    const armures = JSON.parse(localStorage.getItem('armures'))
+    const infosEglises = JSON.parse(localStorage.getItem('eglises'))
+    const infosEgliseActuelle = infosEglises[nbRefVille]
+
     const lieux = JSON.parse(localStorage.getItem('lieux'))
 
     // creation du main et du magasin
     creerMain()
-    const magasin = document.createElement('div')
-    magasin.id = 'magasin'
-    main.append(magasin)
+    const eglise = document.createElement('div')
+    eglise.id = 'eglise'
+    main.append(eglise)
 
     // Gestion de l'audio
-    // const musiqueHeliodor = document.querySelector('#musique')
-    // musiqueHeliodor.src = './audio/musiques/boutique.mp3'
-    // musiqueHeliodor.loop = 'true'
-    // musiqueHeliodor.play()
+    const musiqueHeliodor = document.querySelector('#musique')
+    musiqueHeliodor.src = './audio/musiques/boutique.mp3'
+    musiqueHeliodor.loop = 'true'
+    musiqueHeliodor.play()
 
     // Création des zones de grid et leurs ids
-    const ecranMagasin = document.createElement('div')
-    const imageMagasin = document.createElement('img')
-    const magasinArgentJoueur = document.createElement('div')
-    const magasinSelectionAction = document.createElement('div')
-    const magasinObjetIcone = document.createElement('div')
-    const magasinObjetNom = document.createElement('div')
-    const magasinObjetPrix = document.createElement('div')
-    const magasinObjetImage = document.createElement('div')
-    const magasinObjetDescription = document.createElement('div')
-    const magasinObjetEffet = document.createElement('div')
-    const magasinVendeurCharset = document.createElement('div')
-    const magasinVendeurDialogue = document.createElement('div')
-    const magasinBoxValidation = document.createElement('div')
+    const ecranEglise = document.createElement('div')
+    const imageEglise = document.createElement('img')
 
-    ecranMagasin.id = 'ecranMagasin'
-    imageMagasin.className = 'imageFond'
-    imageMagasin.src = infosMagasinActuel.image
-    imageMagasin.alt = infosMagasinActuel.nom
-
-    magasinArgentJoueur.id = 'magasinArgentJoueur'
-    magasinSelectionAction.id = 'magasinSelectionAction' 
-    magasinObjetIcone.id = 'magasinObjetIcone'
-    magasinObjetNom.id = 'magasinObjetNom'
-    magasinObjetPrix.id = 'magasinObjetPrix'
-    magasinObjetImage.id = 'magasinObjetImage'
-    magasinObjetDescription.id = 'magasinObjetDescription'
-    magasinObjetEffet.id = 'magasinObjetEffet'
-    magasinVendeurCharset.id = 'magasinVendeurCharset'
-    magasinVendeurDialogue.id = 'magasinVendeurDialogue'
-    magasinBoxValidation.id = 'magasinBoxValidation'
+    const egliseSelectionAction = document.createElement('div')
+    const egliseEmplacementSauvegardes = document.createElement('div')
     
-    magasin.append(ecranMagasin, imageMagasin)
-    ecranMagasin.append(magasinArgentJoueur, magasinSelectionAction, magasinObjetIcone, magasinObjetNom, magasinObjetPrix, magasinObjetImage, magasinObjetDescription, magasinObjetEffet, magasinVendeurCharset, magasinVendeurDialogue, magasinBoxValidation)
+    const eglisePretreCharset = document.createElement('div')
+    const eglisePretreDialogue = document.createElement('div')
+    const egliseBoxValidation = document.createElement('div')
+
+    ecranEglise.id = 'ecranEglise'
+    imageEglise.className = 'imageFond'
+    imageEglise.src = infosEgliseActuelle.image
+    imageEglise.alt = infosEgliseActuelle.nom
+
+
+    egliseSelectionAction.id = 'egliseSelectionAction' 
+    egliseEmplacementSauvegardes.id = 'egliseEmplacementSauvegardes'
+
+    eglisePretreCharset.id = 'eglisePretreCharset'
+    eglisePretreDialogue.id = 'eglisePretreDialogue'
+    egliseBoxValidation.id = 'egliseBoxValidation'
+    
+    eglise.append(ecranEglise, imageEglise)
+    ecranEglise.append(egliseSelectionAction, egliseEmplacementSauvegardes, eglisePretreCharset, eglisePretreDialogue, egliseBoxValidation)
     
     // remplissage de la colonne de selection
-    const argentJoueur = document.createElement('span')
-    argentJoueur.innerText = `${sauvegarde.argent} G`
-    magasinArgentJoueur.append(argentJoueur)
-    
-    const optionAcheter = document.createElement('span')
-    const optionVendre = document.createElement('span')
+    const optionSauvegarder = document.createElement('span')
+    const optionCharger = document.createElement('span')
     const optionSortir = document.createElement('span')
     
-    optionAcheter.innerText = 'Acheter'
-    optionAcheter.id = 'optionAcheter'
-    optionVendre.innerText = 'Vendre'
-    optionVendre.id = 'optionVendre'
+    optionSauvegarder.innerText = 'Sauvegarder'
+    optionSauvegarder.id = 'optionSauvegarder'
+    optionCharger.innerText = 'Charger'
+    optionCharger.id = 'optionCharger'
     optionSortir.innerText = 'Sortir'
     optionSortir.id = 'optionSortir'
     
-    magasinSelectionAction.append(optionAcheter, optionVendre, optionSortir)
+    egliseSelectionAction.append(optionSauvegarder, optionCharger, optionSortir)
+
+    // remplissage la ligne du pretre
+    const pretreCharset = document.createElement('img')
+    const pretreDialogue = document.createElement('p')
+    const boxOui = document.createElement('p')
+    const boxNon = document.createElement('p')
+    
+    pretreCharset.src = './images/personnages/npc1.png'
+    pretreCharset.style.width = '100%'
+    boxOui.id = 'boxOui'
+    boxNon.id = 'boxNon'
+    boxOui.innerText = 'Oui'
+    boxNon.innerText = 'Non'
+    
+    eglisePretreCharset.append(pretreCharset)
+    eglisePretreDialogue.append(pretreDialogue)
+    egliseBoxValidation.append(boxOui, boxNon)
+    
+
+    egliseSelectionAction.style.display = 'none'
+    egliseEmplacementSauvegardes.style.display = 'none'
+    eglisePretreDialogue.innerText = infosEgliseActuelle.phraseEntree
+    
+    
+    setTimeout(() => {
+        
+        egliseSelectionAction.style.display = 'flex'
+        eglisePretreDialogue.innerText = infosEgliseActuelle.phraseAttente
+
+
+        optionSortir.addEventListener('click', () => {
+
+            egliseSelectionAction.style.display = 'none'
+            egliseEmplacementSauvegardes.style.display = 'none'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+            eglisePretreDialogue.innerText = infosEgliseActuelle.phraseSortie
+
+            setTimeout( () => {
+                main.remove()
+                changerScript(`./${lieux[nbRefVille].id}_${lieux[nbRefVille].divId}.js`)
+            }, 1000)
+        })
+    }, 1000)
 }
 /* 
 <div id="egliseHeliodor">

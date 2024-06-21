@@ -2,56 +2,33 @@ import { fetchData } from "./fetch.js"
 import { creerMain } from "./creerMain.js"
 import { changerScript } from "./changerScript.js"
 
-export function menuMagasin(nbRefVille) {
-    // Fetch Sauvegarde et Objets
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('sauvegarde', JSON.stringify(data))
-    })
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('inventaire', JSON.stringify(data.inventaire))
-    })
-    fetchData('/magasins').then((data) => {
-        localStorage.setItem('magasins', JSON.stringify(data))
-    })
-    fetchData('/magasins').then((data) => {
-        localStorage.setItem('articles', JSON.stringify(data.inventaire))
-    })
-    fetchData('/objets').then((data) => {
-        localStorage.setItem('objets', JSON.stringify(data))
-    })
-    fetchData('/armes').then((data) => {
-        localStorage.setItem('armes', JSON.stringify(data))
-    })
-    fetchData('/armures').then((data) => {
-        localStorage.setItem('armures', JSON.stringify(data))
-    })
-    fetchData('/lieux').then((data) => {
-        localStorage.setItem('lieux', JSON.stringify(data))
-    })
 
+export function menuMagasin(nbRefVille) {
+    
     // Fetch des éléments nécéssaires
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
     const objetsInventaire = JSON.parse(localStorage.getItem('inventaire'))
     const infosMagasins = JSON.parse(localStorage.getItem('magasins'))
-    const infosMagasinActuel = infosMagasins[nbRefVille]
-    const articles = infosMagasins[nbRefVille].inventaire
     const objets = JSON.parse(localStorage.getItem('objets'))
     const armes = JSON.parse(localStorage.getItem('armes'))
     const armures = JSON.parse(localStorage.getItem('armures'))
     const lieux = JSON.parse(localStorage.getItem('lieux'))
+    
+    const infosMagasinActuel = infosMagasins[nbRefVille]
+    const articles = infosMagasins[nbRefVille].inventaire
 
     // creation du main et du magasin
     creerMain()
     const magasin = document.createElement('div')
     magasin.id = 'magasin'
     main.append(magasin)
-
+    
     // Gestion de l'audio
     // const musiqueHeliodor = document.querySelector('#musique')
     // musiqueHeliodor.src = './audio/musiques/boutique.mp3'
     // musiqueHeliodor.loop = 'true'
     // musiqueHeliodor.play()
-
+    
     // Création des zones de grid et leurs ids
     const ecranMagasin = document.createElement('div')
     const imageMagasin = document.createElement('img')
@@ -66,12 +43,12 @@ export function menuMagasin(nbRefVille) {
     const magasinVendeurCharset = document.createElement('div')
     const magasinVendeurDialogue = document.createElement('div')
     const magasinBoxValidation = document.createElement('div')
-
+    
     ecranMagasin.id = 'ecranMagasin'
     imageMagasin.className = 'imageFond'
     imageMagasin.src = infosMagasinActuel.image
     imageMagasin.alt = infosMagasinActuel.nom
-
+    
     magasinArgentJoueur.id = 'magasinArgentJoueur'
     magasinSelectionAction.id = 'magasinSelectionAction' 
     magasinObjetIcone.id = 'magasinObjetIcone'
@@ -140,7 +117,7 @@ export function menuMagasin(nbRefVille) {
         const objetDescription = document.createElement('p')
         const objetEffet = document.createElement('p')
         const motEffet = document.createElement('p')
-
+        
         objetImage.id = 'objetImage'
         objetDescription.id = 'objetDescription'
         objetEffet.id = 'objetEffet'
