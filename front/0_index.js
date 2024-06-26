@@ -13,7 +13,7 @@ logo.alt = 'Logo Dragon Quest'
 logo.id = 'logo'
 
 creerMain()
-// body.insertBefore(header, main);
+body.insertBefore(header, main);
 header.append(h1)
 h1.append(logo)
 

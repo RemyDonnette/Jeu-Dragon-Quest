@@ -15,6 +15,6 @@
     "sagesse": 0,
     "critique": 0,
     "esquive": 0,
-    "lieux": [],
+    "lieux": [1],
     "inventaire": []
 }

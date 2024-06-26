@@ -5,11 +5,7 @@ import { menuEglise } from "./menuEglise.js"
 
 export function creerVille (nbRefVille) {
 
-    fetchData('/lieux').then((data) => {
-        localStorage.setItem('lieux', JSON.stringify(data))
-    })
-
-    const donneesLieux = JSON.parse(localStorage.getItem('lieux'))
+    const donneesLieux = JSON.parse(localStorage.getItem('villes'))
 
     const ville = document.createElement('div')
     const imageFond = document.createElement('img')

@@ -9,7 +9,6 @@
     left: 47%;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -17,12 +16,13 @@
 }
 #body {
     display: flex;
+    padding-top: 7vh;
     flex-direction: column;
     background-image: url(images/background/background_bois.png);
     background-size: cover;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 #main {
     display: flex;
@@ -54,7 +54,7 @@
 }
 #logo {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
 }
 #commencer {
     margin-top: 350px;
@@ -124,8 +124,174 @@
     background-color: brown;
 }
 
+/* Ecran Sauvegardes  */
+#ecranSauvegardes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1280px;
+    height: 720px;
+    border: 3px solid black;
+    border-radius: 10px;
+    gap: 1rem;
+    background-image: url('images/background/fond_parchemin.png');;
+}
+#cadreSauvegarde {
+    display: grid;
+    grid-template-areas: 
+        "a a a c c c c c c e e e"
+        "b b b d d d d d d e e e"
+        "b b b d d d d d d e e e";
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 90%;
+    height: 25%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: solid 5px white;
+    background-color: rgba(0, 0, 0, .5);
+}
+#cadreSauvegardeNom, #cadreSauvegardeDate, #cadreSauvegardeLieu, #cadreSauvegardeInfos, #cadreSauvegardeCharset {
+    display: flex;
+    
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#cadreSauvegardeNom {
+    grid-area: a;
+    padding: 1rem;
+}
+#cadreSauvegardeDate {
+    grid-area: b;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+#cadreSauvegardeLieu {
+    grid-area: c;
+}
+#cadreSauvegardeInfos {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    grid-area: d;
+}
+#cadreSauvegardeCharset {
+    grid-area: e;
+}
+#sauvegardeCharset {
+    width: 100%;
+}
+
+/* MenuCombat */
+
+#ecranCombat {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border: solid black 6px;
+    border-radius: 10px;
+    width: 1280px;
+    height: 720px;
+    gap: 1rem;
+    overflow: hidden;
+}
+#imageCombat {
+    width: 100%;
+}
+
+/* Personnage en combat */
+#emplacementPersonnage, #imagePersonnage, #niveauPersonnage, #nomPersonnage, #barreDeVieMax, #barreDeMagieMax, #barreDeVie, #barreDeMagie, #pv, #pm, #pointsDeVie, #pointsDeMagie {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color : white;
+    text-shadow:
+    1.2px 1.2px 0 #000,
+    -1.2px -1.2px 0 #000,
+    1.2px -1.2px 0 #000,
+    -1.2px 1.2px 0 #000;
+}
+
+#emplacementPersonnage {
+    display: flex;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    height: 100px;
+    width: 300px;
+    border: white 2px solid;
+    background-color: rgba(0, 0, 0, .5);
+}
+#partieImage {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+#imagePersonnage {        
+    position: absolute;
+    width: 80%;
+    height: 80%;
+}
+#niveauPersonnage {
+    margin-top: 80%;
+    height: 20%;
+    z-index: 2;
+}
+#partieBarres {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 67%;
+    gap: 15%
+}
+#nomPersonnage {
+    width: 50%;
+    height: 20%;
+    margin-bottom: 2%;
+    font-size: 1.3rem;
+}
+#barreDeVieMax, #barreDeMagieMax {
+    display: flex;
+    position: relative;
+    width: 95%;
+    height: 15%;
+    border: black 2px solid;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .5);
+
+}
+#headerBarreDeVie, #headerBarreDeMagie {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    top: -70%;
+    left: 5%;
+    width: 90%;
+}
+#barreDeVie, #barreDeMagie {
+    position: absolute;
+    height: 100%;
+    border-radius: 10px;
+}
+#barreDeVie {
+    background-color: lime;
+}
+#barreDeMagie {
+    background-color: cyan;
+}
+
+
+
 /* Ecran Inventaire */
-#ecranInventaire {
+/* #ecranInventaire {
     display: none;
     justify-content: center;
     align-items: center;
@@ -193,7 +359,7 @@
     border-radius: 10px;
 }
 
-/* Combat */
+
 #ecranCombat {
     display: none;
     justify-content: center;
@@ -271,8 +437,8 @@
     border-radius: 50%;
 }
 .boutonCombat:hover {
-    filter: drop-shadow(0 0 2em #f7df1eaa);
-}
+    filter: drop-shadow(0 0 1px black);
+} */
 
 /* Carte Du Monde */
 #carteDuMonde {
@@ -309,8 +475,7 @@
     z-index: 1;
 }
 
-/* Menu Magasin et Menu Eglise */
-
+/* Menu Magasin / Menu Eglise / Menu Inventaire */
 
 #ecranMagasin, #ecranMagasinD, #ecranEglise {
     display: grid;
@@ -365,7 +530,7 @@
 } 
 #magasinObjetIcone, #magasinObjetNom, #magasinObjetPrix, #egliseEmplacementSauvegardes {
     flex-direction: column;
-    border-top: solid white 5px;
+    border-top: solid 2px white;
 }
 #objetNom, #objetPrix, #optionAcheter, #optionVendre, #optionSortir, #optionSauvegarder, #optionCharger {
     display: flex;
@@ -378,7 +543,7 @@
     align-items: center;
     height: 72px;
 }
-.selectionActive, .clickActive, #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover, #boxOui:hover, #boxNon:hover  {
+.selectionActive, .clickActive, #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover, #optionSauvegarder:hover, #optionCharger:hover, #boxOui:hover, #boxNon:hover, #cadreSauvegarde:hover {
     background-color: rgba(120, 220, 255, 0.5);
     color: black;
 }
@@ -386,17 +551,17 @@
     grid-area: a;
     align-items: center;
     justify-content: center;
-    border-top: solid white 5px;
-    border-left: solid white 5px;
-    border-right: solid white 5px;
+    border-top: solid 2px white;
+    border-left: solid 2px white;
+    border-right: solid 2px white;
 }
 #magasinSelectionAction, #egliseSelectionAction {
     grid-area: b;
     flex-direction: column;
     font-size: 2rem;
-    border-top: solid white 5px;
-    border-right: solid white 5px;
-    border-left: solid white 5px;
+    border-top: solid 2px white;
+    border-right: solid 2px white;
+    border-left: solid 2px white;
 }
 #magasinObjetIcone {
     grid-area: c;
@@ -406,16 +571,21 @@
 } 
 #magasinObjetPrix, #egliseEmplacementSauvegardes {
     grid-area: e;
-    border-right: solid white 5px;
+    border-right: solid 2px white;
+}
+#egliseEmplacementSauvegardes {
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 #magasinObjetImage {
     grid-area: f;
     display: none;
     align-items: center;
     justify-content: center;
-    border-right: solid white 5px;
-    border-top: solid white 5px;
-    border-bottom: solid white 5px;
+    border-right: solid 2px white;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
 } 
 #objetImage {
     width: 80%;
@@ -428,37 +598,37 @@
     justify-content: space-between;
     font-size: 1.5rem;
     padding: 0.5rem;
-    border-right: solid white 5px;
+    border-right: solid 2px white;
 } 
 #magasinObjetEffet {
     grid-area: k;
     display: none;
     justify-content: center;
     align-items: center;
-    border-bottom: solid white 5px;
-    border-right: solid white 5px;
+    border-bottom: solid 2px white;
+    border-right: solid 2px white;
 }
 #magasinVendeurCharset, #eglisePretreCharset {
     grid-area: h;
     align-items: center;
     justify-content: center;
-    border: solid white 5px;
+    border: solid 2px white;
 } 
 #magasinVendeurDialogue, #eglisePretreDialogue {
     grid-area: i;
     padding: 0.5rem;
-    border-top: solid white 5px;
-    border-bottom: solid white 5px;
-    border-right: white 5px;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
+    border-right: 2px white;
 } 
 #magasinBoxValidation, #egliseBoxValidation {
     grid-area: j;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border-right: solid white 5px;
-    border-top: solid white 5px;
-    border-bottom: solid white 5px;
+    border-right: solid 2px white;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
 }
 #boxOui, #boxNon {
     display: none;
@@ -550,19 +720,8 @@ i {
     color: goldenrod;
 }
 
-/* Save */
-#save {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 75px;
-    border: solid 5px black;
-    background-color: white;
-    font-size: large;
-}
 
-@media screen and (max-width: 1000px){
+/* @media screen and (max-width: 1000px){
     #ecranCombat {
         display: none;
         justify-content: center;
@@ -624,7 +783,7 @@ i {
         border-radius: 1rem;
         background-color: #ccc;
         /* position: relative; */
-    }
+    /* }
 
     #ecranInventaire {
         display: none;
@@ -673,5 +832,5 @@ i {
         font-size: 2.5rem;
         color: goldenrod;
     }
-}
+} */ 
 

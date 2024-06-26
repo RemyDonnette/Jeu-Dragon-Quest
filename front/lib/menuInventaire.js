@@ -4,20 +4,6 @@ import { appelDesStats, majBarreDeVie } from "./fonctionsCombat.js";
 
 
 export function menuInventaire(ecranActuel) {
-    // Fetch Sauvegarde et Objets
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('sauvegarde', JSON.stringify(data))
-    })
-    fetchData('/sauvegarde').then((data) => {
-        localStorage.setItem('inventaire', JSON.stringify(data.inventaire))
-    })
-    fetchData('/objets').then((data) => {
-        localStorage.setItem('tabObjets', JSON.stringify(data))
-    })
-    fetchData('/monstres').then((data) => {
-        localStorage.setItem('tabMonstres', JSON.stringify(data))
-    })
-
 
     // les objets stockés dans le tableau doivent être les ids
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
@@ -30,8 +16,6 @@ export function menuInventaire(ecranActuel) {
     const listeObjets = document.querySelector('#listeObjets') 
     const descriptionObjet = document.querySelector('#descriptionObjet')
     superposerEcran(ecranInventaire, ecranActuel)
-
-    console.log(sauvegarde)
 
     // Création des objets à partir de la sauvegarde
     objetsInventaire.forEach((objet) => {
@@ -62,7 +46,7 @@ export function menuInventaire(ecranActuel) {
             descriptionObjet.innerText = ''
         })
         emplacementObjet.addEventListener('click', () => {
-            sauvegarde.pv + objet.effet
+            // objetsEffets.js
             objet.nb -= 1
             nombreObjet.innerText = objet.nb
             majBarreDeVie(sauvegarde.pv, sauvegarde.pvMax, 'Joueur')

@@ -1,10 +1,9 @@
-// import { menuCombat } from "./menuCombat.js"
-// import { menuInventaire } from "./menuInventaire.js"
-import { menuMagasin } from "./menumagasin.js"
-import { menuCarteDuMonde } from "./menuCarte.js"
 import { creerMain } from "./creerMain.js"
+import { menuSauvegarde } from "./menuSauvegarde.js"
+import { menuCarteDuMonde } from "./menuCarte.js"
+import { menuCombat } from "./menuCombat.js"
+import { menuMagasin } from "./menumagasin.js"
 import { changerScript } from "./changerScript.js"
-import { chargerPartie } from "./menuChargement.js"
 
 
 export function lancerMenuPrincipal() {
@@ -38,13 +37,13 @@ export function lancerMenuPrincipal() {
 
     boutonChargerPartie.addEventListener('click', () => {
         main.remove()
-        chargerPartie()
+        menuSauvegarde('charger')
     })
 
     boutonMenuDev.addEventListener('click', () => {
         main.remove()
-        changerScript('2_heliodor.js')
-        // menuCombat()
+        // changerScript('2_heliodor.js')
+        menuCombat()
         // menuMagasin(2)
         // menuEglise(1)
     })
@@ -61,9 +60,9 @@ export function lancerMenuPrincipal() {
     })
 
     // Musique Menu Principal
-    // const musiqueMenuPrincipal = document.querySelector('#musique')
-    // musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
-    // musiqueMenuPrincipal.loop = 'true'
-    // musiqueMenuPrincipal.play()
+    const musiqueMenuPrincipal = document.querySelector('#musique')
+    musiqueMenuPrincipal.src = './audio/musiques/menuPrincipal.mp3'
+    musiqueMenuPrincipal.loop = 'true'
+    musiqueMenuPrincipal.play()
 
 }

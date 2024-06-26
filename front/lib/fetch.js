@@ -44,8 +44,8 @@ export async function fetchAllData(id) {
     fetchData('/armures').then((data) => {
         localStorage.setItem('armures', JSON.stringify(data))
     })
-    fetchData('/lieux').then((data) => {
-        localStorage.setItem('lieux', JSON.stringify(data))
+    fetchData('/villes').then((data) => {
+        localStorage.setItem('villes', JSON.stringify(data))
     })
     fetchData('/monstres').then((data) => {
         localStorage.setItem('monstres', JSON.stringify(data))

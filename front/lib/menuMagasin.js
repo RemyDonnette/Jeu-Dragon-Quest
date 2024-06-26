@@ -12,7 +12,7 @@ export function menuMagasin(nbRefVille) {
     const objets = JSON.parse(localStorage.getItem('objets'))
     const armes = JSON.parse(localStorage.getItem('armes'))
     const armures = JSON.parse(localStorage.getItem('armures'))
-    const lieux = JSON.parse(localStorage.getItem('lieux'))
+    const lieux = JSON.parse(localStorage.getItem('villes'))
     
     const infosMagasinActuel = infosMagasins[nbRefVille]
     const articles = infosMagasins[nbRefVille].inventaire
@@ -259,7 +259,6 @@ export function menuMagasin(nbRefVille) {
                             magasinObjetEffet.style.display = 'none'
                             magasinVendeurDialogue.style.borderRight = ''
                         }
-    
                     })
                 })
             })

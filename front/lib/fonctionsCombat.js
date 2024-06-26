@@ -25,8 +25,6 @@ export function appelDuMonstre(i, ecran) {
     imageMonstre.id = "imageMonstre"
     imageMonstre.style.height = tailleImageMonstre
 
-    console.log(imageMonstre.style.width)
-
     imageMonstre.style.paddingBottom = decalageImageMonstre
     imageMonstre.classList.add(tabMonstres[i].animation)
     imageMonstre.classList.add('animated')

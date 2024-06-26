@@ -568,8 +568,8 @@ app.get('/eglises', (request, response) => {
     response.send(eglises);
 })
 
-app.get('/lieux', (request, response) => {
-    const lieux = [
+app.get('/villes', (request, response) => {
+    const villes = [
         {   
             id: 0,
             nom: 'Test',
@@ -726,6 +726,30 @@ app.get('/lieux', (request, response) => {
             image: '',
             lien: '12_arborea.js',
             punaise: {top: 25, left: 36},
+            batiments: [
+                {nom: 'Magasin', top: 40, left: 30},
+                {nom: 'Eglise', top: 40, left: 70},
+                {nom: 'Retour vers la carte', top: 90, left: 94},  
+            ]
+        },
+    ];
+    response.send(villes);
+})
+
+app.get('/lieux', (request, response) => {
+    const lieux = [
+        {   
+            id: 0,
+            nom: 'Test',
+            divId: 'testLocalisation',
+        },
+        {
+            id: 1, 
+            nom: 'Pic de Caubaltin',
+            divId: 'picDeCaubaltin',
+            image: '',
+            lien: '1.1_picDeCaubaltin.js',
+            punaise: {top: 57, left: 47},
             batiments: [
                 {nom: 'Magasin', top: 40, left: 30},
                 {nom: 'Eglise', top: 40, left: 70},

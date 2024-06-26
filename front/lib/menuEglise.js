@@ -1,13 +1,13 @@
 import { creerMain } from "./creerMain.js"
 import { changerScript } from "./changerScript.js"
+import { menuSauvegarde } from "./menuSauvegarde.js"
 
 export function menuEglise(nbRefVille) {
 
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
     const infosEglises = JSON.parse(localStorage.getItem('eglises'))
     const infosEgliseActuelle = infosEglises[nbRefVille]
-
-    const lieux = JSON.parse(localStorage.getItem('lieux'))
+    const lieux = JSON.parse(localStorage.getItem('villes'))
 
     // creation du main et du magasin
     creerMain()
@@ -90,6 +90,43 @@ export function menuEglise(nbRefVille) {
         egliseSelectionAction.style.display = 'flex'
         eglisePretreDialogue.innerText = infosEgliseActuelle.phraseAttente
 
+        optionSauvegarder.addEventListener('click', () => {
+
+            optionSauvegarder.classList.add('clickActive')
+            optionCharger.classList.remove('clickActive')
+
+            egliseEmplacementSauvegardes.style.display = 'flex'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+
+            const testSave = document.querySelector('#cadreSauvegarde')
+            if (testSave  !== null) {
+                const sauvegardes = document.querySelectorAll('#cadreSauvegarde')
+                sauvegardes.forEach((save) => {
+                    egliseEmplacementSauvegardes.removeChild(save)
+                })
+            }
+            menuSauvegarde('sauvegarde')
+        })
+
+        optionCharger.addEventListener('click', () => {
+
+            optionCharger.classList.add('clickActive')
+            optionSauvegarder.classList.remove('clickActive')
+
+            egliseEmplacementSauvegardes.style.display = 'flex'
+            boxOui.style.display = 'none'
+            boxNon.style.display = 'none'
+
+            const testSave = document.querySelector('#cadreSauvegarde')
+            if (testSave  !== null) {
+                const sauvegardes = document.querySelectorAll('#cadreSauvegarde')
+                sauvegardes.forEach((save) => {
+                    egliseEmplacementSauvegardes.removeChild(save)
+                })
+            }
+            menuSauvegarde('charger')
+        })
 
         optionSortir.addEventListener('click', () => {
 
@@ -106,8 +143,3 @@ export function menuEglise(nbRefVille) {
         })
     }, 1000)
 }
-/* 
-<div id="egliseHeliodor">
-    <i class="fa fa-right-from-bracket faa-passing faa-fast animated-hover deplacement boutonRetourHeliodorEglise" style="top: 90%; left: 94%"></i>
-</div> 
-*/

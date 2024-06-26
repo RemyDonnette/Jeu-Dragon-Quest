@@ -5,16 +5,16 @@ import { changerScript } from "./changerScript.js"
 export function menuCarteDuMonde() {
 
     const lieuxDebloques = JSON.parse(localStorage.getItem('sauvegarde'))
-    const donneesLieux = JSON.parse(localStorage.getItem('lieux'))
+    const donneesLieux = JSON.parse(localStorage.getItem('villes'))
 
     // Creation du Main
     creerMain()
 
     // Appel de la musique de la carte du Monde
-    // const musiqueCarte = document.querySelector('#musique')
-    // musiqueCarte.src = '../audio/musiques/carteDuMonde.mp3'
-    // musiqueCarte.loop = 'true'
-    // musiqueCarte.play()
+    const musiqueCarte = document.querySelector('#musique')
+    musiqueCarte.src = './audio/musiques/carteDuMonde.mp3'
+    musiqueCarte.loop = 'true'
+    musiqueCarte.play()
 
     //Création du template
     const carteDuMonde = document.createElement('div')
@@ -33,7 +33,7 @@ export function menuCarteDuMonde() {
     carteDuMonde.append(imageCarteDuMonde, lieu)
     lieu.append(nomDuLieu)
     
-    lieuxDebloques.lieux.forEach((idLieux) => {
+    lieuxDebloques.villes.forEach((idLieux) => {
         
         const imageLabel = document.createElement('img')
         imageLabel.src = './images/background/banniereLieux.png'
@@ -64,12 +64,3 @@ export function menuCarteDuMonde() {
         })
     })
 }
-
-/* 
-<img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 58%; left: 48%" id="Caubaltin"></i>
-<a href="1_heliodor.html"><img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 42%; left: 48%" id="Heliodor"></i></a>
-<img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 48%; left: 45%" id="Malgrove"></i>
-<img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 62%; left: 58%" id="Côte d'emeraude"></i>
-<img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 65%; left: 80%" id="Yotto"></i>
-<img src="images/icones/iconeSelection.png" class="faa-float animated-hover faa-fast punaise" style="top: 17%; left: 17%" id="Sniflheim"></i> 
-*/
