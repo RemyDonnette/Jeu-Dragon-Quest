@@ -1,8 +1,20 @@
 import { creerMain } from "./creerMain.js"
+import { appelMusique } from "./creerAudio.js"
 import { changerScript } from "./changerScript.js"
 import { menuSauvegarde } from "./menuSauvegarde.js"
+import { fetchData } from "./fetch.js"
 
 export function menuEglise(nbRefVille) {
+
+    fetchData(`/sauvegarde1`).then((data) => {
+        localStorage.setItem('sauvegarde1', JSON.stringify(data))
+    })
+    fetchData(`/sauvegarde2`).then((data) => {
+        localStorage.setItem('sauvegarde2', JSON.stringify(data))
+    })
+    fetchData(`/sauvegarde3`).then((data) => {
+        localStorage.setItem('sauvegarde3', JSON.stringify(data))
+    })
 
     const sauvegarde = JSON.parse(localStorage.getItem('sauvegarde'))
     const infosEglises = JSON.parse(localStorage.getItem('eglises'))
@@ -16,10 +28,7 @@ export function menuEglise(nbRefVille) {
     main.append(eglise)
 
     // Gestion de l'audio
-    const musiqueHeliodor = document.querySelector('#musique')
-    musiqueHeliodor.src = './audio/musiques/boutique.mp3'
-    musiqueHeliodor.loop = 'true'
-    musiqueHeliodor.play()
+    appelMusique('./audio/musiques/eglise.mp3')
 
     // Création des zones de grid et leurs ids
     const ecranEglise = document.createElement('div')

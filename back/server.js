@@ -32,9 +32,9 @@ app.use(express.json());
 app.use(cors());
 
 
-app.listen(port, (error) => {
-    error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
-})
+// app.listen(port, (error) => {
+//     error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
+// })
 
 
 app.get('/monstres', (request, response) => {

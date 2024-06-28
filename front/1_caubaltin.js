@@ -1,11 +1,9 @@
 import { creerMain } from "./lib/creerMain.js"
 import { creerVille } from "./lib/creerVille.js"
+import { appelMusique } from "./lib/creerAudio.js"
 
-// Appel de la musique de fond
-// const musiqueHeliodor = document.querySelector('#musique')
-// musiqueHeliodor.src = ''
-// musiqueHeliodor.loop = 'true'
-// musiqueHeliodor.play()
+// Création de l'audio  
+appelMusique('./audio/musiques/caubaltin.mp3')
 
 // Création de la ville de base
 creerMain()

@@ -5,16 +5,6 @@ import { menuCarteDuMonde } from "./menuCarte.js";
 
 export function menuSauvegarde(type) {
 
-    fetchData(`/sauvegarde1`).then((data) => {
-        localStorage.setItem('sauvegarde1', JSON.stringify(data))
-    })
-    fetchData(`/sauvegarde2`).then((data) => {
-        localStorage.setItem('sauvegarde2', JSON.stringify(data))
-    })
-    fetchData(`/sauvegarde3`).then((data) => {
-        localStorage.setItem('sauvegarde3', JSON.stringify(data))
-    })
-
     const sauvegarde1 = JSON.parse(localStorage.getItem('sauvegarde1'))
     const sauvegarde2 = JSON.parse(localStorage.getItem('sauvegarde2'))
     const sauvegarde3 = JSON.parse(localStorage.getItem('sauvegarde3'))

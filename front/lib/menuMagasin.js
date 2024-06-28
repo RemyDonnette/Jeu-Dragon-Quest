@@ -1,5 +1,6 @@
 import { fetchData } from "./fetch.js"
 import { creerMain } from "./creerMain.js"
+import { appelMusique } from "./creerAudio.js"
 import { changerScript } from "./changerScript.js"
 
 
@@ -24,10 +25,7 @@ export function menuMagasin(nbRefVille) {
     main.append(magasin)
     
     // Gestion de l'audio
-    // const musiqueHeliodor = document.querySelector('#musique')
-    // musiqueHeliodor.src = './audio/musiques/boutique.mp3'
-    // musiqueHeliodor.loop = 'true'
-    // musiqueHeliodor.play()
+    appelMusique('./audio/musiques/magasin.mp3')
     
     // Création des zones de grid et leurs ids
     const ecranMagasin = document.createElement('div')

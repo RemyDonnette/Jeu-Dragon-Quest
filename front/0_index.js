@@ -1,4 +1,5 @@
 import { creerMain } from './lib/creerMain.js'
+import { appelMusique, appelBoutonsAudio } from './lib/creerAudio.js'
 import { lancerMenuPrincipal } from './lib/menuPrincipal.js'
 
 // Création du header
@@ -28,6 +29,10 @@ commencer.classList.add('fa-solid', 'fa-beat')
 
 main.append(ecranAccueil)
 ecranAccueil.append(commencer)
+
+// Appel audio
+// appelMusique('./audio/musiques/intro.mp3')
+appelBoutonsAudio()
 
 // Menu Principal
 ecranAccueil.addEventListener('click', () => {

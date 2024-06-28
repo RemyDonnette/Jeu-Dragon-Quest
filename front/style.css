@@ -706,6 +706,17 @@
 
 
 /* Audio */
+#volume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    color: goldenrod;
+}
+#curseurVolume {
+    accent-color: goldenrod;
+    width: 200px;
+}
 #boutonsAudio {
     position: absolute;
     display: flex;

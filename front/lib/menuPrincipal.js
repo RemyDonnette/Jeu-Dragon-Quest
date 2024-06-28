@@ -4,9 +4,20 @@ import { menuCarteDuMonde } from "./menuCarte.js"
 import { menuCombat } from "./menuCombat.js"
 import { menuMagasin } from "./menumagasin.js"
 import { changerScript } from "./changerScript.js"
-
+import { fetchData } from "./fetch.js"
 
 export function lancerMenuPrincipal() {
+
+    fetchData(`/sauvegarde1`).then((data) => {
+        localStorage.setItem('sauvegarde1', JSON.stringify(data))
+    })
+    fetchData(`/sauvegarde2`).then((data) => {
+        localStorage.setItem('sauvegarde2', JSON.stringify(data))
+    })
+    fetchData(`/sauvegarde3`).then((data) => {
+        localStorage.setItem('sauvegarde3', JSON.stringify(data))
+    })
+
     // Création du Main
     creerMain()
     
