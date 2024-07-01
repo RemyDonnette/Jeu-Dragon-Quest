@@ -52,11 +52,14 @@
     
     height: fit-content;
 }
+
+/* Ecran d'Accueil */
 #logo {
     width: 100%;
     max-width: 800px;
 }
 #commencer {
+    position: absolute;
     margin-top: 350px;
     font-size: 1.2rem;
     letter-spacing: 3px;
@@ -65,8 +68,9 @@
     filter: drop-shadow(0 0 5em black);
     
 }
-
-/* Ecran d'Accueil */
+#fondIntro {
+    height: 100%;
+}
 #ecranAccueil {
     display: flex;
     flex-direction: column;
@@ -74,13 +78,10 @@
     align-items: center;
     border: solid black 6px;
     border-radius: 10px;
-    background-image: url('./images/background/fondIntro.png');
     background-size: cover;
     background-position: center;
-    gap: 30vh;
-    height: 80vh;
-    width: 80vw;
-    max-width: 1500px;
+    width: 1280px;
+    height: 720px;
 }
 
 
@@ -538,10 +539,14 @@
     padding-left: 1rem;
     height: 72px;
 }
+#magasinObjetIcone {
+
+}
 #objetIcone {
     display: flex;
     align-items: center;
-    height: 72px;
+    padding: 4px;
+    height: 64px;
 }
 .selectionActive, .clickActive, #optionAcheter:hover, #optionVendre:hover, #optionSortir:hover, #optionSauvegarder:hover, #optionCharger:hover, #boxOui:hover, #boxNon:hover, #cadreSauvegarde:hover {
     background-color: rgba(120, 220, 255, 0.5);
@@ -571,6 +576,7 @@
 } 
 #magasinObjetPrix, #egliseEmplacementSauvegardes {
     grid-area: e;
+    display: flex;
     border-right: solid 2px white;
 }
 #egliseEmplacementSauvegardes {

@@ -7,14 +7,13 @@ export function appelMusique(source) {
 }
 
 export function appelBoutonsAudio() {
-    const musique = document.querySelector('#musique') 
-    const sons = document.querySelector('#sons')
     const audio = document.querySelectorAll('audio')
-    const boutonMuteMusique = document.querySelector('#boutonMuteMusique')
-    const boutonMuteSons = document.querySelector('#boutonMuteSons')
-    const iconeMuteMusique = document.querySelector('#iconeMuteMusique')
-    const iconeMuteSons = document.querySelector('#iconeMuteSons')
-
+    const boutonMuteAudio = document.querySelector('#boutonMuteAudio')
+    const iconeMuteAudio = document.querySelector('#iconeMuteAudio')
+    const volumeSlider = document.querySelector('#curseurVolume');
+    const volumeValue = document.querySelector('#niveauVolume'); 
+    
+    
     //Reglage initial du volume
     function setVolume(volume) {
         const audioElements = document.querySelectorAll('audio');
@@ -22,46 +21,37 @@ export function appelBoutonsAudio() {
             audioElements[i].volume = volume;
         }
     }
-
+    
     // Jauge de volume
     document.addEventListener('DOMContentLoaded', function() {
-        
-        const volumeSlider = document.querySelector('#curseurVolume');
-        const volumeValue = document.querySelector('#niveauVolume');
         
         volumeSlider.addEventListener('input', () => {
             let volume = volumeSlider.value;
             volumeValue.textContent = volume;
             setVolume(volume / 100);
         });
-    });
-
-    // Boutons mute audio
-    function muteMusique() {
-        if (musique.muted) {
-            musique.muted = false
-            iconeMuteMusique.style.color = 'goldenrod'
-            
-        } else {
-            musique.muted = true
-            iconeMuteMusique.style.color = 'red'
-        }
-    }
-    function muteSons() {
-        if (sons.muted) {
-            sons.muted = false
-            iconeMuteSons.style.color = 'goldenrod'
         
-        } else {
-            sons.muted = true
-            iconeMuteSons.style.color = 'red'
-        }
-    }
-    boutonMuteMusique.addEventListener("click", function() {
-        muteMusique()
-    })
-    boutonMuteSons.addEventListener("click", function() {
-        muteSons()
-    })
+        boutonMuteAudio.addEventListener("click", function() {
+            
+            
+            if (audio.muted) {
+                const volumeSave = localStorage.getItem('volumeSave')
+                console.log(volumeSave)
+                audio.muted = false
+                iconeMuteAudio.style.color = 'goldenrod'
+                volumeSlider.value = volumeSave
+                setVolume(volumeSave / 100)
+                
+            } else {
+                const volumeSave = volumeSlider.value
+                localStorage.setItem('volumeSave', JSON.stringify(volumeSave))
+                audio.muted = true
+                iconeMuteAudio.style.color = 'red'
+                volumeSlider.value = 0
+                volumeValue.textContent = 0
+                setVolume(0)
+            }
+        })
+    });
 }
 

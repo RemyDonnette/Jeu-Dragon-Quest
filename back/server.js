@@ -32,9 +32,9 @@ app.use(express.json());
 app.use(cors());
 
 
-// app.listen(port, (error) => {
-//     error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
-// })
+app.listen(port, (error) => {
+    error ? console.log(error) : console.log(`le serveur a démarré sur le port ${port}`);
+})
 
 
 app.get('/monstres', (request, response) => {
@@ -109,7 +109,7 @@ app.get('/armes', (request, response) => {
         {
             id: 1, 
             nom: 'Baton de cypres',
-            image: '../front/images/icones/armes/batonDeCypres.webp',
+            image: '../front/images/icones/armes/batonDeCypres.png',
             description: 'Un simple baton de bois. Cette arme est faible, certes, mais tapera toujours plus que vos poings.',
             effetDescription: 'Attaque +7',
             puissance: 7,

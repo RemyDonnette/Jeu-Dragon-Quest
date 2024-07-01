@@ -14,21 +14,25 @@ logo.alt = 'Logo Dragon Quest'
 logo.id = 'logo'
 
 creerMain()
-body.insertBefore(header, main);
+body.insertBefore(header, main)
 header.append(h1)
 h1.append(logo)
 
 // Création de l'écran d'accueil
 const ecranAccueil = document.createElement('div')
 const commencer = document.createElement('span')
+const fond = document.createElement('img')
 
 ecranAccueil.id = 'ecranAccueil'
 commencer.id = 'commencer'
 commencer.innerText = 'CLIQUEZ POUR COMMENCER'
 commencer.classList.add('fa-solid', 'fa-beat')
+fond.src = './images/background/fondIntro.png'
+fond.alt = 'Fond Intro'
+fond.id = 'fondIntro'   
 
 main.append(ecranAccueil)
-ecranAccueil.append(commencer)
+ecranAccueil.append(commencer, fond)
 
 // Appel audio
 // appelMusique('./audio/musiques/intro.mp3')

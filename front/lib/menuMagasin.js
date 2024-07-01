@@ -64,8 +64,11 @@ export function menuMagasin(nbRefVille) {
     
     // remplissage de la colonne de selection
     const argentJoueur = document.createElement('span')
-    argentJoueur.innerText = `${sauvegarde.argent} G`
-    magasinArgentJoueur.append(argentJoueur)
+    const iconeArgent = document.createElement('img')
+    argentJoueur.innerText = sauvegarde.argent
+    iconeArgent.src = './images/icones/pins/pieceOr.png'
+    iconeArgent.style.width = '40px'
+    magasinArgentJoueur.append(argentJoueur, iconeArgent)
     
     const optionAcheter = document.createElement('span')
     const optionVendre = document.createElement('span')
@@ -153,6 +156,7 @@ export function menuMagasin(nbRefVille) {
                 const objetIcone = document.createElement('img')
                 const objetNom = document.createElement('span')
                 const objetPrix = document.createElement('span')
+                const iconePrix = '<img src="./images/icones/pins/pieceOr.png" style="width: 40px;"></img>'
                 
                 objetIcone.id = 'objetIcone'
                 objetNom.id = 'objetNom'
@@ -162,17 +166,17 @@ export function menuMagasin(nbRefVille) {
                     case objets[0]:
                         objetIcone.src = objets[objet.id].image
                         objetNom.innerText = objets[objet.id].nom
-                        objetPrix.innerText = (inventaire === articles) ? `${objets[objet.id].prixAchat} G` : `${objets[objet.id].prixVente} G`
+                        objetPrix.innerHTML = (inventaire === articles) ? `${objets[objet.id].prixAchat}${iconePrix}` : `${objets[objet.id].prixVente}${iconePrix}`
                         break;
                     case armes[0]:
                         objetIcone.src = armes[objet.id].image
                         objetNom.innerText = armes[objet.id].nom
-                        objetPrix.innerText = (inventaire === articles) ? `${armes[objet.id].prixAchat} G` : `${armes[objet.id].prixVente} G`
+                        objetPrix.innerHTML = (inventaire === articles) ? `${armes[objet.id].prixAchat}${iconePrix}` : `${armes[objet.id].prixVente}${iconePrix}`
                         break;
                     case armures[0]:
                         objetIcone.src = armures[objet.id].image
                         objetNom.innerText = armures[objet.id].nom
-                        objetPrix.innerText = (inventaire === articles) ? `${armures[objet.id].prixAchat} G` : `${armures[objet.id].prixVente} G`
+                        objetPrix.innerHTML = (inventaire === articles) ? `${armures[objet.id].prixAchat}${iconePrix}` : `${armures[objet.id].prixVente}${iconePrix}`
                         break;
                     default:
                         break;
