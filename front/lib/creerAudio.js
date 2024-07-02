@@ -10,8 +10,8 @@ export function appelBoutonsAudio() {
     const audio = document.querySelectorAll('audio')
     const boutonMuteAudio = document.querySelector('#boutonMuteAudio')
     const iconeMuteAudio = document.querySelector('#iconeMuteAudio')
-    const volumeSlider = document.querySelector('#curseurVolume');
-    const volumeValue = document.querySelector('#niveauVolume'); 
+    const curseurVolume = document.querySelector('#curseurVolume');
+    const niveauVolume = document.querySelector('#niveauVolume');
     
     
     //Reglage initial du volume
@@ -25,9 +25,9 @@ export function appelBoutonsAudio() {
     // Jauge de volume
     document.addEventListener('DOMContentLoaded', function() {
         
-        volumeSlider.addEventListener('input', () => {
-            let volume = volumeSlider.value;
-            volumeValue.textContent = volume;
+        curseurVolume.addEventListener('input', () => {
+            let volume = curseurVolume.value;
+            niveauVolume.textContent = volume;
             setVolume(volume / 100);
         });
         
@@ -38,17 +38,19 @@ export function appelBoutonsAudio() {
                 const volumeSave = localStorage.getItem('volumeSave')
                 console.log(volumeSave)
                 audio.muted = false
-                iconeMuteAudio.style.color = 'goldenrod'
-                volumeSlider.value = volumeSave
+                curseurVolume.value = volumeSave
+                iconeMuteAudio.classList.remove('fa-volume-mute')
+                iconeMuteAudio.classList.add('fa-volume-high')
                 setVolume(volumeSave / 100)
                 
             } else {
-                const volumeSave = volumeSlider.value
+                const volumeSave = curseurVolume.value
                 localStorage.setItem('volumeSave', JSON.stringify(volumeSave))
                 audio.muted = true
-                iconeMuteAudio.style.color = 'red'
-                volumeSlider.value = 0
-                volumeValue.textContent = 0
+                curseurVolume.value = 0
+                niveauVolume.textContent = 0
+                iconeMuteAudio.classList.remove('fa-volume-high')
+                iconeMuteAudio.classList.add('fa-volume-mute')
                 setVolume(0)
             }
         })

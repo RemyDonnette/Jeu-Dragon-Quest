@@ -5,7 +5,7 @@ start code .
 timeout /t 1 /nobreak
 
 cmd /c "node back/server.js"
-timeout /t 1 /nobreak
+
 
 cmd /c "npx live-server --open=front/index.html"
 
